@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTJavaScriptLoader.mm \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/cxxreact/JSBundleType.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/third-party/folly-2018.10.22.00/folly/Portability.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/third-party/folly-2018.10.22.00/folly/portability/Config.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/third-party/folly-2018.10.22.00/folly/CPortability.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTMultipartDataTask.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTMultipartStreamReader.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTPerformanceLogger.h

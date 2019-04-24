@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/Surface/RCTSurfaceRootShadowView.m \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/Surface/RCTSurfaceRootShadowView.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTShadowView.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTLayout.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/ricardocosta/Development/AwesomeProject/ios/build/AwesomeProject/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTRootView.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/Surface/RCTSurfaceRootShadowViewDelegate.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Modules/RCTI18nUtil.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Views/RCTShadowView+Layout.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Modules/RCTUIManagerUtils.h \
+  /Users/ricardocosta/Development/AwesomeProject/node_modules/react-native/React/Base/RCTAssert.h
