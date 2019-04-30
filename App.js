@@ -8,8 +8,10 @@
 
 import React, {Component} from 'react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
 
+const BLUE = "#428AF8";
+const LIGHT_GRAY = "#D3D3D3";
 
 export default class App extends Component {
   
@@ -17,6 +19,7 @@ export default class App extends Component {
     sliderOneChanging: false,
     sliderOneValue: [0],
     nonCollidingMultiSliderValue: [25, 45],
+    isFocused: false,
 };
 
 sliderOneValuesChangeStart = () => {
@@ -45,30 +48,46 @@ nonCollidingMultiSliderValuesChange = values => {
     });
 };
 
+handleFocus = event => {
+  this.setState({ isFocused: true });
+  if (this.props.onFocus) {
+    this.props.onFocus(event);
+  }
+};
+
+handleBlur = event => {
+  this.setState({ isFocused: false });
+  if (this.props.onBlur) {
+    this.props.onBlur(event);
+  }
+};
+
   render() {
+
+    const { isFocused } = this.state;
+    const { onFocus, onBlur, otherProps } = this.props;
+
     return (
+      
       <View style={styles.container}>
-        {/* <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text> */}
+     
 
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Initial Networth: </Text>  
-            <Text style={styles.text}>{this.state.sliderOneValue} </Text>         
-        </View>
+        <TextInput style = {styles.input} 
+         label='Name'
+          placeholder = "0"
+          placeholderTextColor = "#133420"     
+          keyboardType = "numeric"
+          selectionColor={BLUE}
+          underlineColorAndroid={
+            isFocused ? BLUE : LIGHT_GRAY
+          }
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          style={styles.textInput}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+        />
 
-         <MultiSlider
-            values={this.state.sliderOneValue}
-            sliderLength={280}
-            min={0}
-            max={100000}
-            step={1}
-            onValuesChangeStart={this.sliderOneValuesChangeStart}
-            onValuesChange={this.sliderOneValuesChange}
-            onValuesChangeFinish={this.sliderOneValuesChangeFinish}
-            allowOverlap
-            snapped
-          />
 
         <View style={styles.sliderOne}>
             <Text style={styles.text}>Age: [</Text>
@@ -78,8 +97,8 @@ nonCollidingMultiSliderValuesChange = values => {
 
         <MultiSlider
             values={[
-                this.state.nonCollidingMultiSliderValue[0],
-                this.state.nonCollidingMultiSliderValue[1],
+              this.state.nonCollidingMultiSliderValue[0],
+              this.state.nonCollidingMultiSliderValue[1],
             ]}
             sliderLength={280}
             onValuesChange={this.nonCollidingMultiSliderValuesChange}
@@ -90,19 +109,44 @@ nonCollidingMultiSliderValuesChange = values => {
             snapped
         />
 
-       
+        <View style={styles.sliderOne}>
+            <Text style={styles.text}>Initial Networth: </Text>  
+            <Text style={styles.text}>{this.state.sliderOneValue} </Text>         
+        </View>
+
+         <MultiSlider
+            values={this.state.sliderOneValue}                        
+            sliderLength={280}            
+            min={0}
+            max={100000}
+            step={1}
+            onValuesChangeStart={this.sliderOneValuesChangeStart}
+            onValuesChange={this.sliderOneValuesChange}
+            onValuesChangeFinish={this.sliderOneValuesChangeFinish}
+            allowOverlap
+            snapped
+          />
+  
+           
       </View>
     );
-  }
+  }        
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#97A43A',
   },
+   
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+
   welcome: {
     fontSize: 20,
     textAlign: 'center',
@@ -115,11 +159,16 @@ const styles = StyleSheet.create({
   sliderOne: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-},
+  },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
+  textInput: {
+    margin: 15,
+      height: 40,
+      width: 100,
+  }, 
   
 });
