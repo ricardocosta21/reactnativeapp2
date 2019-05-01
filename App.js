@@ -8,7 +8,8 @@
 
 import React, {Component} from 'react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
+import {Platform, Text, View, TextInput} from 'react-native';
+import styles from './styles'
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
@@ -69,12 +70,12 @@ handleBlur = event => {
 
     return (
       
-      <View style={styles.container}>
      
-
+      <View style={styles.container}>
+        <Text> Net Income: </Text>
         <TextInput style = {styles.input} 
          label='Name'
-          placeholder = "0"
+          placeholder = "Type your text here"
           placeholderTextColor = "#133420"     
           keyboardType = "numeric"
           selectionColor={BLUE}
@@ -132,43 +133,3 @@ handleBlur = event => {
     );
   }        
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97A43A',
-  },
-   
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
-
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  text: {
-    alignSelf: 'center',
-    paddingVertical: 20,
-  },
-  sliderOne: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  textInput: {
-    margin: 15,
-      height: 40,
-      width: 100,
-  }, 
-  
-});
