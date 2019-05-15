@@ -7,9 +7,9 @@
  */
 
 import React, {Component} from 'react';
-// import backgroundGradient from './asset/wall1.jpg';
+import styles from './style'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import {Platform, ScrollView, ImageBackground, StyleSheet, Text, View, TextInput} from 'react-native';
+import {Platform, ScrollView, ImageBackground, Text, View, TextInput} from 'react-native';
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
@@ -209,44 +209,3 @@ handleBlur = event => {
     );
   }        
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F6F6F6',
-  },
-   
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  text: {
-    alignSelf: 'center',
-    paddingVertical: 20,
-  },
-  sliderOne: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  textInput: {
-    margin: 15,
-      height: 40,
-      width: 100,
-  }, 
-  
-});
