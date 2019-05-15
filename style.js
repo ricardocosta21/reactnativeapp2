@@ -20,23 +20,42 @@ export default StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+
   text: {
     alignSelf: 'center',
-    paddingVertical: 20,
+    paddingVertical: 5,
   },
+
   sliderOne: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
+
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
+
   textInput: {
-    margin: 15,
-      height: 40,
-      width: 100,
+    textAlign: 'center',
+    height: 40,
+    width: 100,
   }, 
+
+  h2:{
+    fontSize: 15,    
+  },
+
+  MoneyRowText: {
+    flex: 1,
+    fontSize: 15,
+    flexDirection: 'row'
+  },
+
+  MoneyRowInput: {
+    flex: 1,
+    flexDirection: 'row'
+  }
 
 });

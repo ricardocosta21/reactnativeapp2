@@ -63,6 +63,14 @@ handleBlur = event => {
   }
 };
 
+handleTextChanged(text) {
+  console.warn('text changed !');
+  handleAddMore = (text, textInput) => {
+    
+  }
+  this.setState({ text });
+}
+
   render() {
 
     const { isFocused } = this.state;
@@ -72,9 +80,7 @@ handleBlur = event => {
     
       <ScrollView>
 
-      {/* <View style={styles.container}> */}
-
-      <ImageBackground source={require('./asset/wall1.jpg')} style={styles.container}>
+      <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}>
 
         <View style={styles.sliderOne}>
             <Text style={styles.text}>Age: [</Text>
@@ -115,13 +121,73 @@ handleBlur = event => {
           />
   
 
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Income(-Tax): </Text>  
+        <View style={styles.MoneyRowText}>
+
+          <View style={styles.h2}>
+              <Text style={styles.text}>Income(-Tax)</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholder = "0"
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText = {(textIncome) => { this.handleAddMore(textIncome, 'textIncome'); }}
+                value={this.state.textIncome}
+              />
+            </View>
+
+            <View style={styles.h2}>
+              <Text style={styles.text}>Spending</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholder = "0"
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(textSpending) => this.setState({textSpending})}
+                value={this.state.textSpending}
+              />
+            </View>
+
+            <View style={styles.h2}>
+              <Text style={styles.text}>Savings</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholder = "0"
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textOutput}
+                onChangeText={(textSavings) => this.setState({textSavings})}
+                value={this.state.textSavings}
+              />         
+            </View>
+          </View>
+
+        <View style={styles.instructions}>
+            <Text style={styles.text}>Test1: </Text>  
             {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
         </View>
 
-        <TextInput style = {styles.input} 
-         label='Name'
+        <TextInput style = {styles.instructions} 
+        label='Name'
           placeholder = "0"
           placeholderTextColor = "#133420"     
           keyboardType = "numeric"
@@ -134,76 +200,9 @@ handleBlur = event => {
           style={styles.textInput}
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
-        />
+        />       
 
-
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Spending: </Text>  
-            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
-        </View>
-
-        <TextInput style = {styles.input} 
-         label='Name'
-          placeholder = "0"
-          placeholderTextColor = "#133420"     
-          keyboardType = "numeric"
-          selectionColor={BLUE}
-          underlineColorAndroid={
-            isFocused ? BLUE : LIGHT_GRAY
-          }
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
-
-
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Savings: </Text>  
-            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
-        </View>
-
-        <TextInput style = {styles.input} 
-         label='Name'
-          placeholder = "0"
-          placeholderTextColor = "#133420"     
-          keyboardType = "numeric"
-          selectionColor={BLUE}
-          underlineColorAndroid={
-            isFocused ? BLUE : LIGHT_GRAY
-          }
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
-        
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Savings1: </Text>  
-            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
-        </View>
-
-        <TextInput style = {styles.input} 
-         label='Name'
-          placeholder = "0"
-          placeholderTextColor = "#133420"     
-          keyboardType = "numeric"
-          selectionColor={BLUE}
-          underlineColorAndroid={
-            isFocused ? BLUE : LIGHT_GRAY
-          }
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />                      
-                      
       </ImageBackground>
-
-      {/* </View> */}
 
       </ScrollView>
     );
