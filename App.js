@@ -7,8 +7,9 @@
  */
 
 import React, {Component} from 'react';
+// import backgroundGradient from './asset/wall1.jpg';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
+import {Platform, ScrollView, ImageBackground, StyleSheet, Text, View, TextInput} from 'react-native';
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
@@ -68,26 +69,12 @@ handleBlur = event => {
     const { onFocus, onBlur, otherProps } = this.props;
 
     return (
-      
-      <View style={styles.container}>
-     
+    
+      <ScrollView>
 
-        <TextInput style = {styles.input} 
-         label='Name'
-          placeholder = "0"
-          placeholderTextColor = "#133420"     
-          keyboardType = "numeric"
-          selectionColor={BLUE}
-          underlineColorAndroid={
-            isFocused ? BLUE : LIGHT_GRAY
-          }
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
+      {/* <View style={styles.container}> */}
 
+      <ImageBackground source={require('./asset/wall1.jpg')} style={styles.container}>
 
         <View style={styles.sliderOne}>
             <Text style={styles.text}>Age: [</Text>
@@ -110,7 +97,7 @@ handleBlur = event => {
         />
 
         <View style={styles.sliderOne}>
-            <Text style={styles.text}>Initial Networth: </Text>  
+            <Text style={styles.text}>Investments: </Text>  
             <Text style={styles.text}>{this.state.sliderOneValue} </Text>         
         </View>
 
@@ -127,8 +114,98 @@ handleBlur = event => {
             snapped
           />
   
-           
-      </View>
+
+        <View style={styles.sliderOne}>
+            <Text style={styles.text}>Income(-Tax): </Text>  
+            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
+        </View>
+
+        <TextInput style = {styles.input} 
+         label='Name'
+          placeholder = "0"
+          placeholderTextColor = "#133420"     
+          keyboardType = "numeric"
+          selectionColor={BLUE}
+          underlineColorAndroid={
+            isFocused ? BLUE : LIGHT_GRAY
+          }
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          style={styles.textInput}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+        />
+
+
+        <View style={styles.sliderOne}>
+            <Text style={styles.text}>Spending: </Text>  
+            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
+        </View>
+
+        <TextInput style = {styles.input} 
+         label='Name'
+          placeholder = "0"
+          placeholderTextColor = "#133420"     
+          keyboardType = "numeric"
+          selectionColor={BLUE}
+          underlineColorAndroid={
+            isFocused ? BLUE : LIGHT_GRAY
+          }
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          style={styles.textInput}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+        />
+
+
+        <View style={styles.sliderOne}>
+            <Text style={styles.text}>Savings: </Text>  
+            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
+        </View>
+
+        <TextInput style = {styles.input} 
+         label='Name'
+          placeholder = "0"
+          placeholderTextColor = "#133420"     
+          keyboardType = "numeric"
+          selectionColor={BLUE}
+          underlineColorAndroid={
+            isFocused ? BLUE : LIGHT_GRAY
+          }
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          style={styles.textInput}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+        />
+        
+        <View style={styles.sliderOne}>
+            <Text style={styles.text}>Savings1: </Text>  
+            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
+        </View>
+
+        <TextInput style = {styles.input} 
+         label='Name'
+          placeholder = "0"
+          placeholderTextColor = "#133420"     
+          keyboardType = "numeric"
+          selectionColor={BLUE}
+          underlineColorAndroid={
+            isFocused ? BLUE : LIGHT_GRAY
+          }
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          style={styles.textInput}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+        />                      
+                      
+      </ImageBackground>
+
+      {/* </View> */}
+
+      </ScrollView>
     );
   }        
 }
@@ -139,13 +216,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#97A43A',
+    backgroundColor: '#F6F6F6',
   },
    
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+  backgroundImage: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
   welcome: {
     fontSize: 20,
