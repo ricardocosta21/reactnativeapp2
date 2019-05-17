@@ -82,8 +82,7 @@ handleTextChanged(text) {
 
       {/* <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}> */}
       
-      <View style={styles.MoneyRowText}>
-       
+      <View style={styles.MoneyRowText}>       
         <View style={styles.h2}>
           <Text style={styles.text}>Age</Text>
           <TextInput style = {styles.input} 
@@ -101,7 +100,6 @@ handleTextChanged(text) {
             value={this.state.textAge}
           />
         </View>
-
         <View style={styles.h2}>
           <Text style={styles.text}>Investments</Text>
           <TextInput style = {styles.input} 
@@ -140,7 +138,6 @@ handleTextChanged(text) {
                 value={this.state.textIncome}
               />
           </View>
-
           <View style={styles.h2}>
               <Text style={styles.text}>Spending</Text>
               <TextInput style = {styles.input} 
@@ -158,7 +155,6 @@ handleTextChanged(text) {
                 value={this.state.textSpending}
               />
           </View>
-
           <View style={styles.h2}>
               <Text style={styles.text}>Savings</Text>
               <TextInput style = {styles.input} 
@@ -196,6 +192,81 @@ handleTextChanged(text) {
                 value={this.state.textIncGrowth}
               />
             </View>
+
+            <View style={styles.h2}>
+              <Text style={styles.text}>Retirement Spending</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(textRetSpending) => this.setState({textRetSpending})}
+                value={this.state.textRetSpending}
+              />
+            </View>
+            <View style={styles.h2}>
+              <Text style={styles.text}>Target WR Rate</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(textWDRate) => this.setState({textWDRate})}
+                value={this.state.textWDRate}
+              />
+            </View>
+          </View>
+
+          <View style={styles.MoneyRowText}>
+
+            <View style={styles.h2}>
+              <Text style={styles.text}>Inv. Returns</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(textInvReturns) => this.setState({textInvReturns})}
+                value={this.state.textInvReturns}
+              />
+            </View>
+            <View style={styles.h2}>
+              <Text style={styles.text}>FIRE Target</Text>
+              <TextInput style = {styles.input} 
+              
+                label='Name'
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(textFireTarget) => this.setState({textFireTarget})}
+                value={this.state.textFireTarget}
+              />
+            </View>
+
           </View>
 
       {/* </ImageBackground> */}
