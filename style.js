@@ -6,7 +6,9 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#ffffff',
+    width: '100%',
+    height: '100%',
   },
    
   backgroundImage: {
@@ -43,12 +45,19 @@ export default StyleSheet.create({
     width: 100,
   }, 
 
+  textOutput: {
+    textAlign: 'center',
+    height: 38,
+    width: 100,
+  }, 
+
   h2:{
     fontSize: 15,    
   },
 
   MoneyRowText: {
     flex: 1,
+    marginTop: 40,
     fontSize: 15,
     flexDirection: 'row'
   },

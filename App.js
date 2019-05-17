@@ -13,6 +13,7 @@ import {Platform, ScrollView, ImageBackground, Text, View, TextInput} from 'reac
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
+const WHITE = "#FFFFFF";
 
 export default class App extends Component {
   
@@ -65,9 +66,6 @@ handleBlur = event => {
 
 handleTextChanged(text) {
   console.warn('text changed !');
-  handleAddMore = (text, textInput) => {
-    
-  }
   this.setState({ text });
 }
 
@@ -78,56 +76,57 @@ handleTextChanged(text) {
 
     return (
     
+      <View style={styles.container}>
+
       <ScrollView>
 
-      <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}>
-
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Age: [</Text>
-            <Text style={styles.text}>{this.state.nonCollidingMultiSliderValue[0]} </Text>
-            <Text style={styles.text}> - {this.state.nonCollidingMultiSliderValue[1]}]</Text>
-        </View>
-
-        <MultiSlider
-            values={[
-              this.state.nonCollidingMultiSliderValue[0],
-              this.state.nonCollidingMultiSliderValue[1],
-            ]}
-            sliderLength={280}
-            onValuesChange={this.nonCollidingMultiSliderValuesChange}
-            min={0}
-            max={100}
-            step={1}
-            allowOverlap
-            snapped
-        />
-
-        <View style={styles.sliderOne}>
-            <Text style={styles.text}>Investments: </Text>  
-            <Text style={styles.text}>{this.state.sliderOneValue} </Text>         
-        </View>
-
-         <MultiSlider
-            values={this.state.sliderOneValue}                        
-            sliderLength={280}            
-            min={0}
-            max={100000}
-            step={1}
-            onValuesChangeStart={this.sliderOneValuesChangeStart}
-            onValuesChange={this.sliderOneValuesChange}
-            onValuesChangeFinish={this.sliderOneValuesChangeFinish}
-            allowOverlap
-            snapped
+      {/* <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}> */}
+      
+      <View style={styles.MoneyRowText}>
+       
+        <View style={styles.h2}>
+          <Text style={styles.text}>Age</Text>
+          <TextInput style = {styles.input} 
+            label='Name'
+            placeholderTextColor = "#133420"     
+            keyboardType = "numeric"
+            selectionColor={BLUE}
+            underlineColorAndroid={
+              isFocused ? BLUE : LIGHT_GRAY
+            }
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            style={styles.textInput}
+            onChangeText={(textAge) => this.setState({textAge})}
+            value={this.state.textAge}
           />
-  
+        </View>
+
+        <View style={styles.h2}>
+          <Text style={styles.text}>Investments</Text>
+          <TextInput style = {styles.input} 
+            label='Name'
+            placeholderTextColor = "#133420"     
+            keyboardType = "numeric"
+            selectionColor={BLUE}
+            underlineColorAndroid={
+              isFocused ? BLUE : LIGHT_GRAY
+            }
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            style={styles.textInput}
+            onChangeText={(textInvestments) => this.setState({textInvestments})}
+            value={this.state.textInvestments}
+          />
+        </View>
+
+      </View>
 
         <View style={styles.MoneyRowText}>
-
           <View style={styles.h2}>
               <Text style={styles.text}>Income(-Tax)</Text>
               <TextInput style = {styles.input} 
                 label='Name'
-                placeholder = "0"
                 placeholderTextColor = "#133420"     
                 keyboardType = "numeric"
                 selectionColor={BLUE}
@@ -137,16 +136,15 @@ handleTextChanged(text) {
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
                 style={styles.textInput}
-                onChangeText = {(textIncome) => { this.handleAddMore(textIncome, 'textIncome'); }}
+                onChangeText={(textIncome) => this.setState({textIncome})}
                 value={this.state.textIncome}
               />
-            </View>
+          </View>
 
-            <View style={styles.h2}>
+          <View style={styles.h2}>
               <Text style={styles.text}>Spending</Text>
               <TextInput style = {styles.input} 
                 label='Name'
-                placeholder = "0"
                 placeholderTextColor = "#133420"     
                 keyboardType = "numeric"
                 selectionColor={BLUE}
@@ -159,13 +157,12 @@ handleTextChanged(text) {
                 onChangeText={(textSpending) => this.setState({textSpending})}
                 value={this.state.textSpending}
               />
-            </View>
+          </View>
 
-            <View style={styles.h2}>
+          <View style={styles.h2}>
               <Text style={styles.text}>Savings</Text>
               <TextInput style = {styles.input} 
                 label='Name'
-                placeholder = "0"
                 placeholderTextColor = "#133420"     
                 keyboardType = "numeric"
                 selectionColor={BLUE}
@@ -174,37 +171,38 @@ handleTextChanged(text) {
                 }
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
-                style={styles.textOutput}
+                style={styles.textInput}
                 onChangeText={(textSavings) => this.setState({textSavings})}
                 value={this.state.textSavings}
-              />         
+              />
+          </View>
+        </View>
+
+          <View style={styles.MoneyRowText}>
+            <View style={styles.h2}>
+              <Text style={styles.text}>Income Growth</Text>
+              <TextInput style = {styles.input} 
+                label='Name'
+                placeholderTextColor = "#133420"     
+                keyboardType = "numeric"
+                selectionColor={BLUE}
+                underlineColorAndroid={
+                  isFocused ? BLUE : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(textIncGrowth) => this.setState({textIncGrowth})}
+                value={this.state.textIncGrowth}
+              />
             </View>
           </View>
 
-        <View style={styles.instructions}>
-            <Text style={styles.text}>Test1: </Text>  
-            {/* <Text style={styles.text}>{this.state.sliderOneValue} </Text>          */}
-        </View>
-
-        <TextInput style = {styles.instructions} 
-        label='Name'
-          placeholder = "0"
-          placeholderTextColor = "#133420"     
-          keyboardType = "numeric"
-          selectionColor={BLUE}
-          underlineColorAndroid={
-            isFocused ? BLUE : LIGHT_GRAY
-          }
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />       
-
-      </ImageBackground>
+      {/* </ImageBackground> */}
 
       </ScrollView>
+
+    </View>
     );
   }        
 }
