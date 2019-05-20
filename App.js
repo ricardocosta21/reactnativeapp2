@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import styles from './style'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import {Platform, ScrollView, ImageBackground, Text, View, TextInput} from 'react-native';
+import {Platform, ScrollView, ImageBackground,ToolbarAndroid, Text, View, TextInput} from 'react-native';
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
@@ -64,6 +64,9 @@ handleBlur = event => {
   }
 };
 
+onActionSelected(position) {
+}
+
 handleTextChanged(text) {
   console.warn('text changed !');
   this.setState({ text });
@@ -78,10 +81,21 @@ handleTextChanged(text) {
     
       <View style={styles.container}>
 
+      <ToolbarAndroid
+        style={styles.toolbar}
+        title="FireCalc"
+        onActionSelected={this.onActionSelected}
+        titleColor= "#FFFFFF"
+        
+        actions = {[
+          {title: "Log out", show: "never"}
+        ]}
+      />
+
       <ScrollView>
 
       {/* <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}> */}
-      
+     
       <View style={styles.MoneyRowText}>       
         <View style={styles.h2}>
           <Text style={styles.text}>Age</Text>
@@ -273,7 +287,7 @@ handleTextChanged(text) {
 
       </ScrollView>
 
-    </View>
+      </View>
     );
   }        
 }

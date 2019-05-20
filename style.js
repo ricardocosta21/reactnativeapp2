@@ -65,6 +65,13 @@ export default StyleSheet.create({
   MoneyRowInput: {
     flex: 1,
     flexDirection: 'row'
-  }
+  },
+
+  toolbar: {
+    backgroundColor: '#26CAC4',
+    height: 56,
+    alignSelf: 'stretch',
+    textAlign: 'center',
+  }, 
 
 });
