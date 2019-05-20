@@ -1,4 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const numColumns = 3;
+const size = Dimensions.get('window').width/1;
 
 export default StyleSheet.create({
 
@@ -6,7 +9,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#E2E2E2',
     width: '100%',
     height: '100%',
   },
@@ -73,5 +76,36 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     textAlign: 'center',
   }, 
+
+  itemContainer: {
+    width: size,
+    height: 60,    
+    textAlign: 'center', // <-- the magic
+  },
+  
+
+  item: {
+    flex: 1,
+    margin: 0.5,
+    fontSize: 16,
+    paddingTop:20,
+        paddingBottom:10,
+        paddingLeft:20,
+        paddingRight:20, 
+        borderRadius:5,
+    backgroundColor: '#FFFFFF',
+  },
+
+  iteminput: {
+    flex: 1,
+    margin: 0.5,
+    fontSize: 16,
+    paddingTop:20,
+        paddingBottom:10,
+        paddingLeft:50,
+        paddingRight:20, 
+        borderRadius:5,
+    backgroundColor: '#FFFFFF',
+  },
 
 });

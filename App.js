@@ -8,8 +8,8 @@
 
 import React, {Component} from 'react';
 import styles from './style'
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import {Platform, ScrollView, ImageBackground,ToolbarAndroid, Text, View, TextInput} from 'react-native';
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import {Platform,Image, ScrollView, ImageBackground,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
@@ -76,6 +76,16 @@ handleTextChanged(text) {
 
     const { isFocused } = this.state;
     const { onFocus, onBlur, otherProps } = this.props;
+    const numColumns = 3;
+
+    const data = [
+      {id: 'Age', value: '0'},
+      {id: 'Investments', value: '0'},
+      {id: 'Income(-Tax)', value: '0'},      
+      {id: 'Spending', value: '0'},
+      {id: 'Savings', value: '0'},      
+      {id: 'Income Growth', value: '0'},
+    ];
 
     return (
     
@@ -85,14 +95,30 @@ handleTextChanged(text) {
         style={styles.toolbar}
         title="FireCalc"
         onActionSelected={this.onActionSelected}
-        titleColor= "#FFFFFF"
-        
+        titleColor= "#FFFFFF"        
         actions = {[
           {title: "Log out", show: "never"}
         ]}
       />
 
       <ScrollView>
+
+
+
+
+      <View>
+      {
+        <FlatList
+          data={data}
+          renderItem={({item}) => (
+            <View style={styles.itemContainer}>
+              <Text style={styles.item}>{item.id}</Text>              
+            </View>
+            
+          )}
+          keyExtractor={item => item.id} />
+        }
+      </View>
 
       {/* <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}> */}
      
