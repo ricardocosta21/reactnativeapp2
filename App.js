@@ -57,9 +57,7 @@ handleTextChanged(text) {
 
     const { isFocused } = this.state;
     const { onFocus, onBlur, otherProps } = this.props;
-
-    const {age} = this.state;
-    
+    const {age} = this.state;    
 
     // const data = [
     //   {id: 'Age', value: '0'},
@@ -186,19 +184,8 @@ handleTextChanged(text) {
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
-            <TextInput
-              label='Name'   
-              keyboardType = "numeric"
-              selectionColor={BLUE}
-              underlineColorAndroid={
-                isFocused ? BLUE : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(savings) => this.setState({savings})}
-              value={this.state.savings}
-            />
+            <Text style={styles.textInput}>{this.state.income - this.state.spending }</Text>
+            
           </View>
         </View>
 
@@ -273,19 +260,8 @@ handleTextChanged(text) {
           </View>
           <View style={styles.h2}>
             <Text style={styles.text}>FIRE #</Text>
-            <TextInput              
-              label='Name'   
-              keyboardType = "numeric"
-              selectionColor={BLUE}
-              underlineColorAndroid={
-                isFocused ? BLUE : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(fireNumber) => this.setState({fireNumber})}
-              value={this.state.fireNumber}
-            />
+            <Text style={styles.textInput}>{ (this.state.retSpending / this.state.wrRate) * 100 }</Text>
+            
           </View>
 
         </View>
