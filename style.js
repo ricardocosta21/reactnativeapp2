@@ -2,16 +2,19 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const numColumns = 3;
 const size = Dimensions.get('window').width/1;
-
+const BLUE = "#428AF8";
+const LIGHT_GRAY = "#D3D3D3";
+const WHITE = "#FFFFFF";
 export default StyleSheet.create({
 
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E2E2E2',
+    backgroundColor: '#FFFFFF',
     width: '100%',
     height: '100%',
+    textAlign: 'center',
   },
    
   backgroundImage: {
@@ -62,7 +65,9 @@ export default StyleSheet.create({
     flex: 1,
     marginTop: 40,
     fontSize: 15,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   MoneyRowInput: {
@@ -80,7 +85,8 @@ export default StyleSheet.create({
   itemContainer: {
     width: size,
     height: 60,    
-    textAlign: 'center', // <-- the magic
+    flexDirection: "row",
+    backgroundColor: '#FFFFFF',
   },
   
 
@@ -89,23 +95,25 @@ export default StyleSheet.create({
     margin: 0.5,
     fontSize: 16,
     paddingTop:20,
-        paddingBottom:10,
-        paddingLeft:20,
-        paddingRight:20, 
-        borderRadius:5,
+    paddingBottom:10,
+    paddingLeft:20,
+    paddingRight:20, 
+    borderRadius:5,
     backgroundColor: '#FFFFFF',
   },
 
-  iteminput: {
+  itemInput: {
     flex: 1,
+    width: 10,
     margin: 0.5,
     fontSize: 16,
     paddingTop:20,
-        paddingBottom:10,
-        paddingLeft:50,
-        paddingRight:20, 
-        borderRadius:5,
+    paddingBottom:10,
+    paddingLeft:50,
+    paddingRight:20, 
+    borderRadius:5,
     backgroundColor: '#FFFFFF',
   },
+ 
 
 });
