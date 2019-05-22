@@ -63,7 +63,7 @@ export default StyleSheet.create({
 
   MoneyRowText: {
     flex: 1,
-    marginTop: 40,
+    marginTop: 30,
     fontSize: 15,
     flexDirection: 'row',
     alignItems: 'center',
@@ -84,7 +84,8 @@ export default StyleSheet.create({
 
   itemContainer: {
     width: size,
-    height: 60,    
+    marginTop: 10,
+    height: 100,    
     flexDirection: "row",
     backgroundColor: '#FFFFFF',
   },
@@ -99,7 +100,7 @@ export default StyleSheet.create({
     paddingLeft:20,
     paddingRight:20, 
     borderRadius:5,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#A3A5A5',
   },
 
   itemInput: {

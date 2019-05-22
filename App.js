@@ -8,28 +8,17 @@
 
 import React, {Component} from 'react';
 import styles from './style'
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import {Platform,Image, ScrollView, ImageBackground,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
+
+// 3rd party libraries
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
 
 export default class App extends Component {
-  
-  state = {
-    isFocused: false,
-    age: '',
-    investment: '',
-    income: '',
-    spending: '',
-    savings: '',
-    incGrowth: '',
-    retSpending: '',
-    wrRate: '',
-    invReturns: '',
-    fireNumber: ''
-};
+
 
 handleFocus = event => {
   this.setState({ isFocused: true });
@@ -52,6 +41,59 @@ handleTextChanged(text) {
   console.warn('text changed !');
   this.setState({ text });
 }
+  
+
+AddItemsToArray=()=>{
+ 
+  //Adding Items To Array.
+  this.state.fireData.push( this.state.fireData.toString() );
+
+}
+
+state = {
+  isFocused: false,
+  age: '25',
+  investment: '1000',
+  income: '50000',
+  spending: '40000',
+  savings: '',
+  incGrowth: '3',
+  retSpending: '30000',
+  wrRate: '4',
+  invReturns: '7',
+  fireNumber: '',
+  currencySymbol:'£',
+  percentageSymbol:'%',
+  fireData:["0"]
+};
+
+// fireData = [
+    
+//   ];
+
+compound( input, interest, length) {
+  var accumulated = input
+  
+   
+	for ( i=0; i < length; i++ ) {
+    accumulated *= interest
+   
+    
+
+    this.state.fireData.age = i;  
+    this.AddItemsToArray();
+    console.log(this.state.fireData.age);
+    // this.state.fireData.value = accumulated;
+	}
+  console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + length + ' years' )
+  //this.setState({fireData : this.state.fireData})
+}
+
+onFireReady = event => { 
+  console.log("Got here 1");
+  this.compound(1000, 1.04, 25);
+  console.log("Got here 2");
+}
 
   render() {
 
@@ -59,14 +101,7 @@ handleTextChanged(text) {
     const { onFocus, onBlur, otherProps } = this.props;
     const {age} = this.state;    
 
-    // const data = [
-    //   {id: 'Age', value: '0'},
-    //   {id: 'Investments', value: '0'},
-    //   {id: 'Income(-Tax)', value: '0'},      
-    //   {id: 'Spending', value: '0'},
-    //   {id: 'Savings', value: '0'},      
-    //   {id: 'Income Growth', value: '0'},
-    // ];
+   
 
     return (
     
@@ -117,7 +152,6 @@ handleTextChanged(text) {
         <View style={styles.h2}>
           <Text style={styles.text}>Age</Text>
           <TextInput
-            label='Name'
             maxLength={2}    
             keyboardType = "numeric"
             selectionColor={BLUE}
@@ -134,7 +168,6 @@ handleTextChanged(text) {
         <View style={styles.h2}>
           <Text style={styles.text}>Investments</Text>
           <TextInput
-            label='Name'    
             keyboardType = "numeric"
             selectionColor={BLUE}
             underlineColorAndroid={
@@ -153,7 +186,6 @@ handleTextChanged(text) {
         <View style={styles.h2}>
             <Text style={styles.text}>Income(-Tax)</Text>
             <TextInput
-              label='Name'  
               keyboardType = "numeric"
               selectionColor={BLUE}
               underlineColorAndroid={
@@ -168,8 +200,7 @@ handleTextChanged(text) {
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Spending</Text>
-            <TextInput
-              label='Name'   
+            <TextInput  
               keyboardType = "numeric"
               selectionColor={BLUE}
               underlineColorAndroid={
@@ -184,7 +215,8 @@ handleTextChanged(text) {
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
-            <Text style={styles.textInput}>{this.state.income - this.state.spending }</Text>
+            <Text style={styles.textInput}> {'\u00A3'} {this.state.income - this.state.spending } 
+            {' '}({((this.state.spending * 100) / this.state.income).toFixed(2)}{this.state.percentageSymbol}) </Text>
             
           </View>
         </View>
@@ -192,8 +224,7 @@ handleTextChanged(text) {
         <View style={styles.MoneyRowText}>
           <View style={styles.h2}>
             <Text style={styles.text}>Inc. Growth</Text>
-            <TextInput
-              label='Name'   
+            <TextInput  
               keyboardType = "numeric"
               selectionColor={BLUE}
               underlineColorAndroid={
@@ -209,8 +240,7 @@ handleTextChanged(text) {
 
           <View style={styles.h2}>
             <Text style={styles.text}>Ret. Spending</Text>
-            <TextInput
-              label='Name'    
+            <TextInput    
               keyboardType = "numeric"
               selectionColor={BLUE}
               underlineColorAndroid={
@@ -220,13 +250,13 @@ handleTextChanged(text) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(retSpending) => this.setState({retSpending})}
+              
               value={this.state.retSpending}
             />
           </View>
           <View style={styles.h2}>
             <Text style={styles.text}>WR Rate</Text>
-            <TextInput
-              label='Name'     
+            <TextInput    
               keyboardType = "numeric"
               selectionColor={BLUE}
               underlineColorAndroid={
@@ -235,7 +265,8 @@ handleTextChanged(text) {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               style={styles.textInput}
-              onChangeText={(wrRate) => this.setState({wrRate})}
+              // onChangeText={(wrRate) => this.setState({wrRate})}
+              onChangeText={() => this.onFireReady()}              
               value={this.state.wrRate}
             />
           </View>
@@ -244,8 +275,7 @@ handleTextChanged(text) {
         <View style={styles.MoneyRowText}>
           <View style={styles.h2}>
             <Text style={styles.text}>Inv. Returns</Text>
-            <TextInput
-              label='Name'     
+            <TextInput    
               keyboardType = "numeric"
               selectionColor={BLUE}
               underlineColorAndroid={
@@ -258,15 +288,31 @@ handleTextChanged(text) {
               value={this.state.invReturns}
             />
           </View>
+
           <View style={styles.h2}>
             <Text style={styles.text}>FIRE #</Text>
-            <Text style={styles.textInput}>{ (this.state.retSpending / this.state.wrRate) * 100 }</Text>
-            
+            <Text
+             
+             style={styles.textInput}>{ (this.state.retSpending / this.state.wrRate) * 100 }</Text>     
+                 
           </View>
-
         </View>
 
-      {/* </ImageBackground> */}
+
+
+
+
+        <View style={styles.itemContainer}>
+        {
+          <FlatList
+            data={this.state.fireData}
+            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+          />
+        }
+        </View> 
+    
+
+     
 
       </ScrollView>
 
