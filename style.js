@@ -103,6 +103,12 @@ export default StyleSheet.create({
     backgroundColor: '#A3A5A5',
   },
 
+  flatview: {
+    justifyContent: 'center',
+    paddingTop: 30,
+    borderRadius: 2,
+  },
+  
   itemInput: {
     flex: 1,
     width: 10,

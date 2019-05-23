@@ -57,7 +57,8 @@ state = {
   fireNumber: '',
   currencySymbol:'£',
   percentageSymbol:'%',
-  fireData:[]   //list
+  
+  fireData: [{age:"16"}, {value: "1"}]
 };
 
 // items: {
@@ -86,6 +87,7 @@ compound( input, interest, length) {
        
     var newStateArray = this.state.fireData.slice();
 
+    //Adds item end of the array
     newStateArray.push(accumulated);
 
     this.setState({fireData: newStateArray});
@@ -308,8 +310,16 @@ compound( input, interest, length) {
         {
           <FlatList
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+            renderItem={({item}) => (
+            
+            <Text style={styles.item}>
+              {`${item.age} ${item.value}`}
+            </Text>
+          
+          )}
+            keyExtractor={(item => item.age)}
           />
+          
         }
         </View> 
     
