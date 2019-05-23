@@ -41,14 +41,7 @@ handleTextChanged(text) {
   console.warn('text changed !');
   this.setState({ text });
 }
-  
 
-AddItemsToArray=()=>{
- 
-  //Adding Items To Array.
-  this.state.fireData.push( this.state.fireData.toString() );
-
-}
 
 state = {
   isFocused: false,
@@ -64,44 +57,51 @@ state = {
   fireNumber: '',
   currencySymbol:'£',
   percentageSymbol:'%',
-  fireData:["0"]
+  fireData:[]   //list
 };
 
-// fireData = [
-    
-//   ];
-
-compound( input, interest, length) {
-  var accumulated = input
-  
-   
-	for ( i=0; i < length; i++ ) {
-    accumulated *= interest
-   
-    
-
-    this.state.fireData.age = i;  
-    this.AddItemsToArray();
-    console.log(this.state.fireData.age);
-    // this.state.fireData.value = accumulated;
-	}
-  console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + length + ' years' )
-  //this.setState({fireData : this.state.fireData})
-}
+// items: {
+//   Dogs: [{name: "Snoopy"}, {name: "Lola"}, {name: "Sprinkles"}], 
+//   Cats: [{name: "Felidae"}, {name: "Garfiled"}, {name: "Cat in the Hat"}] }, 
+// lists: ["Dogs", "Cats"]
+// }
 
 onFireReady = event => { 
   console.log("Got here 1");
-  this.compound(1000, 1.04, 25);
+  console.log(this.state.investment);
+  console.log(this.state.invReturns);
+  console.log(this.state.age);
+  this.state.fireData = [];
   console.log("Got here 2");
+
+  this.compound(this.state.investment, this.state.invReturns, this.state.age);
+  console.log("Got here 3");
+}
+
+compound( input, interest, length) {
+  var accumulated = input  
+   
+	for ( i=0; i < length; i++ ) {
+    accumulated *= interest
+       
+    var newStateArray = this.state.fireData.slice();
+
+    newStateArray.push(accumulated);
+
+    this.setState({fireData: newStateArray});
+
+    this.state.fireData = newStateArray;
+
+    console.log(accumulated);
+  }
+  
+  console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + length + ' years' )
 }
 
   render() {
 
     const { isFocused } = this.state;
     const { onFocus, onBlur, otherProps } = this.props;
-    const {age} = this.state;    
-
-   
 
     return (
     
@@ -265,8 +265,8 @@ onFireReady = event => {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               style={styles.textInput}
-              // onChangeText={(wrRate) => this.setState({wrRate})}
-              onChangeText={() => this.onFireReady()}              
+              onChangeText={(wrRate) => this.setState({wrRate})}
+              // onChangeText={() => this.onFireReady()}              
               value={this.state.wrRate}
             />
           </View>
@@ -284,22 +284,27 @@ onFireReady = event => {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               style={styles.textInput}
+
               onChangeText={(invReturns) => this.setState({invReturns})}
+              // onChangeText={(invReturns) => console.log((invReturns/100) + 1)}
+
               value={this.state.invReturns}
             />
           </View>
 
           <View style={styles.h2}>
             <Text style={styles.text}>FIRE #</Text>
-            <Text
-             
-             style={styles.textInput}>{ (this.state.retSpending / this.state.wrRate) * 100 }</Text>     
-                 
+            <Text style={styles.textInput}>{ (this.state.retSpending / this.state.wrRate) * 100 }</Text>                  
           </View>
         </View>
 
 
-
+        <Button
+          onPress={this.onFireReady}
+          title="Click Me"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
 
 
         <View style={styles.itemContainer}>

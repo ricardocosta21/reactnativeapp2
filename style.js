@@ -83,9 +83,9 @@ export default StyleSheet.create({
   }, 
 
   itemContainer: {
+    flex: 1,  
     width: size,
-    marginTop: 10,
-    height: 100,    
+    marginTop: 10,     
     flexDirection: "row",
     backgroundColor: '#FFFFFF',
   },
