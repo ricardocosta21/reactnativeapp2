@@ -69,12 +69,12 @@ state = {
 onFireReady = event => { 
   console.log("Got here 1");
   console.log(this.state.investment);
-  console.log(this.state.invReturns);
+  
   console.log(this.state.age);
   this.state.fireData = [];
   console.log("Got here 2");
 
-  this.compound(this.state.investment, this.state.invReturns, this.state.age);
+  this.compound(this.state.investment, (this.state.invReturns/100) + 1, this.state.age);
   console.log("Got here 3");
 }
 
@@ -284,10 +284,7 @@ compound( input, interest, length) {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               style={styles.textInput}
-
               onChangeText={(invReturns) => this.setState({invReturns})}
-              // onChangeText={(invReturns) => console.log((invReturns/100) + 1)}
-
               value={this.state.invReturns}
             />
           </View>
