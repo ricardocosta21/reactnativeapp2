@@ -57,7 +57,6 @@ state = {
   fireNumber: '',
   currencySymbol:'£',
   percentageSymbol:'%',
-  fireList:[],   //list
   fireData:[{"age":"1"}, {"value":"2"}] 
 };
 
@@ -68,7 +67,7 @@ state = {
 // }
 
 
-onFireReady = event => { 
+onFireReady = () => { 
   console.log("Got here 1");
   console.log(this.state.investment);
   
@@ -110,10 +109,13 @@ compound( input, interest, length) {
 
 
 
+
+
   render() {
 
     const { isFocused } = this.state;
-    const { onFocus, onBlur, otherProps } = this.props;
+
+    
 
     return (
     
