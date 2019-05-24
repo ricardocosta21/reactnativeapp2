@@ -57,7 +57,8 @@ state = {
   fireNumber: '',
   currencySymbol:'£',
   percentageSymbol:'%',
-  fireData:[]   //list
+  fireList:[],   //list
+  fireData:[{"age":"1"}, {"value":"2"}] 
 };
 
 // items: {
@@ -65,6 +66,7 @@ state = {
 //   Cats: [{name: "Felidae"}, {name: "Garfiled"}, {name: "Cat in the Hat"}] }, 
 // lists: ["Dogs", "Cats"]
 // }
+
 
 onFireReady = event => { 
   console.log("Got here 1");
@@ -83,20 +85,30 @@ compound( input, interest, length) {
    
 	for ( i=0; i < length; i++ ) {
     accumulated *= interest
-       
+
+    var objToPush = {
+      age: i,
+      value: accumulated.toFixed(0)
+    };
+
+
     var newStateArray = this.state.fireData.slice();
 
-    newStateArray.push(accumulated);
+    console.log("Object to Push:" + objToPush["age"] + " " + objToPush["value"]);
+
+    newStateArray.push(objToPush);
 
     this.setState({fireData: newStateArray});
 
     this.state.fireData = newStateArray;
 
-    console.log(accumulated);
+    console.log(objToPush);
   }
   
   console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + length + ' years' )
 }
+
+
 
   render() {
 
@@ -308,7 +320,8 @@ compound( input, interest, length) {
         {
           <FlatList
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+            renderItem={({item}) => <Text style={styles.item}>{"Age:" + item.age}{" Value:" + item.value}</Text>}
+            keyExtractor={(item, index) => 'key'+index}
           />
         }
         </View> 
