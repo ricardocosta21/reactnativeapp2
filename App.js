@@ -94,7 +94,7 @@ compound( input, interest, length) {
 
     var newStateArray = this.state.fireData.slice();
 
-    console.log("Object to Push:" + objToPush["age"] + " " + objToPush["value"]);
+    //console.log("Object to Push:" + objToPush["age"] + " " + objToPush["value"]);
 
     newStateArray.push(objToPush);
 
@@ -102,7 +102,7 @@ compound( input, interest, length) {
 
     this.state.fireData = newStateArray;
 
-    console.log(objToPush);
+    //console.log(objToPush);
   }
   
   console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + length + ' years' )
