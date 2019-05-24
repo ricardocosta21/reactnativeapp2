@@ -57,32 +57,28 @@ state = {
   fireNumber: '',
   currencySymbol:'£',
   percentageSymbol:'%',
-  fireData:[{"age":"1"}, {"value":"2"}] 
+  fireData:[] 
 };
 
-// items: {
-//   Dogs: [{name: "Snoopy"}, {name: "Lola"}, {name: "Sprinkles"}], 
-//   Cats: [{name: "Felidae"}, {name: "Garfiled"}, {name: "Cat in the Hat"}] }, 
-// lists: ["Dogs", "Cats"]
-// }
 
 
 onFireReady = () => { 
-  console.log("Got here 1");
-  console.log(this.state.investment);
+  console.log("---------1---------");
   
-  console.log(this.state.age);
   this.state.fireData = [];
-  console.log("Got here 2");
+  console.log("---------2---------");
+  console.log("----> Age: " + this.state.age);
 
   this.compound(this.state.investment, (this.state.invReturns/100) + 1, this.state.age);
-  console.log("Got here 3");
+  console.log("---------3---------");
+  console.log(" ");
+  console.log(" ");
 }
 
-compound( input, interest, length) {
+compound( input, interest, age) {
   var accumulated = input  
    
-	for ( i=0; i < length; i++ ) {
+	for ( i=0; i < age; i++ ) {
     accumulated *= interest
 
     var objToPush = {
@@ -90,33 +86,29 @@ compound( input, interest, length) {
       value: accumulated.toFixed(0)
     };
 
+    console.log(objToPush);
 
     var newStateArray = this.state.fireData.slice();
-
-    //console.log("Object to Push:" + objToPush["age"] + " " + objToPush["value"]);
 
     newStateArray.push(objToPush);
 
     this.setState({fireData: newStateArray});
 
-    this.state.fireData = newStateArray;
-
-    //console.log(objToPush);
+    this.state.fireData = newStateArray;    
   }
   
-  console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + length + ' years' )
+  console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + age + ' years' )
 }
 
 
-
+componentDidMount(){
+  this.onFireReady()
+}
 
 
   render() {
 
     const { isFocused } = this.state;
-
-    
-
     return (
     
       <View style={styles.container}>
@@ -132,35 +124,6 @@ compound( input, interest, length) {
       />
 
       <ScrollView>
-{/*        
-      <View>
-      {
-        <FlatList
-          data={data}
-          renderItem={({item}) => (
-            <View  style = {styles.itemContainer}>
-              <TextInput
-                label='Name'
-                placeholder={item.id}                
-                placeholderTextColor = "#133420"     
-                keyboardType = "numeric"
-                selectionColor={BLUE}
-                underlineColorAndroid={
-                  isFocused ? BLUE : LIGHT_GRAY
-                }
-                onFocus={this.handleFocus}
-                onBlur={this.handleBlur}
-                style={styles.itemInput}
-                onChangeText={(textAge) => this.setState({textAge})}
-                value={this.state.textAge}
-              />
-            </View>
-          )}
-          keyExtractor={item => item.id} />
-      }
-      </View> */}
-
-      {/* <ImageBackground source={require('./asset/trianglify.png')} style={styles.container}> */}
      
       <View style={styles.MoneyRowText}>       
         <View style={styles.h2}>
@@ -174,9 +137,11 @@ compound( input, interest, length) {
             }
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            style={styles.textInput}
-            onChangeText={(age) => this.setState({age})}
-            value={this.state.age}
+            style={styles.textInput}           
+            onChangeText={(age) => (this.setState({age}))}    
+            onEndEditing={() => this.onFireReady()} 
+            onSelectionChange={() => this.onFireReady()}          
+            value={this.state.age}             
           />
         </View>
         <View style={styles.h2}>
@@ -191,6 +156,8 @@ compound( input, interest, length) {
             onBlur={this.handleBlur}
             style={styles.textInput}
             onChangeText={(investment) => this.setState({investment})}
+            onEndEditing={() => this.onFireReady()} 
+            onSelectionChange={() => this.onFireReady()} 
             value={this.state.investment}
           />
         </View>
@@ -209,6 +176,8 @@ compound( input, interest, length) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(income) => this.setState({income})}
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()} 
               value={this.state.income}
             />
         </View>
@@ -224,6 +193,8 @@ compound( input, interest, length) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(spending) => this.setState({spending})}
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()} 
               value={this.state.spending}
             />
         </View>
@@ -248,6 +219,8 @@ compound( input, interest, length) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(incGrowth) => this.setState({incGrowth})}
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()} 
               value={this.state.incGrowth}
             />
           </View>
@@ -264,7 +237,8 @@ compound( input, interest, length) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(retSpending) => this.setState({retSpending})}
-              
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()}                
               value={this.state.retSpending}
             />
           </View>
@@ -280,7 +254,8 @@ compound( input, interest, length) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(wrRate) => this.setState({wrRate})}
-              // onChangeText={() => this.onFireReady()}              
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()}               
               value={this.state.wrRate}
             />
           </View>
@@ -299,23 +274,25 @@ compound( input, interest, length) {
               onBlur={this.handleBlur}
               style={styles.textInput}
               onChangeText={(invReturns) => this.setState({invReturns})}
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()}  
               value={this.state.invReturns}
             />
           </View>
 
           <View style={styles.h2}>
             <Text style={styles.text}>FIRE #</Text>
-            <Text style={styles.textInput}>{ (this.state.retSpending / this.state.wrRate) * 100 }</Text>                  
+            <Text style={styles.textInput}>{ ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0) }</Text>                  
           </View>
         </View>
 
 
-        <Button
+        {/* <Button
           onPress={this.onFireReady}
           title="Click Me"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
-        />
+        /> */}
 
 
         <View style={styles.itemContainer}>
@@ -328,8 +305,6 @@ compound( input, interest, length) {
         }
         </View> 
     
-
-     
 
       </ScrollView>
 
