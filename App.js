@@ -66,20 +66,29 @@ onFireReady = () => {
   console.log("---------1---------");
   
   this.state.fireData = [];
+  this.state.savings = this.state.income - this.state.spending;
+
   console.log("---------2---------");
   console.log("----> Age: " + this.state.age);
+  console.log(this.state.investment);
 
-  this.compound(this.state.investment, (this.state.invReturns/100) + 1, this.state.age);
+  this.compound(this.state.investment, (this.state.invReturns/100) + 1, this.state.age, this.state.savings);
+ 
+
   console.log("---------3---------");
   console.log(" ");
   console.log(" ");
 }
 
-compound( input, interest, age) {
-  var accumulated = input  
-   
-	for ( i=0; i < age; i++ ) {
-    accumulated *= interest
+compound( investment, interest, age, savings) {
+  var accumulated = parseInt(investment);  
+
+	for ( i=age, j=0; j < age; i++, j++ ) {    
+    accumulated += savings;
+    console.log(accumulated);
+    accumulated *= interest.toFixed(2);
+    console.log(accumulated);
+
 
     var objToPush = {
       age: i,
@@ -97,7 +106,7 @@ compound( input, interest, age) {
     this.state.fireData = newStateArray;    
   }
   
-  console.log(input + ' to ' + accumulated + ' at ' + interest +  ' over ' + age + ' years' )
+  console.log(investment + ' to ' + accumulated + ' at ' + interest +  ' over ' + age + ' years' )
 }
 
 
@@ -299,7 +308,7 @@ componentDidMount(){
         {
           <FlatList
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{"Age:" + item.age}{" Value:" + item.value}</Text>}
+            renderItem={({item}) => <Text style={styles.item}>{"Age:" + item.age}{"  ----> Value:" + item.value}</Text>}
             keyExtractor={(item, index) => 'key'+index}
           />
         }
