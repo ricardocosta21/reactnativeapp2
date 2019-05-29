@@ -45,7 +45,7 @@ handleTextChanged(text) {
 
 state = {
   isFocused: false,
-  age: '25',
+  age: '5',
   investment: '1000',
   income: '50000',
   spending: '40000',
@@ -63,32 +63,42 @@ state = {
 
 
 onFireReady = () => { 
-  console.log("---------1---------");
+  console.log("---------BEGIN---------");
   
   this.state.fireData = [];
   this.state.savings = this.state.income - this.state.spending;
 
-  console.log("---------2---------");
-  console.log("----> Age: " + this.state.age);
-  console.log(this.state.investment);
+  // set FireNumber 
+  this.state.fireNumber = ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0);
 
-  this.compound(this.state.investment, (this.state.invReturns/100) + 1, this.state.age, this.state.savings);
+  this.compound(this.state.investment, (this.state.invReturns/100) + 1,
+  this.state.age, this.state.income, this.state.savings);
  
-
-  console.log("---------3---------");
-  console.log(" ");
-  console.log(" ");
+  console.log("---------END---------");
 }
 
-compound( investment, interest, age, savings) {
+increaseIncome(income)
+{ 
+  return income *= ((this.state.incGrowth/100) + 1);
+}
+
+increaseSavings(income, spending)
+{
+  return newSavingsValue = (income * ((this.state.incGrowth/100) + 1)) - spending;
+}
+
+compound( investment, interest, age, income, savings) {
   var accumulated = parseInt(investment);  
 
-	for ( i=age, j=0; j < age; i++, j++ ) {    
-    accumulated += savings;
-    console.log(accumulated);
-    accumulated *= interest.toFixed(2);
-    console.log(accumulated);
+  console.log("this.state.fireNumber:" + this.state.fireNumber);
 
+	for ( i=age; accumulated < this.state.fireNumber; i++ ) {    
+
+    accumulated = (accumulated + savings) * interest.toFixed(2);
+
+    savings = this.increaseSavings(income, this.state.spending);
+
+    income = this.increaseIncome(income);
 
     var objToPush = {
       age: i,
@@ -210,14 +220,14 @@ componentDidMount(){
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
             <Text style={styles.textInput}> {'\u00A3'} {this.state.income - this.state.spending } 
-            {' '}({((this.state.spending * 100) / this.state.income).toFixed(2)}{this.state.percentageSymbol}) </Text>
+            {' '}({100 - ((this.state.spending * 100) / this.state.income).toFixed(2)}{this.state.percentageSymbol}) </Text>
             
           </View>
         </View>
 
         <View style={styles.MoneyRowText}>
           <View style={styles.h2}>
-            <Text style={styles.text}>Inc. Growth</Text>
+            <Text style={styles.text}>Inc. Growth</Text> 
             <TextInput  
               keyboardType = "numeric"
               selectionColor={BLUE}
@@ -230,8 +240,9 @@ componentDidMount(){
               onChangeText={(incGrowth) => this.setState({incGrowth})}
               onEndEditing={() => this.onFireReady()} 
               onSelectionChange={() => this.onFireReady()} 
-              value={this.state.incGrowth}
-            />
+              value={this.state.incGrowth} 
+            /> 
+            
           </View>
 
           <View style={styles.h2}>
@@ -291,7 +302,9 @@ componentDidMount(){
 
           <View style={styles.h2}>
             <Text style={styles.text}>FIRE #</Text>
-            <Text style={styles.textInput}>{ ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0) }</Text>                  
+            <Text style={styles.textInput}>{ ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0) }
+            
+            </Text>                  
           </View>
         </View>
 
@@ -308,8 +321,8 @@ componentDidMount(){
         {
           <FlatList
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{"Age:" + item.age}{"  ----> Value:" + item.value}</Text>}
-            keyExtractor={(item, index) => 'key'+index}
+            renderItem={({item}) => <Text style={styles.item}>{"Age:" + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
+            keyExtractor={(item, index) => 'key' + index}
           />
         }
         </View> 
