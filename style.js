@@ -11,7 +11,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WHITE,
     width: '100%',
     height: '100%',
     textAlign: 'center',
@@ -87,7 +87,7 @@ export default StyleSheet.create({
     width: size,
     marginTop: 10,     
     flexDirection: "row",
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WHITE,
   },
   
 
@@ -100,7 +100,7 @@ export default StyleSheet.create({
     paddingLeft:20,
     paddingRight:20, 
     borderRadius:5,
-    backgroundColor: '#A3A5A5',
+    backgroundColor: LIGHT_GRAY,
   },
 
   flatview: {
@@ -119,7 +119,7 @@ export default StyleSheet.create({
     paddingLeft:50,
     paddingRight:20, 
     borderRadius:5,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WHITE,
   },
  
 

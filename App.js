@@ -44,14 +44,15 @@ handleTextChanged(text) {
 
 
 state = {
+  year: '',
   isFocused: false,
-  age: '5',
-  investment: '1000',
-  income: '50000',
+  age: '26',
+  investment: '14000',
+  income: '54000',
   spending: '40000',
   savings: '',
   incGrowth: '3',
-  retSpending: '30000',
+  retSpending: '35000',
   wrRate: '4',
   invReturns: '7',
   fireNumber: '',
@@ -61,9 +62,8 @@ state = {
 };
 
 
-
 onFireReady = () => { 
-  console.log("---------BEGIN---------");
+  console.log("\n---------BEGIN---------");
   
   this.state.fireData = [];
   this.state.savings = this.state.income - this.state.spending;
@@ -74,7 +74,7 @@ onFireReady = () => {
   this.compound(this.state.investment, (this.state.invReturns/100) + 1,
   this.state.age, this.state.income, this.state.savings);
  
-  console.log("---------END---------");
+  console.log("---------END---------\n");
 }
 
 increaseIncome(income)
@@ -92,7 +92,7 @@ compound( investment, interest, age, income, savings) {
 
   console.log("this.state.fireNumber:" + this.state.fireNumber);
 
-	for ( i=age; accumulated < this.state.fireNumber; i++ ) {    
+	for ( i=age, j = 0; accumulated < this.state.fireNumber; i++, j++ ) {    
 
     accumulated = (accumulated + savings) * interest.toFixed(2);
 
@@ -101,6 +101,7 @@ compound( investment, interest, age, income, savings) {
     income = this.increaseIncome(income);
 
     var objToPush = {
+      index: j,
       age: i,
       value: accumulated.toFixed(0)
     };
@@ -116,7 +117,7 @@ compound( investment, interest, age, income, savings) {
     this.state.fireData = newStateArray;    
   }
   
-  console.log(investment + ' to ' + accumulated + ' at ' + interest +  ' over ' + age + ' years' )
+  console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest +  ' over ' + age + ' years' )
 }
 
 
@@ -220,7 +221,7 @@ componentDidMount(){
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
             <Text style={styles.textInput}> {'\u00A3'} {this.state.income - this.state.spending } 
-            {' '}({100 - ((this.state.spending * 100) / this.state.income).toFixed(2)}{this.state.percentageSymbol}) </Text>
+            {' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
             
           </View>
         </View>
@@ -321,7 +322,7 @@ componentDidMount(){
         {
           <FlatList
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{"Age:" + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
+            renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"  Age:" + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
             keyExtractor={(item, index) => 'key' + index}
           />
         }
