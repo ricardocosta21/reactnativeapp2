@@ -51,6 +51,7 @@ state = {
   income: '54000',
   spending: '40000',
   savings: '',
+  savingsPercentage: '',
   incGrowth: '3',
   retSpending: '35000',
   wrRate: '4',
@@ -77,6 +78,12 @@ onFireReady = () => {
   console.log("---------END---------\n");
 }
 
+isSpendingHigher(income)
+{
+  if(this.state.spending > income )
+    return true;
+}
+
 increaseIncome(income)
 { 
   return income *= ((this.state.incGrowth/100) + 1);
@@ -88,17 +95,18 @@ increaseSavings(income, spending)
 }
 
 compound( investment, interest, age, income, savings) {
+
   var accumulated = parseInt(investment);  
 
   console.log("this.state.fireNumber:" + this.state.fireNumber);
 
-	for ( i=age, j = 0; accumulated < this.state.fireNumber; i++, j++ ) {    
+	for ( i = age, j = 0; accumulated < this.state.fireNumber; i++, j++ ) {    
 
     accumulated = (accumulated + savings) * interest.toFixed(2);
 
     savings = this.increaseSavings(income, this.state.spending);
 
-    income = this.increaseIncome(income);
+    income = this.increaseIncome(income);    
 
     var objToPush = {
       index: j,
@@ -106,7 +114,26 @@ compound( investment, interest, age, income, savings) {
       value: accumulated.toFixed(0)
     };
 
-    console.log(objToPush);
+    if(accumulated < 0)
+    {    
+      this.state.savings = 0;
+
+      this.state.savingsPercentage = 0;
+
+      var newStateArray = this.state.fireData.slice();
+
+      newStateArray.push();
+  
+      this.setState({fireData: newStateArray});
+  
+      this.state.fireData = newStateArray; 
+
+      return;
+    }
+
+    this.state.savings = this.state.income - this.state.spending;
+
+    this.state.savingsPercentage = (100 - ((this.state.spending * 100) / this.state.income)).toFixed(1);
 
     var newStateArray = this.state.fireData.slice();
 
@@ -195,7 +222,9 @@ componentDidMount(){
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               style={styles.textInput}
-              onChangeText={(income) => this.setState({income})}
+              onChangeText={(income) => 
+                
+                this.setState({income})}
               onEndEditing={() => this.onFireReady()} 
               onSelectionChange={() => this.onFireReady()} 
               value={this.state.income}
@@ -214,14 +243,15 @@ componentDidMount(){
               style={styles.textInput}
               onChangeText={(spending) => this.setState({spending})}
               onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()}                 
               value={this.state.spending}
             />
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
-            <Text style={styles.textInput}> {'\u00A3'} {this.state.income - this.state.spending } 
-            {' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
+            <Text style={styles.textInput}> {'\u00A3'} {this.state.savings} 
+              {' '}({this.state.savingsPercentage}{this.state.percentageSymbol}) 
+            </Text>
             
           </View>
         </View>
@@ -322,7 +352,7 @@ componentDidMount(){
         {
           <FlatList
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"  Age:" + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
+            renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"  Age: " + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
             keyExtractor={(item, index) => 'key' + index}
           />
         }
