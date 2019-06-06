@@ -10,9 +10,6 @@ import React, {Component} from 'react';
 import styles from './style'
 import {Platform,Image, ScrollView, ImageBackground,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
 
-// 3rd party libraries
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
