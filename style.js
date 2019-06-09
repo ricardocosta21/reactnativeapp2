@@ -76,7 +76,7 @@ export default StyleSheet.create({
   },
 
   toolbar: {
-    backgroundColor: '#26CAC4',
+    backgroundColor: '#7ee7e4',
     height: 56,
     alignSelf: 'stretch',
     textAlign: 'center',
