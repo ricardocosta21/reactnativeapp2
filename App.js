@@ -157,7 +157,7 @@ componentDidMount(){
     
       <View style={styles.container}>
 
-      <ToolbarAndroid
+      {/* <ToolbarAndroid
         style={styles.toolbar}
         title="FireCalc"
         onActionSelected={this.onActionSelected}
@@ -165,7 +165,7 @@ componentDidMount(){
         actions = {[
           {title: "Log out", show: "never"}
         ]}
-      />
+      /> */}
 
       <ScrollView>
      
