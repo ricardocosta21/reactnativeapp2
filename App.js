@@ -8,10 +8,10 @@
 
 import React, {Component} from 'react';
 import styles from './style'
-import {Platform,Image, ScrollView, ImageBackground,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
+import {Platform,Image, ScrollView,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
 
 // 3rd party libraries
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+//import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 const BLUE = "#428AF8";
 const LIGHT_GREEN ="#7ee7e4";
@@ -313,6 +313,7 @@ componentDidMount(){
         <View style={styles.itemContainer}>
         {
           <FlatList
+          style={styles.flatList}
             data={this.state.fireData}
             renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"  Age:" + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
             keyExtractor={(item, index) => 'key' + index}

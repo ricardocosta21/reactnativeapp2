@@ -121,6 +121,11 @@ export default StyleSheet.create({
     borderRadius:5,
     backgroundColor: WHITE,
   },
+
+  flatList: {
+    flex: 1,   
+    paddingTop:80,
+  },
  
 
 });
