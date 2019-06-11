@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import styles from './style'
 import {Platform,Image, ScrollView,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
-
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 // 3rd party libraries
 //import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
@@ -132,6 +132,7 @@ componentDidMount(){
     const { isFocused } = this.state;
     return (
     
+      
       <View style={styles.container}>
 
       {/* <ToolbarAndroid
@@ -143,6 +144,20 @@ componentDidMount(){
           {title: "Log out", show: "never"}
         ]}
       /> */}
+
+
+        <Header>
+          <Left>
+            <Button transparent style={styles.header}>
+              <Icon name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={styles.h2}>Firecalc</Title>
+          </Body>
+          <Right />
+        </Header>
+     
 
       <ScrollView>
      
@@ -323,6 +338,24 @@ componentDidMount(){
     
 
       </ScrollView>
+
+      {/* <Content />
+        <Footer>
+          <FooterTab>
+            <Button>
+              <Icon name="apps" />
+            </Button>
+            <Button>
+              <Icon name="camera" />
+            </Button>
+            <Button active>
+              <Icon active name="navigate" />
+            </Button>
+            <Button>
+              <Icon name="person" />
+            </Button>
+          </FooterTab>
+        </Footer> */}
 
       </View>
     );

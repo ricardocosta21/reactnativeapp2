@@ -3,30 +3,23 @@ import { StyleSheet, Dimensions } from 'react-native';
 const numColumns = 3;
 const size = Dimensions.get('window').width/1;
 const BLUE = "#428AF8";
+const LIGHT_GREEN ="#7ee7e4";
 const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
 export default StyleSheet.create({
 
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  container: {   
     backgroundColor: WHITE,
-    width: '100%',
-    height: '100%',
-    textAlign: 'center',
-  },
-   
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+
+  header: {
+    borderTopColor: LIGHT_GREEN,
   },
 
   text: {
