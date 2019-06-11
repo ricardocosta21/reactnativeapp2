@@ -27,17 +27,6 @@ export default StyleSheet.create({
     paddingVertical: 5,
   },
 
-  sliderOne: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-
   textInput: {
     textAlign: 'center',
     height: 40,
@@ -63,17 +52,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
-  MoneyRowInput: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-
-  toolbar: {
-    backgroundColor: '#7ee7e4',
-    height: 56,
-    alignSelf: 'stretch',
-    textAlign: 'center',
-  }, 
+  // toolbar: {
+  //   backgroundColor: '#7ee7e4',
+  //   height: 56,
+  //   alignSelf: 'stretch',
+  //   textAlign: 'center',
+  // }, 
 
   itemContainer: {
     flex: 1,  
@@ -100,19 +84,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 30,
     borderRadius: 2,
-  },
-  
-  itemInput: {
-    flex: 1,
-    width: 10,
-    margin: 0.5,
-    fontSize: 16,
-    paddingTop:20,
-    paddingBottom:10,
-    paddingLeft:50,
-    paddingRight:20, 
-    borderRadius:5,
-    backgroundColor: WHITE,
   },
 
   flatList: {
