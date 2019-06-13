@@ -11,7 +11,7 @@ import styles from './style'
 import {Platform,Image, ScrollView,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 // 3rd party libraries
-//import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import NumberFormat from 'react-number-format';
 
 const BLUE = "#428AF8";
 const LIGHT_GREEN ="#7ee7e4";
@@ -130,6 +130,7 @@ componentDidMount(){
   render() {
 
     const { isFocused } = this.state;
+    var NumberFormat = require('react-number-format');
     return (
     
       
@@ -160,6 +161,7 @@ componentDidMount(){
      
 
       <ScrollView>
+     
      
       <View style={styles.MoneyRowText}>       
         <View style={styles.h2}>
@@ -219,19 +221,27 @@ componentDidMount(){
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Spending</Text>
-            <TextInput  
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(spending) => this.setState({spending})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()} 
-              value={this.state.spending}
+            <NumberFormat
+            
+              displayType={'text'}  
+              thousandSeparator={true}
+              prefix={'£'}
+              renderText={value => (
+              <TextInput
+                keyboardType = "numeric"
+                selectionColor={LIGHT_GREEN}
+                underlineColorAndroid={
+                  isFocused ? LIGHT_GREEN : LIGHT_GRAY
+                }
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                style={styles.textInput}
+                onChangeText={(spending) => this.setState({spending})}
+                onEndEditing={() => this.onFireReady()} 
+                onSelectionChange={() => this.onFireReady()} 
+                value={this.state.spending}
+              />
+              )}
             />
         </View>
         <View style={styles.h2}>
