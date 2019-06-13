@@ -38,6 +38,8 @@ handleBlur = event => {
 onActionSelected(position) {
 }
 
+
+
 handleTextChanged(text) {
   console.warn('text changed !');
   this.setState({ text });
@@ -222,27 +224,22 @@ componentDidMount(){
         <View style={styles.h2}>
             <Text style={styles.text}>Spending</Text>
             <NumberFormat
-            
-              displayType={'text'}  
-              thousandSeparator={true}
-              prefix={'£'}
-              renderText={value => (
-              <TextInput
-                keyboardType = "numeric"
-                selectionColor={LIGHT_GREEN}
-                underlineColorAndroid={
-                  isFocused ? LIGHT_GREEN : LIGHT_GRAY
-                }
-                onFocus={this.handleFocus}
-                onBlur={this.handleBlur}
-                style={styles.textInput}
-                onChangeText={(spending) => this.setState({spending})}
-                onEndEditing={() => this.onFireReady()} 
-                onSelectionChange={() => this.onFireReady()} 
                 value={this.state.spending}
+                displayType={'text'}
+                thousandSeparator={true}
+                prefix={'£'}
+                renderText={value => (
+                  <TextInput
+                    underlineColorAndroid="transparent"
+                    style={styles.input}
+                    onChangeText={(spending) => this.setState({spending})}
+                    onEndEditing={() => this.onFireReady()} 
+                    onSelectionChange={() => this.onFireReady()} 
+                    value={value}
+                    keyboardType="numeric"
+                  />
+                )}
               />
-              )}
-            />
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
