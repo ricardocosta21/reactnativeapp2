@@ -9,7 +9,7 @@ const WHITE = "#FFFFFF";
 export default StyleSheet.create({
 
   container: {   
-    backgroundColor: WHITE,
+    backgroundColor: 'transparent'
   },
 
   welcome: {
@@ -59,6 +59,13 @@ export default StyleSheet.create({
   //   textAlign: 'center',
   // }, 
 
+  cardContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',    
+    backgroundColor: '#7ee7e4',
+  },
+
   itemContainer: {
     flex: 1,  
     width: size,
@@ -80,15 +87,9 @@ export default StyleSheet.create({
     backgroundColor: LIGHT_GRAY,
   },
 
-  flatview: {
-    justifyContent: 'center',
-    paddingTop: 30,
-    borderRadius: 2,
-  },
-
   flatList: {
     flex: 1,   
-    paddingTop:80,
+    paddingTop:20,
   },
  
 

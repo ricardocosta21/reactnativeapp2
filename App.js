@@ -11,7 +11,7 @@ import styles from './style'
 import {Platform,Image, ScrollView,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 // 3rd party libraries
-import NumberFormat from 'react-number-format';
+import { Card } from 'react-native-elements';
 
 const BLUE = "#428AF8";
 const LIGHT_GREEN ="#7ee7e4";
@@ -50,7 +50,7 @@ state = {
   year: '',
   isFocused: false,
   age: '26',
-  investment: '14000',
+  investment: '140000',
   income: '54000',
   spending: '40000',
   savings: '',
@@ -66,11 +66,14 @@ state = {
 
 
 onFireReady = () => { 
-  console.log("\n---------BEGIN---------");
+  console.log("\n\n\n\n\n\n---------BEGIN---------");
   
   this.state.fireData = [];
   this.state.savings = this.state.income - this.state.spending;
-
+  console.log("\nHEEEREEEEE");
+  console.log("\nIncome:" + this.state.income);
+  console.log("\nspending:" + this.state.spending);
+  console.log("\nsavings:" + this.state.savings);
   // Calculate FireNumber 
   this.state.fireNumber = ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0);
 
@@ -149,7 +152,11 @@ componentDidMount(){
       /> */}
 
 
-        <Header>
+        <Header
+        iosBarStyle='light-content'
+        androidStatusBarColor= {LIGHT_GREEN}
+        style={{ backgroundColor: LIGHT_GREEN }}
+        >
           <Left>
             <Button transparent style={styles.header}>
               <Icon name='menu' />
@@ -165,7 +172,9 @@ componentDidMount(){
       <ScrollView>
      
      
-      <View style={styles.MoneyRowText}>       
+      <View style={styles.container}>
+      <Card style={styles.cardContainer}>
+        <View style={styles.MoneyRowText}>       
         <View style={styles.h2}>
           <Text style={styles.text}>Age</Text>
           <TextInput
@@ -221,17 +230,32 @@ componentDidMount(){
               value={this.state.income}
             />
         </View>
+
+
+
+
         <View style={styles.h2}>
             <Text style={styles.text}>Spending</Text>
+            {/* https://github.com/s-yadav/react-number-format/issues/191 */}
             <NumberFormat
                 value={this.state.spending}
                 displayType={'text'}
-                thousandSeparator={true}
-                prefix={'£'}
+               
+                allowNegative={false}
+                decimalSeparator={","}
+                decimalPrecision={"0"}
+                thousandSeparator={"."}
+
+                
+
                 renderText={value => (
                   <TextInput
                     underlineColorAndroid="transparent"
                     style={styles.input}
+                    selectionColor={LIGHT_GREEN}
+                    underlineColorAndroid={
+                    isFocused ? LIGHT_GREEN : LIGHT_GRAY
+                    }
                     onChangeText={(spending) => this.setState({spending})}
                     onEndEditing={() => this.onFireReady()} 
                     onSelectionChange={() => this.onFireReady()} 
@@ -249,6 +273,13 @@ componentDidMount(){
           </View>
         </View>
 
+        </Card>
+      </View>
+
+   
+
+      <View style={styles.container}>
+        <Card style={styles.cardContainer}>
         <View style={styles.MoneyRowText}>
           <View style={styles.h2}>
             <Text style={styles.text}>Inc. Growth</Text> 
@@ -332,6 +363,12 @@ componentDidMount(){
           </View>
         </View>
 
+        </Card>
+      </View>
+
+    
+        
+
         <View style={styles.itemContainer}>
         {
           <FlatList
@@ -345,25 +382,7 @@ componentDidMount(){
     
 
       </ScrollView>
-
-      {/* <Content />
-        <Footer>
-          <FooterTab>
-            <Button>
-              <Icon name="apps" />
-            </Button>
-            <Button>
-              <Icon name="camera" />
-            </Button>
-            <Button active>
-              <Icon active name="navigate" />
-            </Button>
-            <Button>
-              <Icon name="person" />
-            </Button>
-          </FooterTab>
-        </Footer> */}
-
+      
       </View>
     );
   }        
