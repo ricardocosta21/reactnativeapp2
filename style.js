@@ -3,7 +3,9 @@ import { StyleSheet, Dimensions } from 'react-native';
 const numColumns = 3;
 const size = Dimensions.get('window').width/1;
 const BLUE = "#428AF8";
-const LIGHT_GREEN ="#7ee7e4";
+const LIGHT_GREEN ="#ddfff6";
+const MEDIUM_GREEN ="#96ffe3";
+const HARD_GREEN ="#53d1af"
 const VERY_LIGHT_GRAY = "#e6e6e6";
 const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
@@ -61,12 +63,12 @@ export default StyleSheet.create({
   },
 
   backgroundItem1: {
-    backgroundColor:'transparent',
+    backgroundColor:MEDIUM_GREEN,
     flex:1,
     },
 
   backgroundItem2: {
-    backgroundColor:'transparent',
+    backgroundColor:HARD_GREEN,
     flex:1,
     paddingBottom:20,
     },

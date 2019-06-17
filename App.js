@@ -6,376 +6,370 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styles from './style'
-import {Platform,Image, ScrollView,ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions} from 'react-native';
+import { Platform, Image, ScrollView, ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 // 3rd party libraries
 import { Card } from 'react-native-elements';
 
 const BLUE = "#428AF8";
-const LIGHT_GREEN ="#7ee7e4";
+const LIGHT_GREEN = "#ddfff6";
+const MEDIUM_GREEN = "#96ffe3";
+const HARD_GREEN = "#53d1af";
 const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
 
 export default class App extends Component {
 
 
-handleFocus = event => {
-  this.setState({ isFocused: true });
-  if (this.props.onFocus) {
-    this.props.onFocus(event);
-  }
-};
+	handleFocus = event => {
+		this.setState({ isFocused: true });
+		if (this.props.onFocus) {
+			this.props.onFocus(event);
+		}
+	};
 
-handleBlur = event => {
-  this.setState({ isFocused: false });
-  if (this.props.onBlur) {
-    this.props.onBlur(event);
-  }
-};
+	handleBlur = event => {
+		this.setState({ isFocused: false });
+		if (this.props.onBlur) {
+			this.props.onBlur(event);
+		}
+	};
 
-onActionSelected(position) {
-}
-
-
-
-handleTextChanged(text) {
-  console.warn('text changed !');
-  this.setState({ text });
-}
+	onActionSelected(position) {
+	}
 
 
-state = {
-  year: '',
-  isFocused: false,
-  age: '26',
-  investment: '140000',
-  income: '54000',
-  spending: '40000',
-  savings: '',
-  incGrowth: '3',
-  retSpending: '35000',
-  wrRate: '4',
-  invReturns: '7',
-  fireNumber: '',
-  currencySymbol:'£',
-  percentageSymbol:'%',
-  fireData:[] 
-};
+
+	handleTextChanged(text) {
+		console.warn('text changed !');
+		this.setState({ text });
+	}
 
 
-onFireReady = () => { 
-  console.log("\n\n\n\n\n\n---------BEGIN---------");
-  
-  this.state.fireData = [];
-  this.state.savings = this.state.income - this.state.spending;
-  
-  console.log("\nHERE");
-  console.log("\nIncome:" + this.state.income);
-  console.log("\nspending:" + this.state.spending);
-  console.log("\nsavings:" + this.state.savings);
-  // Calculate FireNumber 
-  this.state.fireNumber = ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0);
+	state = {
+		year: '',
+		isFocused: false,
+		age: '26',
+		investment: '140000',
+		income: '54000',
+		spending: '40000',
+		savings: '',
+		incGrowth: '3',
+		retSpending: '35000',
+		wrRate: '4',
+		invReturns: '7',
+		fireNumber: '',
+		currencySymbol: '£',
+		percentageSymbol: '%',
+		fireData: []
+	};
 
-  this.compound(this.state.investment, (this.state.invReturns/100) + 1,
-  this.state.age, this.state.income, this.state.savings);
- 
-  console.log("---------END---------\n");
-}
 
-increaseIncome(income)
-{ 
-  return income *= ((this.state.incGrowth/100) + 1);
-}
+	onFireReady = () => {
+		console.log("\n\n\n\n\n\n---------BEGIN---------");
 
-increaseSavings(income, spending)
-{
-  return newSavingsValue = (income * ((this.state.incGrowth/100) + 1)) - spending;
-}
+		this.state.fireData = [];
+		this.state.savings = this.state.income - this.state.spending;
 
-compound( investment, interest, age, income, savings) {
-  var accumulated = parseInt(investment);  
+		console.log("\nHERE");
+		console.log("\nIncome:" + this.state.income);
+		console.log("\nspending:" + this.state.spending);
+		console.log("\nsavings:" + this.state.savings);
+		// Calculate FireNumber
+		this.state.fireNumber = ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0);
 
-  console.log("this.state.fireNumber:" + this.state.fireNumber);
+		this.compound(this.state.investment, (this.state.invReturns / 100) + 1,
+			this.state.age, this.state.income, this.state.savings);
 
-	for ( i=age, j = 0; accumulated < this.state.fireNumber; i++, j++ ) {    
+		console.log("---------END---------\n");
+	}
 
-    accumulated = (accumulated + savings) * interest.toFixed(2);
+	increaseIncome(income) {
+		return income *= ((this.state.incGrowth / 100) + 1);
+	}
 
-    savings = this.increaseSavings(income, this.state.spending);
+	increaseSavings(income, spending) {
+		return newSavingsValue = (income * ((this.state.incGrowth / 100) + 1)) - spending;
+	}
 
-    income = this.increaseIncome(income);
+	compound(investment, interest, age, income, savings) {
+		var accumulated = parseInt(investment);
 
-    var objToPush = {
-      index: j,
-      age: i,
-      value: accumulated.toFixed(0)
-    };
+		console.log("this.state.fireNumber:" + this.state.fireNumber);
 
-    
-    if(accumulated < 0)
-    {    
-      this.state.savings = 0;
+		for (i = age, j = 0; accumulated < this.state.fireNumber; i++ , j++) {
 
-      this.state.savingsPercentage = 0;
+			accumulated = (accumulated + savings) * interest.toFixed(2);
 
-      var newStateArray = this.state.fireData.slice();
+			savings = this.increaseSavings(income, this.state.spending);
 
-      newStateArray.push();
-  
-      this.setState({fireData: newStateArray});
-  
-      this.state.fireData = newStateArray; 
+			income = this.increaseIncome(income);
 
-      return;
-    }
+			var objToPush = {
+				index: j,
+				age: i,
+				value: accumulated.toFixed(0)
+			};
 
-    this.state.savings = this.state.income - this.state.spending;
 
-    this.state.savingsPercentage = (100 - ((this.state.spending * 100) / this.state.income)).toFixed(1);
+			if (accumulated < 0) {
+				this.state.savings = 0;
 
-    var newStateArray = this.state.fireData.slice();
+				this.state.savingsPercentage = 0;
 
-    newStateArray.push(objToPush);
+				var newStateArray = this.state.fireData.slice();
 
-    this.setState({fireData: newStateArray});
+				newStateArray.push();
 
-    this.state.fireData = newStateArray;  
-  }
-  
-  console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest +  ' over ' + age + ' years' )
-}
+				this.setState({ fireData: newStateArray });
 
-componentDidMount(){
-  this.onFireReady()
-}
+				this.state.fireData = newStateArray;
 
-  render() {
+				return;
+			}
 
-    const { isFocused } = this.state;
-    return (
-          
-      <View style={styles.container}>
+			this.state.savings = this.state.income - this.state.spending;
 
-        <Header
-        iosBarStyle='light-content'
-        androidStatusBarColor= {LIGHT_GREEN}
-        style={{ backgroundColor: LIGHT_GREEN }}
-        >
-          <Left>
-            <Button transparent style={styles.header}>
-              <Icon name='menu' />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={styles.h2}>FireCalc</Title>
-          </Body>
-          <Right />
-        </Header>
-     
+			this.state.savingsPercentage = (100 - ((this.state.spending * 100) / this.state.income)).toFixed(1);
 
-      <ScrollView>
-     
-     
-      <View style={styles.container}>
-      <View style={styles.backgroundItem1}>
-        <View style={styles.MoneyRowText}>       
-        <View style={styles.h2}>
-          <Text style={styles.text}>Age</Text>
-          <TextInput
-            maxLength={2}    
-            keyboardType = "numeric"
-            selectionColor={LIGHT_GREEN}
-            underlineColorAndroid={
-              isFocused ? LIGHT_GREEN : LIGHT_GRAY
-            }
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            style={styles.textInput}           
-            onChangeText={(age) => (this.setState({age}))}    
-            onEndEditing={() => this.onFireReady()} 
-            onSelectionChange={() => this.onFireReady()}          
-            value={this.state.age}             
-          />
-        </View>
-        <View style={styles.h2}>
-          <Text style={styles.text}>Investments</Text>
-          <TextInput
-            keyboardType = "numeric"
-            selectionColor={LIGHT_GREEN}
-            underlineColorAndroid={
-              isFocused ? LIGHT_GREEN : LIGHT_GRAY
-            }
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            style={styles.textInput}
-            onChangeText={(investment) => this.setState({investment})}
-            onEndEditing={() => this.onFireReady()} 
-            onSelectionChange={() => this.onFireReady()} 
-            value={this.state.investment}
-          />
-        </View>
-      </View>
+			var newStateArray = this.state.fireData.slice();
 
-      <View style={styles.MoneyRowText}>
-        <View style={styles.h2}>
-            <Text style={styles.text}>Income(-Tax)</Text>
-            <TextInput
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(income) => this.setState({income})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()} 
-              value={this.state.income}
-            />
-        </View>
+			newStateArray.push(objToPush);
 
-        <View style={styles.h2}>
-            <Text style={styles.text}>Spending</Text>
-            {/* https://github.com/s-yadav/react-number-format/issues/191 */}
-            <TextInput  
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(spending) => this.setState({spending})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()} 
-              value={this.state.spending} 
-            /> 
-        </View>
-        <View style={styles.h2}>
-            <Text style={styles.text}>Savings</Text>
-            <Text style={styles.textInput}> {'\u00A3'}{this.state.income - this.state.spending } 
-            {' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
-            
-          </View>
-        </View>
+			this.setState({ fireData: newStateArray });
 
-        </View>
+			this.state.fireData = newStateArray;
+		}
 
-      </View>
+		console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest + ' over ' + age + ' years')
+	}
 
-   
+	componentDidMount() {
+		this.onFireReady()
+	}
 
-      <View style={styles.container}>
-        <View style={styles.backgroundItem2}>
-        <View style={styles.MoneyRowText}>
-          <View style={styles.h2}>
-            <Text style={styles.text}>Inc. Growth</Text> 
-            <TextInput  
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(incGrowth) => this.setState({incGrowth})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()} 
-              value={this.state.incGrowth} 
-            /> 
-            
-          </View>
+	render() {
 
-          <View style={styles.h2}>
-            <Text style={styles.text}>Ret. Spending</Text>
-            <TextInput    
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(retSpending) => this.setState({retSpending})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()}                
-              value={this.state.retSpending}
-            />
-          </View>
-          <View style={styles.h2}>
-            <Text style={styles.text}>WR Rate</Text>
-            <TextInput    
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(wrRate) => this.setState({wrRate})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()}               
-              value={this.state.wrRate}
-            />
-          </View>
-        </View>
+		const { isFocused } = this.state;
+		return (
 
-        <View style={styles.MoneyRowText}>
-          <View style={styles.h2}>
-            <Text style={styles.text}>Inv. Returns</Text>
-            <TextInput    
-              keyboardType = "numeric"
-              selectionColor={LIGHT_GREEN}
-              underlineColorAndroid={
-                isFocused ? LIGHT_GREEN : LIGHT_GRAY
-              }
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              style={styles.textInput}
-              onChangeText={(invReturns) => this.setState({invReturns})}
-              onEndEditing={() => this.onFireReady()} 
-              onSelectionChange={() => this.onFireReady()}  
-              value={this.state.invReturns}
-            />
-          </View>
+			<View style={styles.container}>
 
-          <View style={styles.h2}>
-            <Text style={styles.text}>FIRE #</Text>
-            <Text style={styles.textInput}>{ ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0) }
-            
-            </Text>                  
-          </View>
-        </View>
-        </View>
-      </View>
+				<Header
+					iosBarStyle='light-content'
+					androidStatusBarColor={LIGHT_GREEN}
+					style={{ backgroundColor: LIGHT_GREEN }}
+				>
+					<Left>
+						<Button transparent style={styles.header}>
+							<Icon name='menu' />
+						</Button>
+					</Left>
+					<Body>
+						<Title style={styles.h2}>FireCalc</Title>
+					</Body>
+					<Right />
+				</Header>
 
-    
-      <View>
-          <Text style={styles.flatListHeader}>#                Age                Balance</Text>
-      </View>
 
-        <View style={styles.itemContainer}>
-        {
-          <FlatList
-          style={styles.flatList}
-            data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{item.index} {"              " + item.age}{"              " + this.state.currencySymbol + item.value + "     "}</Text>}
-            keyExtractor={(item, index) => 'key' + index}
-          />
-        }
-        </View> 
-    
+				<ScrollView>
 
-      </ScrollView>
-      
-      </View>
-    );
-  }        
+
+					<View style={styles.backgroundItem1}>
+						<View style={styles.MoneyRowText}>
+							<View style={styles.h2}>
+								<Text style={styles.text}>Age</Text>
+								<TextInput
+									maxLength={2}
+									keyboardType="numeric"
+									selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
+									onFocus={this.handleFocus}
+									onBlur={this.handleBlur}
+									style={styles.textInput}
+									onChangeText={(age) => (this.setState({ age }))}
+									onEndEditing={() => this.onFireReady()}
+									onSelectionChange={() => this.onFireReady()}
+									value={this.state.age}
+								/>
+							</View>
+							<View style={styles.h2}>
+								<Text style={styles.text}>Investments</Text>
+								<TextInput
+									keyboardType="numeric"
+									selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
+									onFocus={this.handleFocus}
+									onBlur={this.handleBlur}
+									style={styles.textInput}
+									onChangeText={(investment) => this.setState({ investment })}
+									onEndEditing={() => this.onFireReady()}
+									onSelectionChange={() => this.onFireReady()}
+									value={this.state.investment}
+								/>
+							</View>
+						</View>
+
+						<View style={styles.MoneyRowText}>
+							<View style={styles.h2}>
+								<Text style={styles.text}>Income(-Tax)</Text>
+								<TextInput
+									keyboardType="numeric"
+									selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
+									onFocus={this.handleFocus}
+									onBlur={this.handleBlur}
+									style={styles.textInput}
+									onChangeText={(income) => this.setState({ income })}
+									onEndEditing={() => this.onFireReady()}
+									onSelectionChange={() => this.onFireReady()}
+									value={this.state.income}
+								/>
+							</View>
+
+							<View style={styles.h2}>
+								<Text style={styles.text}>Spending</Text>
+								{/* https://github.com/s-yadav/react-number-format/issues/191 */}
+								<TextInput
+									keyboardType="numeric"
+									selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
+									onFocus={this.handleFocus}
+									onBlur={this.handleBlur}
+									style={styles.textInput}
+									onChangeText={(spending) => this.setState({ spending })}
+									onEndEditing={() => this.onFireReady()}
+									onSelectionChange={() => this.onFireReady()}
+									value={this.state.spending}
+								/>
+							</View>
+							<View style={styles.h2}>
+								<Text style={styles.text}>Savings</Text>
+								<Text style={styles.textInput}> {'\u00A3'}{this.state.income - this.state.spending}
+									{' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
+
+							</View>
+						</View>
+
+
+
+
+
+						<View style={styles.container}>
+							<View style={styles.MoneyRowText}>
+								<View style={styles.h2}>
+									<Text style={styles.text}>Inc. Growth</Text>
+									<TextInput
+										keyboardType="numeric"
+										selectionColor={LIGHT_GREEN}
+										underlineColorAndroid={
+											isFocused ? LIGHT_GREEN : LIGHT_GRAY
+										}
+										onFocus={this.handleFocus}
+										onBlur={this.handleBlur}
+										style={styles.textInput}
+										onChangeText={(incGrowth) => this.setState({ incGrowth })}
+										onEndEditing={() => this.onFireReady()}
+										onSelectionChange={() => this.onFireReady()}
+										value={this.state.incGrowth}
+									/>
+
+								</View>
+
+								<View style={styles.h2}>
+									<Text style={styles.text}>Ret. Spending</Text>
+									<TextInput
+										keyboardType="numeric"
+										selectionColor={LIGHT_GREEN}
+										underlineColorAndroid={
+											isFocused ? LIGHT_GREEN : LIGHT_GRAY
+										}
+										onFocus={this.handleFocus}
+										onBlur={this.handleBlur}
+										style={styles.textInput}
+										onChangeText={(retSpending) => this.setState({ retSpending })}
+										onEndEditing={() => this.onFireReady()}
+										onSelectionChange={() => this.onFireReady()}
+										value={this.state.retSpending}
+									/>
+								</View>
+								<View style={styles.h2}>
+									<Text style={styles.text}>WR Rate</Text>
+									<TextInput
+										keyboardType="numeric"
+										selectionColor={LIGHT_GREEN}
+										underlineColorAndroid={
+											isFocused ? LIGHT_GREEN : LIGHT_GRAY
+										}
+										onFocus={this.handleFocus}
+										onBlur={this.handleBlur}
+										style={styles.textInput}
+										onChangeText={(wrRate) => this.setState({ wrRate })}
+										onEndEditing={() => this.onFireReady()}
+										onSelectionChange={() => this.onFireReady()}
+										value={this.state.wrRate}
+									/>
+								</View>
+							</View>
+
+							<View style={styles.MoneyRowText}>
+								<View style={styles.h2}>
+									<Text style={styles.text}>Inv. Returns</Text>
+									<TextInput
+										keyboardType="numeric"
+										selectionColor={LIGHT_GREEN}
+										underlineColorAndroid={
+											isFocused ? LIGHT_GREEN : LIGHT_GRAY
+										}
+										onFocus={this.handleFocus}
+										onBlur={this.handleBlur}
+										style={styles.textInput}
+										onChangeText={(invReturns) => this.setState({ invReturns })}
+										onEndEditing={() => this.onFireReady()}
+										onSelectionChange={() => this.onFireReady()}
+										value={this.state.invReturns}
+									/>
+								</View>
+
+								<View style={styles.h2}>
+									<Text style={styles.text}>FIRE #</Text>
+									<Text style={styles.textInput}>{((this.state.retSpending / this.state.wrRate) * 100).toFixed(0)}
+
+									</Text>
+								</View>
+							</View>
+						</View>
+					</View>
+
+					<View>
+						<Text style={styles.flatListHeader}>#                Age                Balance</Text>
+					</View>
+
+					<View style={styles.itemContainer}>
+						{
+							<FlatList
+								style={styles.flatList}
+								data={this.state.fireData}
+								renderItem={({ item }) => <Text style={styles.item}>{item.index} {"              " + item.age}{"              " + this.state.currencySymbol + item.value + "     "}</Text>}
+								keyExtractor={(item, index) => 'key' + index}
+							/>
+						}
+					</View>
+
+
+				</ScrollView>
+
+			</View>
+		);
+	}
 }
