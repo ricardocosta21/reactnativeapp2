@@ -147,31 +147,16 @@ compound( investment, interest, age, income, savings) {
   console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest +  ' over ' + age + ' years' )
 }
 
-
 componentDidMount(){
   this.onFireReady()
 }
 
-
   render() {
 
     const { isFocused } = this.state;
-    var NumberFormat = require('react-number-format');
     return (
-    
-      
+          
       <View style={styles.container}>
-
-      {/* <ToolbarAndroid
-        style={styles.toolbar}
-        title="FireCalc"
-        onActionSelected={this.onActionSelected}
-        titleColor= "#FFFFFF"        
-        actions = {[
-          {title: "Log out", show: "never"}
-        ]}
-      /> */}
-
 
         <Header
         iosBarStyle='light-content'
@@ -272,7 +257,7 @@ componentDidMount(){
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
-            <Text style={styles.textInput}> {'\u00A3'} {this.state.income - this.state.spending } 
+            <Text style={styles.textInput}> {'\u00A3'}{this.state.income - this.state.spending } 
             {' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
             
           </View>
@@ -368,12 +353,13 @@ componentDidMount(){
             </Text>                  
           </View>
         </View>
-
         </View>
       </View>
 
     
-        
+      <View>
+          <Text style={styles.flatListHeader}>#                Age                Balance</Text>
+      </View>
 
         <View style={styles.itemContainer}>
         {

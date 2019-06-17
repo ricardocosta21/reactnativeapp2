@@ -25,23 +25,16 @@ export default StyleSheet.create({
 
   text: {
     alignSelf: 'center',
-    paddingVertical: 0,
+    margin: 10,
   },
 
   textInput: {
     textAlign: 'center',
-    height: 40,
-    width: 100,
-  }, 
-
-  textOutput: {
-    textAlign: 'center',
-    height: 38,
-    width: 100,
+    marginTop: 10,
   }, 
 
   h2:{
-    fontSize: 15,    
+    fontSize: 15,       
   },
 
   MoneyRowText: {
@@ -68,23 +61,21 @@ export default StyleSheet.create({
   },
 
   backgroundItem1: {
-    backgroundColor:"orange",
-    flex:1
+    backgroundColor:'transparent',
+    flex:1,
     },
 
-    backgroundItem2: {
-      backgroundColor:'#7ee7e4',
-      flex:1
-      },
+  backgroundItem2: {
+    backgroundColor:'transparent',
+    flex:1,
+    paddingBottom:20,
+    },
 
   itemContainer: {
     flex: 1,  
-    width: size,
-    marginTop: 10,     
+    width: size,   
     flexDirection: "row",
-    backgroundColor: WHITE,
   },
-  
 
   item: {
     flex: 1,
@@ -97,9 +88,20 @@ export default StyleSheet.create({
     backgroundColor: VERY_LIGHT_GRAY,
   },
 
+  flatListHeader: {
+    flex: 1,
+    fontSize: 14,
+    paddingTop:6,
+    paddingBottom:6,
+    borderRadius:1,
+    textAlign: 'center', 
+    backgroundColor: LIGHT_GRAY,
+  },
+
   flatList: {
-    flex: 1,   
-    paddingTop:20,
+    flexGrow: 1, 
+    paddingBottom: 90
+    
   },
  
 
