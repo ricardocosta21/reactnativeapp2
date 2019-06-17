@@ -159,8 +159,8 @@ export default class App extends Component {
 
 				<Header
 					iosBarStyle='light-content'
-					androidStatusBarColor={LIGHT_GREEN}
-					style={{ backgroundColor: LIGHT_GREEN }}
+					androidStatusBarColor={HARD_GREEN}
+					style={{ backgroundColor: MEDIUM_GREEN }}
 				>
 					<Left>
 						<Button transparent style={styles.header}>

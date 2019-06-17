@@ -15,14 +15,8 @@ export default StyleSheet.create({
     backgroundColor: 'transparent'
   },
 
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 0,
-  },
-
   header: {
-    borderTopColor: LIGHT_GREEN,
+    borderTopColor: MEDIUM_GREEN,
   },
 
   text: {
@@ -41,8 +35,8 @@ export default StyleSheet.create({
 
   MoneyRowText: {
     flex: 1,
-    marginTop: 30,
-    fontSize: 15,
+    marginTop: 25,
+    fontSize: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -57,18 +51,12 @@ export default StyleSheet.create({
 
   cardContainer: {
     flex: 1,
-    paddingTop:5,
     alignItems: 'center',    
     backgroundColor: '#7ee7e4',
   },
 
   backgroundItem1: {
-    backgroundColor:MEDIUM_GREEN,
-    flex:1,
-    },
-
-  backgroundItem2: {
-    backgroundColor:HARD_GREEN,
+    backgroundColor: MEDIUM_GREEN,
     flex:1,
     paddingBottom:20,
     },
