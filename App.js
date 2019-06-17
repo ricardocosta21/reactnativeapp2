@@ -77,6 +77,10 @@ export default class App extends Component {
 		console.log("\nIncome:" + this.state.income);
 		console.log("\nspending:" + this.state.spending);
 		console.log("\nsavings:" + this.state.savings);
+
+		console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.savings));
+
+
 		// Calculate FireNumber
 		this.state.fireNumber = ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0);
 
@@ -345,6 +349,7 @@ export default class App extends Component {
 									<Text style={styles.text}>FIRE #</Text>
 									<Text style={styles.textInput}>{((this.state.retSpending / this.state.wrRate) * 100).toFixed(0)}
 
+								
 									</Text>
 								</View>
 							</View>
