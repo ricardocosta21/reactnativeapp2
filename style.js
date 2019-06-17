@@ -67,6 +67,16 @@ export default StyleSheet.create({
     backgroundColor: '#7ee7e4',
   },
 
+  backgroundItem1: {
+    backgroundColor:"orange",
+    flex:1
+    },
+
+    backgroundItem2: {
+      backgroundColor:'#7ee7e4',
+      flex:1
+      },
+
   itemContainer: {
     flex: 1,  
     width: size,
@@ -82,8 +92,8 @@ export default StyleSheet.create({
     fontSize: 16,
     paddingTop:15,
     paddingBottom:15,
-    paddingLeft:30,
     borderRadius:5,
+    textAlign: 'center', 
     backgroundColor: VERY_LIGHT_GRAY,
   },
 

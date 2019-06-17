@@ -70,7 +70,8 @@ onFireReady = () => {
   
   this.state.fireData = [];
   this.state.savings = this.state.income - this.state.spending;
-  console.log("\nHEEEREEEEE");
+  
+  console.log("\nHERE");
   console.log("\nIncome:" + this.state.income);
   console.log("\nspending:" + this.state.spending);
   console.log("\nsavings:" + this.state.savings);
@@ -193,7 +194,7 @@ componentDidMount(){
      
      
       <View style={styles.container}>
-      <Card style={styles.cardContainer}>
+      <View style={styles.backgroundItem1}>
         <View style={styles.MoneyRowText}>       
         <View style={styles.h2}>
           <Text style={styles.text}>Age</Text>
@@ -277,13 +278,14 @@ componentDidMount(){
           </View>
         </View>
 
-        </Card>
+        </View>
+
       </View>
 
    
 
       <View style={styles.container}>
-        <Card style={styles.cardContainer}>
+        <View style={styles.backgroundItem2}>
         <View style={styles.MoneyRowText}>
           <View style={styles.h2}>
             <Text style={styles.text}>Inc. Growth</Text> 
@@ -367,7 +369,7 @@ componentDidMount(){
           </View>
         </View>
 
-        </Card>
+        </View>
       </View>
 
     
@@ -378,7 +380,7 @@ componentDidMount(){
           <FlatList
           style={styles.flatList}
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"      " + item.age}{"          " + this.state.currencySymbol + item.value}</Text>}
+            renderItem={({item}) => <Text style={styles.item}>{item.index} {"              " + item.age}{"              " + this.state.currencySymbol + item.value + "     "}</Text>}
             keyExtractor={(item, index) => 'key' + index}
           />
         }
