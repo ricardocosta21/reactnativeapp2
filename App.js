@@ -112,7 +112,27 @@ compound( investment, interest, age, income, savings) {
       value: accumulated.toFixed(0)
     };
 
-    console.log(objToPush);
+    
+    if(accumulated < 0)
+    {    
+      this.state.savings = 0;
+
+      this.state.savingsPercentage = 0;
+
+      var newStateArray = this.state.fireData.slice();
+
+      newStateArray.push();
+  
+      this.setState({fireData: newStateArray});
+  
+      this.state.fireData = newStateArray; 
+
+      return;
+    }
+
+    this.state.savings = this.state.income - this.state.spending;
+
+    this.state.savingsPercentage = (100 - ((this.state.spending * 100) / this.state.income)).toFixed(1);
 
     var newStateArray = this.state.fireData.slice();
 
@@ -120,7 +140,7 @@ compound( investment, interest, age, income, savings) {
 
     this.setState({fireData: newStateArray});
 
-    this.state.fireData = newStateArray;    
+    this.state.fireData = newStateArray;  
   }
   
   console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest +  ' over ' + age + ' years' )
@@ -163,7 +183,7 @@ componentDidMount(){
             </Button>
           </Left>
           <Body>
-            <Title style={styles.h2}>Firecalc</Title>
+            <Title style={styles.h2}>FireCalc</Title>
           </Body>
           <Right />
         </Header>
@@ -231,39 +251,23 @@ componentDidMount(){
             />
         </View>
 
-
-
-
         <View style={styles.h2}>
             <Text style={styles.text}>Spending</Text>
             {/* https://github.com/s-yadav/react-number-format/issues/191 */}
-            <NumberFormat
-                value={this.state.spending}
-                displayType={'text'}
-               
-                allowNegative={false}
-                decimalSeparator={","}
-                decimalPrecision={"0"}
-                thousandSeparator={"."}
-
-                
-
-                renderText={value => (
-                  <TextInput
-                    underlineColorAndroid="transparent"
-                    style={styles.input}
-                    selectionColor={LIGHT_GREEN}
-                    underlineColorAndroid={
-                    isFocused ? LIGHT_GREEN : LIGHT_GRAY
-                    }
-                    onChangeText={(spending) => this.setState({spending})}
-                    onEndEditing={() => this.onFireReady()} 
-                    onSelectionChange={() => this.onFireReady()} 
-                    value={value}
-                    keyboardType="numeric"
-                  />
-                )}
-              />
+            <TextInput  
+              keyboardType = "numeric"
+              selectionColor={LIGHT_GREEN}
+              underlineColorAndroid={
+                isFocused ? LIGHT_GREEN : LIGHT_GRAY
+              }
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              style={styles.textInput}
+              onChangeText={(spending) => this.setState({spending})}
+              onEndEditing={() => this.onFireReady()} 
+              onSelectionChange={() => this.onFireReady()} 
+              value={this.state.spending} 
+            /> 
         </View>
         <View style={styles.h2}>
             <Text style={styles.text}>Savings</Text>
@@ -374,7 +378,7 @@ componentDidMount(){
           <FlatList
           style={styles.flatList}
             data={this.state.fireData}
-            renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"  Age:" + item.age}{"     " + this.state.currencySymbol + item.value}</Text>}
+            renderItem={({item}) => <Text style={styles.item}>{" " + item.index} {"      " + item.age}{"          " + this.state.currencySymbol + item.value}</Text>}
             keyExtractor={(item, index) => 'key' + index}
           />
         }

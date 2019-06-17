@@ -4,6 +4,7 @@ const numColumns = 3;
 const size = Dimensions.get('window').width/1;
 const BLUE = "#428AF8";
 const LIGHT_GREEN ="#7ee7e4";
+const VERY_LIGHT_GRAY = "#e6e6e6";
 const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
 export default StyleSheet.create({
@@ -15,7 +16,7 @@ export default StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 0,
   },
 
   header: {
@@ -24,7 +25,7 @@ export default StyleSheet.create({
 
   text: {
     alignSelf: 'center',
-    paddingVertical: 5,
+    paddingVertical: 0,
   },
 
   textInput: {
@@ -61,8 +62,8 @@ export default StyleSheet.create({
 
   cardContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',    
+    paddingTop:5,
+    alignItems: 'center',    
     backgroundColor: '#7ee7e4',
   },
 
@@ -79,12 +80,11 @@ export default StyleSheet.create({
     flex: 1,
     margin: 0.5,
     fontSize: 16,
-    paddingTop:20,
-    paddingBottom:10,
-    paddingLeft:20,
-    paddingRight:20, 
+    paddingTop:15,
+    paddingBottom:15,
+    paddingLeft:30,
     borderRadius:5,
-    backgroundColor: LIGHT_GRAY,
+    backgroundColor: VERY_LIGHT_GRAY,
   },
 
   flatList: {
