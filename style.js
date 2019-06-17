@@ -56,7 +56,7 @@ export default StyleSheet.create({
   },
 
   backgroundItem1: {
-    backgroundColor: MEDIUM_GREEN,
+    backgroundColor: LIGHT_GREEN,
     flex:1,
     paddingBottom:20,
     },
