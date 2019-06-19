@@ -70,13 +70,15 @@ export default class App extends Component {
 	onFireReady = () => {
 		console.log("\n\n\n\n\n\n---------BEGIN---------");
 
+		console.log("\nIncome:" + this.state.income);
+		console.log("\nspending:" + this.state.spending);
+
 		this.state.fireData = [];
 		this.state.savings = this.state.income - this.state.spending;
 
 		console.log("\nHERE");
-		console.log("\nIncome:" + this.state.income);
-		console.log("\nspending:" + this.state.spending);
-		console.log("\nsavings:" + this.state.savings);
+	
+		//console.log("\nsavings:" + this.state.savings);
 
 		console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.savings));
 
@@ -97,6 +99,14 @@ export default class App extends Component {
 	increaseSavings(income, spending) {
 		return newSavingsValue = (income * ((this.state.incGrowth / 100) + 1)) - spending;
 	}
+
+	formatNumber(number)
+	{
+		console.log(new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0}).format(number));
+		return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0}).format(number)													
+	}
+
+
 
 	compound(investment, interest, age, income, savings) {
 		var accumulated = parseInt(investment);
@@ -147,7 +157,7 @@ export default class App extends Component {
 			this.state.fireData = newStateArray;
 		}
 
-		console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest + ' over ' + age + ' years')
+		console.log(investment + ' to ' + accumulated.toFixed(0) + ' at ' + interest + ' within ' + j + ' years')
 	}
 
 	componentDidMount() {
@@ -215,7 +225,8 @@ export default class App extends Component {
 									onChangeText={(investment) => this.setState({ investment })}
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
-									value={this.state.investment}
+									value={this.formatNumber(this.state.investment)}								
+								
 								/>
 							</View>
 						</View>
@@ -232,11 +243,22 @@ export default class App extends Component {
 									onFocus={this.handleFocus}
 									onBlur={this.handleBlur}
 									style={styles.textInput}
-									onChangeText={(income) => this.setState({ income })}
+									
+									onChangeText={income => { 
+										this.setState({ income });
+									}}
+
+
+
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
-									value={this.state.income}
+									value={this.state.income}	
+								
 								/>
+								{/* <Text style={{padding: 5, fontSize: 22}}>
+									{this.state.income}
+								</Text> */}
+
 							</View>
 
 							<View style={styles.h2}>
@@ -254,12 +276,13 @@ export default class App extends Component {
 									onChangeText={(spending) => this.setState({ spending })}
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
-									value={this.state.spending}
+									value={this.formatNumber(this.state.spending)}		
 								/>
 							</View>
 							<View style={styles.h2}>
 								<Text style={styles.text}>Savings</Text>
-								<Text style={styles.textInput}> {'\u00A3'}{this.state.income - this.state.spending}
+								<Text style={styles.textInput}> 
+								{this.formatNumber(this.state.income - this.state.spending)}								
 									{' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
 
 							</View>
@@ -304,7 +327,8 @@ export default class App extends Component {
 										onChangeText={(retSpending) => this.setState({ retSpending })}
 										onEndEditing={() => this.onFireReady()}
 										onSelectionChange={() => this.onFireReady()}
-										value={this.state.retSpending}
+										value={this.formatNumber(this.state.retSpending)}								
+								
 									/>
 								</View>
 								<View style={styles.h2}>
@@ -347,7 +371,8 @@ export default class App extends Component {
 
 								<View style={styles.h2}>
 									<Text style={styles.text}>FIRE #</Text>
-									<Text style={styles.textInput}>{((this.state.retSpending / this.state.wrRate) * 100).toFixed(0)}
+									<Text style={styles.textInput}>{
+										this.formatNumber((this.state.retSpending / this.state.wrRate) * 100)}
 
 								
 									</Text>
@@ -365,7 +390,8 @@ export default class App extends Component {
 							<FlatList
 								style={styles.flatList}
 								data={this.state.fireData}
-								renderItem={({ item }) => <Text style={styles.item}>{item.index} {"              " + item.age}{"              " + this.state.currencySymbol + item.value + "     "}</Text>}
+								renderItem={({item}) => <Text style={styles.item}>{item.index} {"              " + item.age}
+								{"              " + this.formatNumber(item.value)}</Text>}
 								keyExtractor={(item, index) => 'key' + index}
 							/>
 						}

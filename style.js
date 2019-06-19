@@ -27,6 +27,7 @@ export default StyleSheet.create({
   textInput: {
     textAlign: 'center',
     marginTop: 10,
+    
   }, 
 
   h2:{
@@ -56,7 +57,7 @@ export default StyleSheet.create({
   },
 
   backgroundItem1: {
-    backgroundColor: LIGHT_GREEN,
+    backgroundColor: WHITE,
     flex:1,
     paddingBottom:20,
     },
