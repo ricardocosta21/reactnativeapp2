@@ -55,7 +55,6 @@ export default class App extends Component {
 		age: '26',
 		investment: '140000',
 		income: '54000',
-		incomeConst: '',
 		spending: '40000',
 		savings: '',
 		incGrowth: '3',
@@ -78,8 +77,10 @@ export default class App extends Component {
 		this.state.fireData = [];
 
 		this.state.income = this.incomeField.getRawValue();
+		console.log("Income:" + this.state.income);
+		this.state.spending = this.spendingField.getRawValue();
+		console.log("Spending:" + this.state.spending);
 
-		console.log("Number:" + this.state.income);
 		this.state.savings = this.state.income - this.state.spending;
 		//this.state.savings = this.state.income - this.state.spending;
 
@@ -262,31 +263,6 @@ export default class App extends Component {
 									value={this.state.income}
 									ref={(ref) => this.incomeField = ref}
 								/>
-
-								{/* <TextInput
-									keyboardType="numeric"
-									selectionColor={LIGHT_GREEN}
-									underlineColorAndroid={
-										isFocused ? LIGHT_GREEN : LIGHT_GRAY
-									}
-								
-									onFocus={this.handleFocus}
-									onBlur={this.handleBlur}
-									style={styles.textInput}
-									
-									onChangeText={income => { 
-										this.setState({ income });
-									}}
-
-									onEndEditing={() => this.onFireReady()}
-									onSelectionChange={() => this.onFireReady()}
-									value={this.state.income}									
-								/> */}
-
-								{/* <Text style={{padding: 5, fontSize: 22}}>
-									{this.state.income}
-								</Text> */}
-
 							</View>
 
 							<View style={styles.h2}>
@@ -310,8 +286,10 @@ export default class App extends Component {
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
 									value={this.state.spending}
+									ref={(ref) => this.spendingField = ref}
 								/>
 							</View>
+
 							<View style={styles.h2}>
 								<Text style={styles.text}>Savings</Text>
 								<Text style={styles.textInput}> 
