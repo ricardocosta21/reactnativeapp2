@@ -12,6 +12,7 @@ import { Platform, Image, ScrollView, ToolbarAndroid, Text, View, TextInput, Fla
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 // 3rd party libraries
 import { Card } from 'react-native-elements';
+import { TextInputMask } from 'react-native-masked-text'
 
 const BLUE = "#428AF8";
 const LIGHT_GREEN = "#ddfff6";
@@ -54,6 +55,7 @@ export default class App extends Component {
 		age: '26',
 		investment: '140000',
 		income: '54000',
+		incomeConst: '',
 		spending: '40000',
 		savings: '',
 		incGrowth: '3',
@@ -72,15 +74,21 @@ export default class App extends Component {
 
 		console.log("\nIncome:" + this.state.income);
 		console.log("\nspending:" + this.state.spending);
-
+		
 		this.state.fireData = [];
-		this.state.savings = this.state.income - this.state.spending;
 
+		this.state.income = this.incomeField.getRawValue();
+
+		console.log("Number:" + this.state.income);
+		this.state.savings = this.state.income - this.state.spending;
+		//this.state.savings = this.state.income - this.state.spending;
+
+		console.log("\nSavingssss:" + this.state.savings);
 		console.log("\nHERE");
 	
 		//console.log("\nsavings:" + this.state.savings);
 
-		console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.state.savings));
+		//console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'GBP' }).format(this.state.savings));
 
 
 		// Calculate FireNumber
@@ -102,8 +110,7 @@ export default class App extends Component {
 
 	formatNumber(number)
 	{
-		console.log(new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0}).format(number));
-		return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0}).format(number)													
+			return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0}).format(number)													
 	}
 
 
@@ -234,12 +241,35 @@ export default class App extends Component {
 						<View style={styles.MoneyRowText}>
 							<View style={styles.h2}>
 								<Text style={styles.text}>Income(-Tax)</Text>
-								<TextInput
+
+								<TextInputMask
+									type={'money'}
+									options={{
+										precision: 0,
+										separator: ',',
+										delimiter: '.',
+										unit: '£',
+										suffixUnit: ''
+									}}		
+									onFocus={this.handleFocus}
+									onBlur={this.handleBlur}
+									style={styles.textInput}						
+									onChangeText={income => {
+										this.setState({ income });
+									}}
+									onEndEditing={() => this.onFireReady()}
+									onSelectionChange={() => this.onFireReady()}
+									value={this.state.income}
+									ref={(ref) => this.incomeField = ref}
+								/>
+
+								{/* <TextInput
 									keyboardType="numeric"
 									selectionColor={LIGHT_GREEN}
 									underlineColorAndroid={
 										isFocused ? LIGHT_GREEN : LIGHT_GRAY
 									}
+								
 									onFocus={this.handleFocus}
 									onBlur={this.handleBlur}
 									style={styles.textInput}
@@ -248,13 +278,11 @@ export default class App extends Component {
 										this.setState({ income });
 									}}
 
-
-
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
-									value={this.state.income}	
-								
-								/>
+									value={this.state.income}									
+								/> */}
+
 								{/* <Text style={{padding: 5, fontSize: 22}}>
 									{this.state.income}
 								</Text> */}
@@ -264,26 +292,31 @@ export default class App extends Component {
 							<View style={styles.h2}>
 								<Text style={styles.text}>Spending</Text>
 								{/* https://github.com/s-yadav/react-number-format/issues/191 */}
-								<TextInput
-									keyboardType="numeric"
-									selectionColor={LIGHT_GREEN}
-									underlineColorAndroid={
-										isFocused ? LIGHT_GREEN : LIGHT_GRAY
-									}
+								<TextInputMask
+									type={'money'}			
+									options={{
+										precision: 0,
+										separator: ',',
+										delimiter: '.',
+										unit: '£',
+										suffixUnit: ''
+									}}	
 									onFocus={this.handleFocus}
 									onBlur={this.handleBlur}
-									style={styles.textInput}
-									onChangeText={(spending) => this.setState({ spending })}
+									style={styles.textInput}						
+									onChangeText={spending => {
+										this.setState({ spending });
+									}}
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
-									value={this.formatNumber(this.state.spending)}		
+									value={this.state.spending}
 								/>
 							</View>
 							<View style={styles.h2}>
 								<Text style={styles.text}>Savings</Text>
 								<Text style={styles.textInput}> 
 								{this.formatNumber(this.state.income - this.state.spending)}								
-									{' '}({(100 - ((this.state.spending * 100) / this.state.income)).toFixed(1)}{this.state.percentageSymbol}) </Text>
+									{' '}({(100 - ((this.state.spending * 100) / this.state.income )).toFixed(1)}{this.state.percentageSymbol}) </Text>
 
 							</View>
 						</View>
