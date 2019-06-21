@@ -55,48 +55,50 @@ export default class App extends Component {
 		age: '26',
 		investment: '140000',
 		income: '54000',
-		spending: '40000',
-		savings: '',
+    spending: '40000',
+    savingsNumber: '',
+    savings: '',    
+    savingsPercentage: '',
 		incGrowth: '3',
 		retSpending: '35000',
 		wrRate: '4',
 		invReturns: '7',
-		fireNumber: '',
-		currencySymbol: '£',
+    fireNumber: '',
+    fireDisplayNumber: '',
+    currencySymbol: '£',
 		percentageSymbol: '%',
 		fireData: []
 	};
 
 
 	onFireReady = () => {
-		console.log("\n\n\n\n\n\n---------BEGIN---------");
 
+    console.log("\n\n\n\n\n\n---------BEGIN---------");
 		console.log("\nIncome:" + this.state.income);
-		console.log("\nspending:" + this.state.spending);
-		
-		this.state.fireData = [];
+		console.log("Spending:" + this.state.spending); 
+    
+    this.state.fireData = [];
+    
+    const incomeFieldAux = this.incomeField.getRawValue();
 
-		this.state.income = this.incomeField.getRawValue();
-		console.log("Income:" + this.state.income);
-		this.state.spending = this.spendingField.getRawValue();
-		console.log("Spending:" + this.state.spending);
+    const spendingFieldAux = this.spendingField.getRawValue();
 
-		this.state.savings = this.state.income - this.state.spending;
-		//this.state.savings = this.state.income - this.state.spending;
+    const investmentFieldAux = this.investmentField.getRawValue();
 
-		console.log("\nSavingssss:" + this.state.savings);
-		console.log("\nHERE");
-	
-		//console.log("\nsavings:" + this.state.savings);
+    const retSpendingFieldAux = this.retSpendingField.getRawValue();
 
-		//console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'GBP' }).format(this.state.savings));
+    this.state.savingsNumber =  incomeFieldAux - spendingFieldAux;
 
+    this.state.savingsPercentage = (100 - ((spendingFieldAux * 100) / incomeFieldAux )).toFixed(1);
+
+    if(this.state.wrRate <= 0)
+      return;
 
 		// Calculate FireNumber
-		this.state.fireNumber = ((this.state.retSpending / this.state.wrRate) * 100).toFixed(0);
+		this.state.fireNumber = ((retSpendingFieldAux / this.state.wrRate) * 100).toFixed(0);
 
-		this.compound(this.state.investment, (this.state.invReturns / 100) + 1,
-			this.state.age, this.state.income, this.state.savings);
+		this.compound(investmentFieldAux, (this.state.invReturns / 100) + 1,
+			this.state.age, incomeFieldAux, spendingFieldAux, this.state.savingsNumber, this.state.fireNumber);
 
 		console.log("---------END---------\n");
 	}
@@ -114,18 +116,14 @@ export default class App extends Component {
 			return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0}).format(number)													
 	}
 
-
-
-	compound(investment, interest, age, income, savings) {
+	compound(investment, interest, age, income, spending, savings, fireNumber) {
 		var accumulated = parseInt(investment);
 
-		console.log("this.state.fireNumber:" + this.state.fireNumber);
-
-		for (i = age, j = 0; accumulated < this.state.fireNumber; i++ , j++) {
+		for (i = age, j = 0; accumulated < fireNumber; i++ , j++) {
 
 			accumulated = (accumulated + savings) * interest.toFixed(2);
 
-			savings = this.increaseSavings(income, this.state.spending);
+			savings = this.increaseSavings(income, spending);
 
 			income = this.increaseIncome(income);
 
@@ -134,7 +132,6 @@ export default class App extends Component {
 				age: i,
 				value: accumulated.toFixed(0)
 			};
-
 
 			if (accumulated < 0) {
 				this.state.savings = 0;
@@ -152,9 +149,7 @@ export default class App extends Component {
 				return;
 			}
 
-			this.state.savings = this.state.income - this.state.spending;
-
-			this.state.savingsPercentage = (100 - ((this.state.spending * 100) / this.state.income)).toFixed(1);
+			this.state.savings = savings;
 
 			var newStateArray = this.state.fireData.slice();
 
@@ -221,21 +216,32 @@ export default class App extends Component {
 							</View>
 							<View style={styles.h2}>
 								<Text style={styles.text}>Investments</Text>
-								<TextInput
-									keyboardType="numeric"
-									selectionColor={LIGHT_GREEN}
+
+                <TextInputMask
+									type={'money'}
+									options={{
+										precision: 0,
+										separator: ',',
+										delimiter: '.',
+										unit: '£',
+										suffixUnit: ''
+									}}		
+                  selectionColor={LIGHT_GREEN}
 									underlineColorAndroid={
 										isFocused ? LIGHT_GREEN : LIGHT_GRAY
 									}
 									onFocus={this.handleFocus}
 									onBlur={this.handleBlur}
-									style={styles.textInput}
-									onChangeText={(investment) => this.setState({ investment })}
+									style={styles.textInput}						
+									onChangeText={investment => {
+										this.setState({ investment });
+									}}
 									onEndEditing={() => this.onFireReady()}
 									onSelectionChange={() => this.onFireReady()}
-									value={this.formatNumber(this.state.investment)}								
-								
+									value={this.state.investment}
+									ref={(ref) => this.investmentField = ref}
 								/>
+							
 							</View>
 						</View>
 
@@ -252,6 +258,10 @@ export default class App extends Component {
 										unit: '£',
 										suffixUnit: ''
 									}}		
+                  selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
 									onFocus={this.handleFocus}
 									onBlur={this.handleBlur}
 									style={styles.textInput}						
@@ -277,6 +287,10 @@ export default class App extends Component {
 										unit: '£',
 										suffixUnit: ''
 									}}	
+                  selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
 									onFocus={this.handleFocus}
 									onBlur={this.handleBlur}
 									style={styles.textInput}						
@@ -293,15 +307,10 @@ export default class App extends Component {
 							<View style={styles.h2}>
 								<Text style={styles.text}>Savings</Text>
 								<Text style={styles.textInput}> 
-								{this.formatNumber(this.state.income - this.state.spending)}								
-									{' '}({(100 - ((this.state.spending * 100) / this.state.income )).toFixed(1)}{this.state.percentageSymbol}) </Text>
-
+								{this.formatNumber(this.state.savingsNumber)}
+									{' '}({this.state.savingsPercentage}{this.state.percentageSymbol}) </Text>
 							</View>
 						</View>
-
-
-
-
 
 						<View style={styles.container}>
 							<View style={styles.MoneyRowText}>
@@ -321,26 +330,34 @@ export default class App extends Component {
 										onSelectionChange={() => this.onFireReady()}
 										value={this.state.incGrowth}
 									/>
-
 								</View>
 
 								<View style={styles.h2}>
 									<Text style={styles.text}>Ret. Spending</Text>
-									<TextInput
-										keyboardType="numeric"
-										selectionColor={LIGHT_GREEN}
-										underlineColorAndroid={
-											isFocused ? LIGHT_GREEN : LIGHT_GRAY
-										}
-										onFocus={this.handleFocus}
-										onBlur={this.handleBlur}
-										style={styles.textInput}
-										onChangeText={(retSpending) => this.setState({ retSpending })}
-										onEndEditing={() => this.onFireReady()}
-										onSelectionChange={() => this.onFireReady()}
-										value={this.formatNumber(this.state.retSpending)}								
+
+                  <TextInputMask
+									type={'money'}			
+									options={{
+										precision: 0,
+										separator: ',',
+										delimiter: '.',
+										unit: '£',
+										suffixUnit: ''
+									}}	
+                  selectionColor={LIGHT_GREEN}
+									underlineColorAndroid={
+										isFocused ? LIGHT_GREEN : LIGHT_GRAY
+									}
+									onFocus={this.handleFocus}
+									onBlur={this.handleBlur}
+									style={styles.textInput}						
+									onChangeText={(retSpending) => this.setState({ retSpending })}
+									onEndEditing={() => this.onFireReady()}
+									onSelectionChange={() => this.onFireReady()}
+									value={this.state.retSpending}
+									ref={(ref) => this.retSpendingField = ref}
+								/>
 								
-									/>
 								</View>
 								<View style={styles.h2}>
 									<Text style={styles.text}>WR Rate</Text>
@@ -362,6 +379,7 @@ export default class App extends Component {
 							</View>
 
 							<View style={styles.MoneyRowText}>
+              
 								<View style={styles.h2}>
 									<Text style={styles.text}>Inv. Returns</Text>
 									<TextInput
@@ -383,18 +401,19 @@ export default class App extends Component {
 								<View style={styles.h2}>
 									<Text style={styles.text}>FIRE #</Text>
 									<Text style={styles.textInput}>{
-										this.formatNumber((this.state.retSpending / this.state.wrRate) * 100)}
-
-								
+										this.formatNumber(this.state.fireNumber)}								
 									</Text>
 								</View>
+
 							</View>
 						</View>
 					</View>
 
+
 					<View>
 						<Text style={styles.flatListHeader}>#                Age                Balance</Text>
 					</View>
+
 
 					<View style={styles.itemContainer}>
 						{
@@ -408,9 +427,7 @@ export default class App extends Component {
 						}
 					</View>
 
-
 				</ScrollView>
-
 			</View>
 		);
 	}
