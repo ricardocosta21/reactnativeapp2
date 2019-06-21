@@ -71,11 +71,10 @@ export default StyleSheet.create({
     paddingBottom:10,
     },
 
-  itemContainer: {
-    flex: 1,  
-    width: size,   
-    flexDirection: "row",
-  },
+    itemContainer: {
+      flex: 1,  
+      width: size,   
+    },
 
   item: {
     flex: 1,
@@ -100,7 +99,6 @@ export default StyleSheet.create({
 
   flatList: {
     flexGrow: 1, 
-    paddingBottom: 90
     
   },
  
