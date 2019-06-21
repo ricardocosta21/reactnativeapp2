@@ -26,7 +26,6 @@ export default StyleSheet.create({
 
   textInput: {
     textAlign: 'center',
-    marginTop: 10,
     
   }, 
 
@@ -36,11 +35,21 @@ export default StyleSheet.create({
 
   MoneyRowText: {
     flex: 1,
-    marginTop: 25,
+    marginTop: 15,
     fontSize: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 10,
+  },
+
+  MoneyBottomRowText: {
+    flex: 1,
+    marginTop: 15,
+    fontSize: 16,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginLeft: 10,
   },
 
   // toolbar: {
@@ -59,7 +68,7 @@ export default StyleSheet.create({
   backgroundItem1: {
     backgroundColor: WHITE,
     flex:1,
-    paddingBottom:20,
+    paddingBottom:10,
     },
 
   itemContainer: {

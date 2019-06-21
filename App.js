@@ -9,9 +9,8 @@
 import React, { Component } from 'react';
 import styles from './style'
 import { Platform, Image, ScrollView, ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon } from 'native-base';
 // 3rd party libraries
-import { Card } from 'react-native-elements';
 import { TextInputMask } from 'react-native-masked-text'
 
 const BLUE = "#428AF8";
@@ -243,10 +242,8 @@ export default class App extends Component {
 								/>
 							
 							</View>
-						</View>
 
-						<View style={styles.MoneyRowText}>
-							<View style={styles.h2}>
+              <View style={styles.h2}>
 								<Text style={styles.text}>Income(-Tax)</Text>
 
 								<TextInputMask
@@ -304,12 +301,6 @@ export default class App extends Component {
 								/>
 							</View>
 
-							<View style={styles.h2}>
-								<Text style={styles.text}>Savings</Text>
-								<Text style={styles.textInput}> 
-								{this.formatNumber(this.state.savingsNumber)}
-									{' '}({this.state.savingsPercentage}{this.state.percentageSymbol}) </Text>
-							</View>
 						</View>
 
 						<View style={styles.container}>
@@ -376,12 +367,9 @@ export default class App extends Component {
 										value={this.state.wrRate}
 									/>
 								</View>
-							</View>
 
-							<View style={styles.MoneyRowText}>
-              
-								<View style={styles.h2}>
-									<Text style={styles.text}>Inv. Returns</Text>
+                <View style={styles.h2}>
+									<Text style={styles.text}>Returns</Text>
 									<TextInput
 										keyboardType="numeric"
 										selectionColor={LIGHT_GREEN}
@@ -398,12 +386,23 @@ export default class App extends Component {
 									/>
 								</View>
 
+							</View>
+
+							<View style={styles.MoneyBottomRowText}>
+
+                <View style={styles.h2}>
+                  <Text style={styles.text}> Savings </Text>
+                  <Text style={styles.textInput}> 
+                  {this.formatNumber(this.state.savingsNumber)}
+                    {' '}({this.state.savingsPercentage}{this.state.percentageSymbol}) </Text>
+						  	</View>
+
 								<View style={styles.h2}>
-									<Text style={styles.text}>FIRE #</Text>
+									<Text style={styles.text}> FIRE # </Text>
 									<Text style={styles.textInput}>{
 										this.formatNumber(this.state.fireNumber)}								
 									</Text>
-								</View>
+								</View>               
 
 							</View>
 						</View>
