@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^1.0.0",
+    "core-js": "^3.2.1",
     "intl": "^1.2.5",
     "native-base": "^2.12.1",
     "react": "16.8.3",
