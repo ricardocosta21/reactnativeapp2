@@ -8,9 +8,8 @@
 
 import React, { Component } from 'react';
 import styles from './style'
-import { Platform, Image, ScrollView, Text, View, TextInput, FlatList } from 'react-native';
+import { Platform, Image, ScrollView, ToolbarAndroid, Text, View, TextInput, FlatList, Dimensions } from 'react-native';
 import { Container, Header, Title, Content, Button, Left, Right, Body, Icon } from 'native-base';
-
 // 3rd party libraries
 import { TextInputMask } from 'react-native-masked-text'
 
@@ -22,6 +21,7 @@ const LIGHT_GRAY = "#D3D3D3";
 const WHITE = "#FFFFFF";
 
 export default class App extends Component {
+
 
 	handleFocus = event => {
 		this.setState({ isFocused: true });
@@ -40,10 +40,13 @@ export default class App extends Component {
 	onActionSelected(position) {
 	}
 
+
+
 	handleTextChanged(text) {
 		console.warn('text changed !');
 		this.setState({ text });
 	}
+
 
 	state = {
 		year: '',
@@ -51,17 +54,17 @@ export default class App extends Component {
 		age: '26',
 		investment: '140000',
 		income: '54000',
-    	spending: '40000',
-    	savingsNumber: '',
-		savings: '',    
-		savingsPercentage: '',
+    spending: '40000',
+    savingsNumber: '',
+    savings: '',    
+    savingsPercentage: '',
 		incGrowth: '3',
 		retSpending: '35000',
 		wrRate: '4',
 		invReturns: '7',
-		fireNumber: '',
-		fireDisplayNumber: '',
-		currencySymbol: '£',
+    fireNumber: '',
+    fireDisplayNumber: '',
+    currencySymbol: '£',
 		percentageSymbol: '%',
 		fireData: []
 	};
