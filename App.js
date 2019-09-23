@@ -9,7 +9,11 @@
 import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
+import { openDatabase } from 'react-native-sqlite-storage';
 
+// var db = openDatabase({ name: 'dataState.db', createFromLocation : 1});
+
+//https://aboutreact.com/example-of-pre-populated-sqlite-database-in-react-native/
 import {
   Platform,
   Image,
@@ -63,7 +67,6 @@ export default class App extends Component {
   }
 
   state = {
-    year: "",
     isFocused: false,
     age: "26",
     investment: "10000",
@@ -189,8 +192,17 @@ export default class App extends Component {
     }
   }
 
+  saveDataState = () => {
+
+  }
+
   componentDidMount() {
     this.onFireReady();
+  }
+
+  componentWillUnmount()
+  {
+    this.saveDataState();
   }
 
   render() {
@@ -435,9 +447,7 @@ export default class App extends Component {
                 style={styles.flatList}
                 data={this.state.fireData}
                 keyExtractor={(item, index) => "key" + index}
-                renderItem={({ item, index }) => (
-
-                
+                renderItem={({ item, index }) => (                
                   <View style={{ 
                     flex: 1,
                     flexDirection: "row",
