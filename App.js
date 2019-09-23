@@ -7,7 +7,9 @@
  */
 
 import React, { Component } from "react";
+import CardView from 'react-native-cardview'
 import styles from "./style";
+
 import {
   Platform,
   Image,
@@ -33,11 +35,10 @@ import {
 // 3rd party libraries
 import { TextInputMask } from "react-native-masked-text";
 
-const BLUE = "#428AF8";
 const LIGHT_GREEN = "#ddfff6";
 const MEDIUM_GREEN = "#96ffe3";
 const HARD_GREEN = "#53d1af";
-const LIGHT_GRAY = "#D3D3D3";
+const LIGHT_GRAY = "#ECECEC";
 const WHITE = "#FFFFFF";
 
 export default class App extends Component {
@@ -55,10 +56,9 @@ export default class App extends Component {
     }
   };
 
-  onActionSelected(position) {}
+  onActionSelected(position) { }
 
   handleTextChanged(text) {
-    console.warn("text changed !");
     this.setState({ text });
   }
 
@@ -66,14 +66,14 @@ export default class App extends Component {
     year: "",
     isFocused: false,
     age: "26",
-    investment: "140000",
-    income: "54000",
-    spending: "40000",
+    investment: "10000",
+    income: "30000",
+    spending: "5000",
     savingsNumber: "",
     savings: "",
     savingsPercentage: "",
     incGrowth: "3",
-    retSpending: "35000",
+    retSpending: "100000",
     wrRate: "4",
     invReturns: "7",
     fireNumber: "",
@@ -84,9 +84,9 @@ export default class App extends Component {
   };
 
   onFireReady = () => {
-    console.log("\n\n\n\n\n\n---------BEGIN---------");
-    console.log("\nIncome:" + this.state.income);
-    console.log("Spending:" + this.state.spending);
+    // console.log("\n\n\n\n\n\n---------BEGIN---------");
+    // console.log("\nIncome:" + this.state.income);
+    // console.log("Spending:" + this.state.spending);
 
     this.state.fireData = [];
 
@@ -123,7 +123,7 @@ export default class App extends Component {
       this.state.fireNumber
     );
 
-    console.log("---------END---------\n");
+    // console.log("---------END---------\n");
   };
 
   increaseIncome(income) {
@@ -144,10 +144,12 @@ export default class App extends Component {
   }
 
   compound(investment, interest, age, income, spending, savings, fireNumber) {
+
     var accumulated = parseInt(investment);
 
-    for (i = age, j = 0; accumulated < fireNumber; i++, j++) {
-      accumulated = (accumulated + savings) * interest.toFixed(2);
+    for (i = age, j = 0; accumulated < fireNumber; i++ , j++) {
+
+      accumulated = parseInt((accumulated + savings) * interest.toFixed(2));
 
       savings = this.increaseSavings(income, spending);
 
@@ -181,21 +183,10 @@ export default class App extends Component {
 
       newStateArray.push(objToPush);
 
-      this.setState({ fireData: newStateArray });
-
       this.state.fireData = newStateArray;
-    }
 
-    console.log(
-      investment +
-        " to " +
-        accumulated.toFixed(0) +
-        " at " +
-        interest +
-        " within " +
-        j +
-        " years"
-    );
+      this.setState({ fireData: newStateArray });
+    }
   }
 
   componentDidMount() {
@@ -204,15 +195,17 @@ export default class App extends Component {
 
   render() {
     const { isFocused } = this.state;
+    let colors = [WHITE, LIGHT_GRAY];
+
     return (
       <View style={styles.container}>
         <Header
           iosBarStyle="light-content"
           androidStatusBarColor={HARD_GREEN}
-          style={{ backgroundColor: MEDIUM_GREEN }}
+          style={{ backgroundColor: HARD_GREEN }}
         >
           <Left>
-            <Button transparent style={styles.header}>
+            <Button transparent>
               <Icon name="menu" />
             </Button>
           </Left>
@@ -222,26 +215,27 @@ export default class App extends Component {
           <Right />
         </Header>
 
-        <ScrollView>
-          <View style={styles.backgroundItem1}>
 
+        <ScrollView>
             <View style={styles.MoneyRowText}>
-              <View style={styles.h2}>
+              <CardView
+                style={styles.cardContainer}>
                 <TextInput
-                  maxLength={2}
+                  maxLength={3}
                   keyboardType="numeric"
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
                   style={styles.textInput}
+                  selectionColor={LIGHT_GREEN}
+                  underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
                   onChangeText={age => this.setState({ age })}
-                  onEndEditing={() => this.onFireReady()}
+                  //onEndEditing={() => this.onFireReady()}
                   onSelectionChange={() => this.onFireReady()}
                   value={this.state.age}
                 />
                 <Text style={styles.text}>Age</Text>
-              </View>
+              </CardView>
 
-              <View style={styles.h2}>
+              <CardView
+                style={styles.cardContainer}>
                 <TextInputMask
                   type={"money"}
                   options={{
@@ -249,26 +243,46 @@ export default class App extends Component {
                     separator: ",",
                     delimiter: ".",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: ''
                   }}
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
+                  selectionColor={LIGHT_GREEN}
+                  underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
                   style={styles.textInput}
                   onChangeText={investment => {
                     this.setState({ investment });
                   }}
-                  onEndEditing={() => this.onFireReady()}
+                  //onEndEditing={() => this.onFireReady()}
                   onSelectionChange={() => this.onFireReady()}
                   value={this.state.investment}
                   ref={ref => (this.investmentField = ref)}
                 />
                 <Text style={styles.text}>Investments</Text>
-              </View>			  
+              </CardView>
+
+              <CardView
+                style={styles.cardContainer}>
+                <View style={styles.textPercentageReturns}>
+                  <TextInput
+                    keyboardType="numeric"
+                    style={styles.textInput}
+                    selectionColor={LIGHT_GREEN}
+                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
+                    onChangeText={invReturns => this.setState({ invReturns })}
+                    //onEndEditing={() => this.onFireReady()}
+                    onSelectionChange={() => this.onFireReady()}
+                    value={this.state.invReturns}
+                  />
+                  <Text style={styles.text}>{this.state.percentageSymbol}</Text>
+                </View>
+                <Text style={styles.text}>Returns</Text>
+
+              </CardView>
             </View>
 
             <View style={styles.container}>
               <View style={styles.MoneyRowText}>
-                <View style={styles.h2}>
+                <CardView
+                  style={styles.cardContainer}>
                   <TextInputMask
                     type={"money"}
                     options={{
@@ -276,25 +290,24 @@ export default class App extends Component {
                       separator: ",",
                       delimiter: ".",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: ''
                     }}
-                    //   selectionColor={LIGHT_GREEN}
-                    //   underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
+                    selectionColor={LIGHT_GREEN}
+                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}                    
                     style={styles.textInput}
                     onChangeText={income => {
                       this.setState({ income });
                     }}
-                    onEndEditing={() => this.onFireReady()}
+                    //onEndEditing={() => this.onFireReady()}
                     onSelectionChange={() => this.onFireReady()}
                     value={this.state.income}
                     ref={ref => (this.incomeField = ref)}
                   />
                   <Text style={styles.text}>Income(-Tax)</Text>
-                </View>
+                </CardView>
 
-                <View style={styles.h2}>
+                <CardView
+                  style={styles.cardContainer}>
                   <TextInputMask
                     type={"money"}
                     options={{
@@ -302,52 +315,59 @@ export default class App extends Component {
                       separator: ",",
                       delimiter: ".",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: ''
                     }}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
+                    selectionColor={LIGHT_GREEN}
+                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
                     style={styles.textInput}
                     onChangeText={spending => {
                       this.setState({ spending });
                     }}
-                    onEndEditing={() => this.onFireReady()}
+                    //onEndEditing={() => this.onFireReady()}
                     onSelectionChange={() => this.onFireReady()}
                     value={this.state.spending}
                     ref={ref => (this.spendingField = ref)}
                   />
                   <Text style={styles.text}>Spending</Text>
-                </View>
+                </CardView>
 
-				<View style={styles.h2}>                  
+                <CardView
+                  style={styles.cardContainer}>
                   <Text style={styles.textInput}>
-                    {this.formatNumber(this.state.savingsNumber)} 
-					{"\n"}
-					({this.state.savingsPercentage}
-                    {this.state.percentageSymbol}){" "}
+                    {this.formatNumber(this.state.savingsNumber)}
+                    {"\n"}
+                    <Text style={styles.textPercentage}>
+                      ({this.state.savingsPercentage}
+                      {this.state.percentageSymbol})
+                    </Text>
                   </Text>
-				  <Text style={styles.text}> Savings </Text>
-                </View>
-				
+                  <Text style={styles.text}> Savings </Text>
+                </CardView>
               </View>
             </View>
 
             <View style={styles.container}>
               <View style={styles.MoneyRowText}>
-                <View style={styles.h2}>
-                  <TextInput
-                    keyboardType="numeric"
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
-                    style={styles.textInput}
-                    onChangeText={incGrowth => this.setState({ incGrowth })}
-                    onEndEditing={() => this.onFireReady()}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.incGrowth}
-                  />
-				  <Text style={styles.text}>Inc. Growth</Text>
-                </View>
+                <CardView
+                  style={styles.cardContainer}>
+                  <View style={styles.textPercentageReturns}>
+                    <TextInput
+                      keyboardType="numeric"
+                      style={styles.textInput}
+                      selectionColor={LIGHT_GREEN}
+                      underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
+                      onChangeText={incGrowth => this.setState({ incGrowth })}
+                      //onEndEditing={() => this.onFireReady()}
+                      onSelectionChange={() => this.onFireReady()}
+                      value={this.state.incGrowth}
+                    />
+                    <Text style={styles.text}>{this.state.percentageSymbol}</Text>
+                  </View>
+                  <Text style={styles.text}>Inc. Growth</Text>
+                </CardView>
 
-                <View style={styles.h2}>
+                <CardView
+                  style={styles.cardContainer}>
                   <TextInputMask
                     type={"money"}
                     options={{
@@ -355,66 +375,58 @@ export default class App extends Component {
                       separator: ",",
                       delimiter: ".",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: ''
                     }}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
+                    selectionColor={LIGHT_GREEN}
+                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
                     style={styles.textInput}
                     onChangeText={retSpending => this.setState({ retSpending })}
-                    onEndEditing={() => this.onFireReady()}
+                    //onEndEditing={() => this.onFireReady()}
                     onSelectionChange={() => this.onFireReady()}
                     value={this.state.retSpending}
                     ref={ref => (this.retSpendingField = ref)}
                   />
-				   <Text style={styles.text}>Ret. Spending</Text>
+                  <Text style={styles.text}>Ret. Spend.</Text>
+                </CardView>
 
-                </View>
+                <CardView
+                  style={styles.cardContainer}>
+                  <View style={styles.textPercentageReturns}>
+                    <TextInput
+                      keyboardType="numeric"
+                      style={styles.textInput}
+                      selectionColor={LIGHT_GREEN}
+                      underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
+                      onChangeText={wrRate => this.setState({ wrRate })}
+                      //onEndEditing={() => this.onFireReady()}
+                      onSelectionChange={() => this.onFireReady()}
+                      value={this.state.wrRate}
+                    />
+                    <Text style={styles.text}>{this.state.percentageSymbol}</Text>
+                  </View>
+                  <Text style={styles.text}>WR Rate</Text>
+                </CardView>
 
-                <View style={styles.h2}>                  
-                  <TextInput
-                    keyboardType="numeric"
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
-                    style={styles.textInput}
-                    onChangeText={wrRate => this.setState({ wrRate })}
-                    onEndEditing={() => this.onFireReady()}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.wrRate}
-                  />
-				  <Text style={styles.text}>WR Rate</Text>
-                </View>
-
-                <View style={styles.h2}>                 
-                  <TextInput
-                    keyboardType="numeric"
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
-                    style={styles.textInput}
-                    onChangeText={invReturns => this.setState({ invReturns })}
-                    onEndEditing={() => this.onFireReady()}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.invReturns}
-                  />
-				   <Text style={styles.text}>Returns</Text>
-                </View>
               </View>
 
-              <View style={styles.MoneyBottomRowText}>  
-                <View style={styles.h2}>                  
+              <View style={styles.MoneyRowText}>
+                <CardView
+                  style={styles.cardContainer}>
                   <Text style={styles.textInput}>
                     {this.formatNumber(this.state.fireNumber)}
                   </Text>
-				  <Text style={styles.text}> FIRE # </Text>
-                </View>
+                  <Text style={styles.text}> FIRE # </Text>
+                </CardView>
               </View>
 
             </View>
-          </View>
 
 
 
-          <View>
-            <Text style={styles.flatListHeader}># 	Age 	Balance</Text>
+          <View style={styles.itemContainerHeader}>
+            <Text style={styles.flatListHeaderLeft}>#</Text>
+            <Text style={styles.flatListHeaderCenter}>Age</Text>
+            <Text style={styles.flatListHeaderRight}>Balance</Text>
           </View>
 
           <View style={styles.itemContainer}>
@@ -422,16 +434,26 @@ export default class App extends Component {
               <FlatList
                 style={styles.flatList}
                 data={this.state.fireData}
-                renderItem={({ item }) => (
-                  <Text style={styles.item}>
-                    {item.index} {"              " + item.age}
-                    {"              " + this.formatNumber(item.value)}
-                  </Text>
-                )}
                 keyExtractor={(item, index) => "key" + index}
+                renderItem={({ item, index }) => (
+
+                
+                  <View style={{ 
+                    flex: 1,
+                    flexDirection: "row",
+                    paddingTop: 15,
+                    paddingBottom: 15,
+                    backgroundColor: colors[index % colors.length] }}>
+                    <Text style={styles.flatListItemLeft}>{item.index}</Text>
+                    <Text style={styles.flatListItemCenter}>{item.age}</Text>
+                    <Text style={styles.flatListItemRight}>{this.formatNumber(item.value)}</Text>
+                  </View>
+                )}
+               
               />
             }
           </View>
+
         </ScrollView>
       </View>
     );

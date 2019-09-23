@@ -1,36 +1,35 @@
 import { StyleSheet, Dimensions } from "react-native";
 
-const numColumns = 3;
-const size = Dimensions.get("window").width / 1;
+const width = Dimensions.get("window").width / 1;
+const height = Dimensions.get("window").height / 1;
 const BLUE = "#428AF8";
 const LIGHT_GREEN = "#ddfff6";
 const MEDIUM_GREEN = "#96ffe3";
 const HARD_GREEN = "#53d1af";
-const VERY_LIGHT_GRAY = "#e6e6e6";
-const LIGHT_GRAY = "#D3D3D3";
+const GRAY = "#C8C8C8";
+const LIGHT_GRAY = "#F4F4F4";
 const WHITE = "#FFFFFF";
 export default StyleSheet.create({
   container: {
     backgroundColor: "transparent"
   },
 
-  header: {
-    borderTopColor: MEDIUM_GREEN
-  },
-
   text: {
-    alignSelf: "center",
-    margin: 10
-  },
-
-  text2: {
-    alignSelf: "center",
-    margin: 10
+    alignSelf: "center"
   },
 
   textInput: {
     textAlign: "center",
     fontSize: 20
+  },
+
+  textPercentage: {
+    textAlign: "center",
+    fontSize: 15
+  },
+
+  textPercentageReturns: {
+    flexDirection: "row"
   },
 
   h2: {
@@ -43,8 +42,7 @@ export default StyleSheet.create({
     fontSize: 16,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    marginLeft: 20
+    justifyContent: "center"
   },
 
   MoneyBottomRowText: {
@@ -52,56 +50,72 @@ export default StyleSheet.create({
     marginTop: 15,
     fontSize: 16,
     flexDirection: "row",
-    justifyContent: "center",
-    marginLeft: 10
+    justifyContent: "center"
   },
-
-  // toolbar: {
-  //   backgroundColor: '#7ee7e4',
-  //   height: 56,
-  //   alignSelf: 'stretch',
-  //   textAlign: 'center',
-  // },
 
   cardContainer: {
     flex: 1,
+    height:80,
     alignItems: "center",
-    backgroundColor: "#7ee7e4"
+    justifyContent: "center",
+    backgroundColor: LIGHT_GRAY
   },
 
-  backgroundItem1: {
-    backgroundColor: WHITE,
+  itemContainerHeader: {
     flex: 1,
-    paddingBottom: 10
+    flexDirection: "row",
+    height:30,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: GRAY
+  },
+
+  flatListHeaderLeft: {    
+    flex: 3,
+    textAlign: "center",
+    fontSize: 15
+  },
+
+  flatListHeaderCenter: {    
+    flex: 3,
+    textAlign: "center",
+    fontSize: 15
+  },
+
+  flatListHeaderRight: {    
+    flex: 5,
+    textAlign: "center",
+    fontSize: 15
+  },
+
+  flatListItemLeft: {    
+    flex:3,
+    textAlign: "center",
+    fontSize: 20,
+    justifyContent: "center"
+  },
+
+  flatListItemCenter: {    
+    flex:3,
+    textAlign: "center",
+    fontSize: 20,
+    justifyContent: "center"
+  },
+
+  flatListItemRight: {    
+    flex:5,
+    textAlign: "center",
+    fontSize: 20,
+    justifyContent: "center"
   },
 
   itemContainer: {
     flex: 1,
-    width: size
+    backgroundColor: WHITE
   },
 
-  item: {
+  flatList: {   
     flex: 1,
-    margin: 0.5,
-    fontSize: 16,
-    paddingTop: 15,
-    paddingBottom: 15,
-    borderRadius: 5,
-    textAlign: "center",
-    backgroundColor: VERY_LIGHT_GRAY
-  },
-
-  flatListHeader: {
-    flex: 1,
-    fontSize: 14,
-    paddingTop: 6,
-    paddingBottom: 6,
-    borderRadius: 1,
-    textAlign: "center",
-    backgroundColor: LIGHT_GRAY
-  },
-
-  flatList: {
-    flexGrow: 1
+    marginBottom: height / 6 
   }
 });
