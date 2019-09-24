@@ -29,7 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new ReactNativeIntlPackage(),
-            new SQLitePluginPackage(),   // register SQLite Plugin here
+            new SQLitePluginPackage(),   // register SQLite Plugin here 
             new VectorIconsPackage(),
             new RNCardViewPackage()
       );

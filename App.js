@@ -25,7 +25,6 @@ import {
   TextInput,
   FlatList,
   Alert,
-  React,
   Dimensions,
   ToastAndroid,
   TouchableOpacity
@@ -46,6 +45,7 @@ import {
 import { TextInputMask } from "react-native-masked-text";
 import { Icon } from 'react-native-elements'
 
+var React = require('react-native');
 var SQLite = require('react-native-sqlite-storage')
 
 var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'});
