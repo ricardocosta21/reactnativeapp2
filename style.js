@@ -18,6 +18,12 @@ export default StyleSheet.create({
     alignSelf: "center"
   },
 
+  headerIcon: {
+    marginRight: 10
+  },
+
+
+
   textInput: {
     textAlign: "center",
     fontSize: 20

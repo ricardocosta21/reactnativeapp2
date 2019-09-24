@@ -22,6 +22,7 @@
     "react-native-navbar": "^2.1.0",
     "react-native-sqlite-storage": "^4.1.0",
     "react-native-toolbar": "^1.0.7",
+    "react-native-update-gradle": "^1.2.0",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.9",
     "react-navigation-stack": "^1.9.0",

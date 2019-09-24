@@ -25,8 +25,10 @@ import {
   TextInput,
   FlatList,
   Alert,
+  React,
   Dimensions,
-  ToastAndroid
+  ToastAndroid,
+  TouchableOpacity
 } from "react-native";
 import {
   Container,
@@ -37,10 +39,17 @@ import {
   Left,
   Right,
   Body,
-  Icon
+  // Icon
 } from "native-base";
+
 // 3rd party libraries
 import { TextInputMask } from "react-native-masked-text";
+import { Icon } from 'react-native-elements'
+
+var SQLite = require('react-native-sqlite-storage')
+
+var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'});
+
 
 const LIGHT_GREEN = "#ddfff6";
 const MEDIUM_GREEN = "#96ffe3";
@@ -49,6 +58,61 @@ const LIGHT_GRAY = "#ECECEC";
 const WHITE = "#FFFFFF";
 
 export default class App extends Component {
+
+constructor(props)
+{
+  super(props)
+
+  this.state = {
+    isFocused: false,
+    age: "26",
+    investment: "10000",
+    income: "30000",
+    spending: "5000",
+    savingsNumber: "",
+    savings: "",
+    savingsPercentage: "",
+    incGrowth: "3",
+    retSpending: "100000",
+    wrRate: "4",
+    invReturns: "7",
+    fireNumber: "",
+    fireDisplayNumber: "",
+    currencySymbol: "£",
+    percentageSymbol: "%",
+    fireData: []
+  };
+
+  db.transaction((tx) => {
+    tx.executeSql('SELECT * FROM tbl_dataset', [], (tx, results) => {
+        var len = results.rows.length;
+          if(len > 0)
+          {
+            var row = results.rows.item(0);
+            this.setState({
+              age: row.age,
+              investment: row.investment,
+              income: row.income,
+              spending: row.spending,
+              incGrowth: row.incGrowth,
+              retSpending: row.retSpending,
+              wrRate: row.wrRate,
+              invReturns: row.invReturns            
+            });
+          }  
+          
+          ToastAndroid.showWithGravityAndOffset(
+            row.age + " " + row.investment + " " + row.income + "\nLOADED",
+            ToastAndroid.LONG,
+            ToastAndroid.BOTTOM,
+            25,
+            50,
+          );
+
+      });
+  });
+}
+
   handleFocus = event => {
     this.setState({ isFocused: true });
     if (this.props.onFocus) {
@@ -69,25 +133,25 @@ export default class App extends Component {
     this.setState({ text });
   }
 
-  state = {
-    isFocused: false,
-    age: "26",
-    investment: "10000",
-    income: "30000",
-    spending: "5000",
-    savingsNumber: "",
-    savings: "",
-    savingsPercentage: "",
-    incGrowth: "3",
-    retSpending: "100000",
-    wrRate: "4",
-    invReturns: "7",
-    fireNumber: "",
-    fireDisplayNumber: "",
-    currencySymbol: "£",
-    percentageSymbol: "%",
-    fireData: []
-  };
+  // state = {
+  //   isFocused: false,
+  //   age: "26",
+  //   investment: "10000",
+  //   income: "30000",
+  //   spending: "5000",
+  //   savingsNumber: "",
+  //   savings: "",
+  //   savingsPercentage: "",
+  //   incGrowth: "3",
+  //   retSpending: "100000",
+  //   wrRate: "4",
+  //   invReturns: "7",
+  //   fireNumber: "",
+  //   fireDisplayNumber: "",
+  //   currencySymbol: "£",
+  //   percentageSymbol: "%",
+  //   fireData: []
+  // };
 
   onFireReady = () => {
     // console.log("\n\n\n\n\n\n---------BEGIN---------");
@@ -223,22 +287,30 @@ export default class App extends Component {
         <Header
           iosBarStyle="light-content"
           androidStatusBarColor={HARD_GREEN}
-          style={{ backgroundColor: HARD_GREEN }}
-        >
-          <Left>
-            <Button 
-            // title="Press me" 
-            icon="menu"
-            onPress={() => this.saveDataState()} 
-              
-            />
-          </Left>
+          style={{ backgroundColor: HARD_GREEN }}>
+           <Left>
+            <Button transparent>
+              <Icon name="menu"
+              color='#ffffff' />              
+            </Button>
+          </Left>    
+
           <Body>
             <Title style={styles.h2}>FireCalc</Title>
           </Body>
-          <Right />
-        </Header>
 
+          <Right>
+            <Icon            
+              name='save'
+              type='font-awesome'
+              color='#ffffff'
+              reverseColor='false'
+              underlayColor= '#53d1af'
+              iconStyle={styles.headerIcon}
+              onPress={() => this.saveDataState()} />
+          </Right>
+          
+        </Header>
 
         <ScrollView>
             <View style={styles.MoneyRowText}>
