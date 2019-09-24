@@ -91,21 +91,21 @@ export default StyleSheet.create({
   flatListItemLeft: {    
     flex:3,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 18,
     justifyContent: "center"
   },
 
   flatListItemCenter: {    
     flex:3,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 18,
     justifyContent: "center"
   },
 
   flatListItemRight: {    
     flex:5,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 18,
     justifyContent: "center"
   },
 

@@ -9,7 +9,8 @@
 import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
-import { openDatabase } from 'react-native-sqlite-storage';
+
+// import { openDatabase } from 'react-native-sqlite-storage';
 
 // var db = openDatabase({ name: 'dataState.db', createFromLocation : 1});
 
@@ -23,7 +24,9 @@ import {
   View,
   TextInput,
   FlatList,
-  Dimensions
+  Alert,
+  Dimensions,
+  ToastAndroid
 } from "react-native";
 import {
   Container,
@@ -192,18 +195,24 @@ export default class App extends Component {
     }
   }
 
-  saveDataState = () => {
-
+  saveDataState() {
+    ToastAndroid.showWithGravityAndOffset(
+      'Config Saved!',
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
   }
 
   componentDidMount() {
     this.onFireReady();
   }
 
-  componentWillUnmount()
-  {
-    this.saveDataState();
-  }
+  // componentWillUnmount()
+  // {
+  //   this.saveDataState();
+  // }
 
   render() {
     const { isFocused } = this.state;
@@ -217,9 +226,12 @@ export default class App extends Component {
           style={{ backgroundColor: HARD_GREEN }}
         >
           <Left>
-            <Button transparent>
-              <Icon name="menu" />
-            </Button>
+            <Button 
+            // title="Press me" 
+            icon="menu"
+            onPress={() => this.saveDataState()} 
+              
+            />
           </Left>
           <Body>
             <Title style={styles.h2}>FireCalc</Title>
