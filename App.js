@@ -45,11 +45,11 @@ import {
 import { TextInputMask } from "react-native-masked-text";
 import { Icon } from 'react-native-elements'
 
-var React = require('react-native');
+//var React = require('react-native');
 var SQLite = require('react-native-sqlite-storage')
 
-var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'});
-
+var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'})
+//var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'});
 
 const LIGHT_GREEN = "#ddfff6";
 const MEDIUM_GREEN = "#96ffe3";
@@ -59,6 +59,7 @@ const WHITE = "#FFFFFF";
 
 export default class App extends Component {
 
+  
 constructor(props)
 {
   super(props)
@@ -83,11 +84,16 @@ constructor(props)
     fireData: []
   };
 
+  
+ 
+  //var db = openDatabase({ name: 'dataState.db' });
+
   db.transaction((tx) => {
-    tx.executeSql('SELECT * FROM tbl_dataset', [], (tx, results) => {
+    tx.executeSql('SELECT * FROM data', [], (tx, results) => {
         var len = results.rows.length;
           if(len > 0)
           {
+
             var row = results.rows.item(0);
             this.setState({
               age: row.age,
@@ -112,6 +118,8 @@ constructor(props)
       });
   });
 }
+
+
 
   handleFocus = event => {
     this.setState({ isFocused: true });
@@ -293,6 +301,7 @@ constructor(props)
               <Icon name="menu"
               color='#ffffff' />              
             </Button>
+
           </Left>    
 
           <Body>
