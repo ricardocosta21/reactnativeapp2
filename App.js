@@ -10,9 +10,7 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
 
-// import { openDatabase } from 'react-native-sqlite-storage';
-
-// var db = openDatabase({ name: 'dataState.db', createFromLocation : 1});
+var SQLite = require('react-native-sqlite-storage')
 
 //https://aboutreact.com/example-of-pre-populated-sqlite-database-in-react-native/
 import {
@@ -45,12 +43,6 @@ import {
 import { TextInputMask } from "react-native-masked-text";
 import { Icon } from 'react-native-elements'
 
-//var React = require('react-native');
-var SQLite = require('react-native-sqlite-storage')
-
-var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'})
-//var db = SQLite.openDatabase({name: 'test.db', createFromLocation: '~dataState.db'});
-
 const LIGHT_GREEN = "#ddfff6";
 const MEDIUM_GREEN = "#96ffe3";
 const HARD_GREEN = "#53d1af";
@@ -58,7 +50,6 @@ const LIGHT_GRAY = "#ECECEC";
 const WHITE = "#FFFFFF";
 
 export default class App extends Component {
-
   
 constructor(props)
 {
@@ -83,40 +74,38 @@ constructor(props)
     percentageSymbol: "%",
     fireData: []
   };
-
   
- 
-  //var db = openDatabase({ name: 'dataState.db' });
+  // need to update db 'name' to update the data from the db
+  // var db = SQLite.openDatabase({name: 'test27.db', createFromLocation: '~dataState.db'})
 
-  db.transaction((tx) => {
-    tx.executeSql('SELECT * FROM data', [], (tx, results) => {
-        var len = results.rows.length;
-          if(len > 0)
-          {
-
-            var row = results.rows.item(0);
-            this.setState({
-              age: row.age,
-              investment: row.investment,
-              income: row.income,
-              spending: row.spending,
-              incGrowth: row.incGrowth,
-              retSpending: row.retSpending,
-              wrRate: row.wrRate,
-              invReturns: row.invReturns            
-            });
-          }  
+  // db.transaction((tx) => {
+  //   tx.executeSql('SELECT * FROM data', [], (tx, results) => {
+  //       var len = results.rows.length;
+  //         if(len > 0)
+  //         {
+  //           var row = results.rows.item(0);
+  //           this.setState({
+  //             age: row.age,
+  //             investment: row.investment,
+  //             income: row.income,
+  //             spending: row.spending,
+  //             incGrowth: row.incGrowth,
+  //             retSpending: row.retSpending,
+  //             wrRate: row.wrRate,
+  //             invReturns: row.invReturns            
+  //           });
+  //         }  
           
-          ToastAndroid.showWithGravityAndOffset(
-            row.age + " " + row.investment + " " + row.income + "\nLOADED",
-            ToastAndroid.LONG,
-            ToastAndroid.BOTTOM,
-            25,
-            50,
-          );
+  //         ToastAndroid.showWithGravityAndOffset(
+  //           row.age + " Hey " + row.investment + " income " + row.income + "row.incGrowth " + row.incGrowth + "\nLOADED",
+  //           ToastAndroid.LONG,
+  //           ToastAndroid.BOTTOM,
+  //           25,
+  //           50,
+  //         );
 
-      });
-  });
+  //     });
+  // });
 }
 
 
@@ -140,32 +129,8 @@ constructor(props)
   handleTextChanged(text) {
     this.setState({ text });
   }
-
-  // state = {
-  //   isFocused: false,
-  //   age: "26",
-  //   investment: "10000",
-  //   income: "30000",
-  //   spending: "5000",
-  //   savingsNumber: "",
-  //   savings: "",
-  //   savingsPercentage: "",
-  //   incGrowth: "3",
-  //   retSpending: "100000",
-  //   wrRate: "4",
-  //   invReturns: "7",
-  //   fireNumber: "",
-  //   fireDisplayNumber: "",
-  //   currencySymbol: "£",
-  //   percentageSymbol: "%",
-  //   fireData: []
-  // };
-
+ 
   onFireReady = () => {
-    // console.log("\n\n\n\n\n\n---------BEGIN---------");
-    // console.log("\nIncome:" + this.state.income);
-    // console.log("Spending:" + this.state.spending);
-
     this.state.fireData = [];
 
     const incomeFieldAux = this.incomeField.getRawValue();
@@ -267,18 +232,88 @@ constructor(props)
     }
   }
 
-  saveDataState() {
-    ToastAndroid.showWithGravityAndOffset(
-      'Config Saved!',
-      ToastAndroid.LONG,
-      ToastAndroid.BOTTOM,
-      25,
-      50,
-    );
-  }
+ 
 
   componentDidMount() {
+
+    var db = SQLite.openDatabase({name: 'test27323212.db', createFromLocation: '~dataState.db'})
+    
+    db.transaction((tx) => {
+      tx.executeSql('SELECT * FROM data WHERE id = 1', [], (tx, results) => {
+          var len = results.rows.length;
+            if(len > 0)
+            {
+              //
+              var row = results.rows.item(0);
+              this.setState({
+                age: row.age,
+                investment: row.investment,
+                income: row.income,
+                spending: row.spending,
+                incGrowth: row.incGrowth,
+                retSpending: row.retSpending,
+                wrRate: row.wrRate,
+                invReturns: row.invReturns            
+              });
+            }  
+            
+            ToastAndroid.showWithGravityAndOffset(
+              "ID: " + row.id + " Investment: " + row.investment + " income: " + row.income + "row.incGrowth " + row.incGrowth + "\nAAA23232HH",
+              ToastAndroid.LONG,
+              ToastAndroid.BOTTOM,
+              25,
+              50,
+            );  
+        });       
+    });   
+
+    // db.close(function () {
+    //   console.log("DB closed!");
+
+    // }, function (error) {
+    //     console.log("Error closing DB:" + error.message);
+    // });
+
+
     this.onFireReady();
+  } 
+
+
+  saveDataState() {
+
+    var db = SQLite.openDatabase({  name: 'test27323212.db', createFromLocation: '~dataState.db'})
+  
+
+    db.transaction((tx) => {
+        tx.executeSql('UPDATE data SET age = 10 WHERE id = 1', [], (tx, results) => {
+          var len = results.rows.length;
+          if(len > 0)
+          {
+            var row = results.rows.item(0);
+              ToastAndroid.showWithGravityAndOffset(
+              'Age: ' + row.age,
+              ToastAndroid.LONG,
+              ToastAndroid.BOTTOM,
+              25,
+              50,
+            );    
+          }
+        });   
+    });
+      // ToastAndroid.showWithGravityAndOffset(
+      //   'Config Saved!',
+      //   ToastAndroid.LONG,
+      //   ToastAndroid.BOTTOM,
+      //   25,
+      //   50,
+      // );     
+      
+
+    //  db.close(function () {
+    //     console.log("DB closed!");
+    //   }, function (error) {
+    //       console.log("Error closing DB:" + error.message);
+    //   });
   }
 
   // componentWillUnmount()
