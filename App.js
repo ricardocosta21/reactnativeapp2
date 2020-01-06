@@ -10,7 +10,13 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
 
-var SQLite = require('react-native-sqlite-storage')
+import SQLite from "react-native-sqlite-2";
+
+const database_name = 'ItemsDB.db'
+const database_version = '1.0'
+const database_displayname = 'New SQLite Database'
+const database_size = 200000
+let db
 
 //https://aboutreact.com/example-of-pre-populated-sqlite-database-in-react-native/
 import {
@@ -57,15 +63,15 @@ constructor(props)
 
   this.state = {
     isFocused: false,
-    age: "26",
-    investment: "10000",
-    income: "30000",
+    age: "27",
+    investment: "22000",
+    income: "35000",
     spending: "5000",
     savingsNumber: "",
     savings: "",
     savingsPercentage: "",
     incGrowth: "3",
-    retSpending: "100000",
+    retSpending: "40000",
     wrRate: "4",
     invReturns: "7",
     fireNumber: "",
@@ -75,9 +81,41 @@ constructor(props)
     fireData: []
   };
   
+  
   // need to update db 'name' to update the data from the db
-  // var db = SQLite.openDatabase({name: 'test27.db', createFromLocation: '~dataState.db'})
+  //var db = SQLite.openDatabase({name: 'data', createFromLocation: '~dataState.db'})
 
+  this.loadAndQueryDB();
+
+  // db.transaction(txn => {
+  //   txn.executeSql('SELECT * FROM data', [], prepareDB, error => {
+  //     console.log('received version error:', error)
+  //     this.addLog('Database not yet ready ... populating data')
+  //     prepareDB()
+  //   })
+  // })  
+  
+}
+
+  
+
+
+  loadAndQueryDB() {
+    this.addLog('Opening database ...')
+    db = SQLite.openDatabase(
+      database_name,
+      database_version,
+      database_displayname,
+      database_size,
+      this.openCB,
+      this.errorCB
+    )
+    this.populateDatabase(db)
+  }
+
+
+  // populateDatabase(db)
+  // {
   // db.transaction((tx) => {
   //   tx.executeSql('SELECT * FROM data', [], (tx, results) => {
   //       var len = results.rows.length;
@@ -105,10 +143,77 @@ constructor(props)
   //         );
 
   //     });
+
+    
+
   // });
+
+  populateDatabase(db) {
+    this.addLog('Database integrity check')
+    const prepareDB = () => {
+      db.transaction(this.populateDB, this.errorCB, () => {
+        this.addLog('Database populated ... executing query ...')
+
+        db.transaction(this.cleanupTables, this.errorCB, () => {
+          this.closeDatabase()
+      })   
+     })
+      
+  }
+
+  populateDB = tx => {
+  
+    tx.executeSql(
+      'CREATE TABLE IF NOT EXISTS Items( ' +
+      'age	INTEGER',
+      'investment	INTEGER' +
+      'income	INTEGER' +
+      'spending	INTEGER' +
+      'incGrowth	INTEGER' +
+      'retSpending	INTEGER' +
+      'wrRate	INTEGER' +
+      'invReturns	INTEGER' +
+      'id	INTEGER) ',
+        
+      [],
+      this.successCB,
+      this.errorCB
+    ) 
+
+    tx.executeSql(
+      'INSERT INTO Items (age, investment, income, spending, incGrowth, retSpending, wrRate, invReturns, id ) VALUES (20, 20000, 6, 34000, 4000, 2, 30000, 4);',
+      []
+    )  
+  }
+
+
 }
 
+  closeDatabase = () => {
+    if (db) {
+      this.addLog('Closing database ...')
+    } else {
+      this.addLog('Database was not OPENED')
+    }
+  };
 
+  componentWillUnmount() {
+    this.closeDatabase()
+  }
+
+  successCB = () => {
+    console.log('SQL executed ...')
+  }
+  
+  errorCB = err => {
+    console.error('error:', err)
+    this.addLog('Error: ' + (err.message || err))
+    return false
+  }
+
+  addLog(msg){
+    console.log(msg)
+  };
 
   handleFocus = event => {
     this.setState({ isFocused: true });
@@ -236,36 +341,36 @@ constructor(props)
 
   componentDidMount() {
 
-    var db = SQLite.openDatabase({name: 'test27323212.db', createFromLocation: '~dataState.db'})
+    // var db = SQLite.openDatabase({name: 'test27323212.db', createFromLocation: '~dataState.db'})
     
-    db.transaction((tx) => {
-      tx.executeSql('SELECT * FROM data WHERE id = 1', [], (tx, results) => {
-          var len = results.rows.length;
-            if(len > 0)
-            {
-              //
-              var row = results.rows.item(0);
-              this.setState({
-                age: row.age,
-                investment: row.investment,
-                income: row.income,
-                spending: row.spending,
-                incGrowth: row.incGrowth,
-                retSpending: row.retSpending,
-                wrRate: row.wrRate,
-                invReturns: row.invReturns            
-              });
-            }  
+    // db.transaction((tx) => {
+    //   tx.executeSql('SELECT * FROM data WHERE id = 1', [], (tx, results) => {
+    //       var len = results.rows.length;
+    //         if(len > 0)
+    //         {
+    //           //
+    //           var row = results.rows.item(0);
+    //           this.setState({
+    //             age: row.age,
+    //             investment: row.investment,
+    //             income: row.income,
+    //             spending: row.spending,
+    //             incGrowth: row.incGrowth,
+    //             retSpending: row.retSpending,
+    //             wrRate: row.wrRate,
+    //             invReturns: row.invReturns            
+    //           });
+    //         }  
             
-            ToastAndroid.showWithGravityAndOffset(
-              "ID: " + row.id + " Investment: " + row.investment + " income: " + row.income + "row.incGrowth " + row.incGrowth + "\nAAA23232HH",
-              ToastAndroid.LONG,
-              ToastAndroid.BOTTOM,
-              25,
-              50,
-            );  
-        });       
-    });   
+    //         ToastAndroid.showWithGravityAndOffset(
+    //           "ID: " + row.id + " Investment: " + row.investment + " income: " + row.income + "row.incGrowth " + row.incGrowth + "\nAAA23232HH",
+    //           ToastAndroid.LONG,
+    //           ToastAndroid.BOTTOM,
+    //           25,
+    //           50,
+    //         );  
+    //     });       
+    // });   
 
     // db.close(function () {
     //   console.log("DB closed!");
@@ -281,8 +386,7 @@ constructor(props)
 
   saveDataState() {
 
-    var db = SQLite.openDatabase({  name: 'test27323212.db', createFromLocation: '~dataState.db'})
-  
+    var db = SQLite.openDatabase({  name: 'data', createFromLocation: '~dataState.db'})  
 
     db.transaction((tx) => {
         tx.executeSql('UPDATE data SET age = 10 WHERE id = 1', [], (tx, results) => {
@@ -300,26 +404,24 @@ constructor(props)
           }
         });   
     });
-      // ToastAndroid.showWithGravityAndOffset(
-      //   'Config Saved!',
-      //   ToastAndroid.LONG,
-      //   ToastAndroid.BOTTOM,
-      //   25,
-      //   50,
-      // );     
+      ToastAndroid.showWithGravityAndOffset(
+        'Config Saved!',
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM,
+        25,
+        50,
+      );     
       
 
-    //  db.close(function () {
-    //     console.log("DB closed!");
-    //   }, function (error) {
-    //       console.log("Error closing DB:" + error.message);
-    //   });
+      closeDatabase = () => {
+        if (db) {
+          this.addLog('Closing database ...')
+        } else {
+          this.addLog('Database was not OPENED')
+        }
+      }
   }
 
-  // componentWillUnmount()
-  // {
-  //   this.saveDataState();
-  // }
 
   render() {
     const { isFocused } = this.state;

@@ -3,6 +3,7 @@ package com.awesomeproject;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import dog.craftz.sqlite_2.RNSqlite2Package;
 import kim.taegon.rnintl.ReactNativeIntlPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.kishanjvaghela.cardview.RNCardViewPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSqlite2Package(),
             new ReactNativeIntlPackage(),
             new SQLitePluginPackage(),   // register SQLite Plugin here 
             new VectorIconsPackage(),
