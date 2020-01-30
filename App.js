@@ -12,6 +12,10 @@ import styles from "./style";
 
 import SQLite from "react-native-sqlite-2";
 
+import NumericInput from '@wwdrew/react-native-numeric-textinput'
+
+import Slider from '@react-native-community/slider';
+
 const database_name = 'ItemsDB.db'
 const database_version = '1.0'
 const database_displayname = 'New SQLite Database'
@@ -82,6 +86,8 @@ constructor(props)
   };
   
   
+  
+
   // need to update db 'name' to update the data from the db
   //var db = SQLite.openDatabase({name: 'data', createFromLocation: '~dataState.db'})
 
@@ -113,6 +119,7 @@ constructor(props)
     this.populateDatabase(db)
   }
 
+ 
 
   // populateDatabase(db)
   // {
@@ -240,7 +247,7 @@ constructor(props)
 
     const incomeFieldAux = this.incomeField.getRawValue();
 
-    const spendingFieldAux = this.spendingField.getRawValue();
+    const spendingFieldAux = this.state.spending;
 
     const investmentFieldAux = this.investmentField.getRawValue();
 
@@ -427,6 +434,10 @@ constructor(props)
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
 
+ 
+      const value = 0;
+      const setValue = '';
+
     return (
       <View style={styles.container}>
         <Header
@@ -548,30 +559,34 @@ constructor(props)
                   <Text style={styles.text}>Income(-Tax)</Text>
                 </CardView>
 
+
+
+
                 <CardView
                   style={styles.cardContainer}>
-                  <TextInputMask
-                    type={"money"}
-                    options={{
-                      precision: 0,
-                      separator: ",",
-                      delimiter: ".",
-                      unit: "£",
-                      suffixUnit: ''
-                    }}
-                    selectionColor={LIGHT_GREEN}
-                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
-                    style={styles.textInput}
-                    onChangeText={spending => {
-                      this.setState({ spending });
-                    }}
-                    //onEndEditing={() => this.onFireReady()}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.spending}
-                    ref={ref => (this.spendingField = ref)}
-                  />
+                  {/* <Slider
+                      style={{width: 200, height: 40}}
+                      minimumValue={0}
+                      maximumValue={100000}
+                      minimumTrackTintColor="#FFFFFF"
+                      maximumTrackTintColor="#000000"
+
+                      //value = {this.state.spending}
+                      ref={ref => (this.spendingField = ref)}
+
+                      onValueChange={spending => {
+                       this.setState({ spending });
+                      }}
+                    //onSlidingComplete={() => this.onFireReady()}
+                  
+
+                  /> */}
+                  <Text>Value: {this.state.spending}</Text>
                   <Text style={styles.text}>Spending</Text>
                 </CardView>
+
+
+                
 
                 <CardView
                   style={styles.cardContainer}>
@@ -650,6 +665,22 @@ constructor(props)
                 </CardView>
 
               </View>
+
+
+         
+
+
+
+
+              {/* <View style={styles.container}>
+              <NumericInput
+                    type='decimal'
+                    decimalPlaces={3}
+                    value={this.state.spending}
+                    onUpdate={spending => {this.setState({ spending });}}
+                  />
+                </View> */}
+
 
               <View style={styles.MoneyRowText}>
                 <CardView

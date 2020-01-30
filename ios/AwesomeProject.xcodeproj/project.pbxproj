@@ -61,6 +61,7 @@
 		BA425230F46F4586A173F697 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E07A60824F447039B0E840A /* Zocial.ttf */; };
 		CA5102253AB941CF85911764 /* libRNIntl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AD01DEF5C14E1EA0FCC361 /* libRNIntl.a */; };
 		0075D456C12741D49EEC5F27 /* libRNSqlite2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F61DBB8E2B4D58ADC2C793 /* libRNSqlite2.a */; };
+		751ED6877CEC44FD8829D82C /* libRNCSlider.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 736B0AF60C334371B86B1985 /* libRNCSlider.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -413,6 +414,8 @@
 		71AD01DEF5C14E1EA0FCC361 /* libRNIntl.a */ = {isa = PBXFileReference; name = "libRNIntl.a"; path = "libRNIntl.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		F74E770BAC45488E91122C4A /* RNSqlite2.xcodeproj */ = {isa = PBXFileReference; name = "RNSqlite2.xcodeproj"; path = "../node_modules/react-native-sqlite-2/ios/RNSqlite2.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		A1F61DBB8E2B4D58ADC2C793 /* libRNSqlite2.a */ = {isa = PBXFileReference; name = "libRNSqlite2.a"; path = "libRNSqlite2.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		60420996E06E4F16B2A54489 /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; name = "RNCSlider.xcodeproj"; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		736B0AF60C334371B86B1985 /* libRNCSlider.a */ = {isa = PBXFileReference; name = "libRNCSlider.a"; path = "libRNCSlider.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +447,7 @@
 				CC5FAC8AA8264EC892FF7CF4 /* libRNVectorIcons.a in Frameworks */,
 				CA5102253AB941CF85911764 /* libRNIntl.a in Frameworks */,
 				0075D456C12741D49EEC5F27 /* libRNSqlite2.a in Frameworks */,
+				751ED6877CEC44FD8829D82C /* libRNCSlider.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +616,7 @@
 				2023AC93E3B24F5383C1ED35 /* RNVectorIcons.xcodeproj */,
 				93C6A02FA55D4C7CB35851FA /* RNIntl.xcodeproj */,
 				F74E770BAC45488E91122C4A /* RNSqlite2.xcodeproj */,
+				60420996E06E4F16B2A54489 /* RNCSlider.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1247,12 +1252,14 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-intl\RNIntl",
 					"$(SRCROOT)\..\node_modules\react-native-sqlite-2\ios",
+					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
 				);
 				INFOPLIST_FILE = AwesomeProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1278,12 +1285,14 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-intl\RNIntl",
 					"$(SRCROOT)\..\node_modules\react-native-sqlite-2\ios",
+					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
 				);
 				INFOPLIST_FILE = AwesomeProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1311,6 +1320,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-intl\RNIntl",
 					"$(SRCROOT)\..\node_modules\react-native-sqlite-2\ios",
+					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
 				);
 				INFOPLIST_FILE = AwesomeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1336,6 +1346,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-intl\RNIntl",
 					"$(SRCROOT)\..\node_modules\react-native-sqlite-2\ios",
+					"$(SRCROOT)\..\node_modules\@react-native-community\slider\ios",
 				);
 				INFOPLIST_FILE = AwesomeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
