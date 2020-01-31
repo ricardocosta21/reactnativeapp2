@@ -23,6 +23,7 @@
     "react-native-ios-kit": "0.0.7",
     "react-native-masked-text": "^1.12.3",
     "react-native-navbar": "^2.1.0",
+    "react-native-slider": "^0.11.0",
     "react-native-sqlite-2": "^3.0.1",
     "react-native-sqlite-storage": "^4.1.0",
     "react-native-toolbar": "^1.0.7",
