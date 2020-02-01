@@ -29,9 +29,9 @@ import {
   View,
   TextInput,
   FlatList,
-  Alert,
   Dimensions,
   ToastAndroid,
+  Alert,
   TouchableOpacity
 } from "react-native";
 import {
@@ -85,8 +85,6 @@ constructor(props)
     fireData: []
   };
   
-  
-  
 
   // need to update db 'name' to update the data from the db
   //var db = SQLite.openDatabase({name: 'data', createFromLocation: '~dataState.db'})
@@ -102,8 +100,6 @@ constructor(props)
   // })  
   
 }
-
-  
 
 
   loadAndQueryDB() {
@@ -277,7 +273,6 @@ constructor(props)
       this.state.fireNumber
     );
 
-    // console.log("---------END---------\n");
   };
 
   increaseIncome(income) {
@@ -295,9 +290,27 @@ constructor(props)
       currency: "GBP",
       minimumFractionDigits: 0,
       maximumFractionDigits:0
-      
     }).format(number);
   }
+
+
+  callAlert(){
+      
+    if(Platform.OS == 'ios')
+    {
+      alert('Spending cannot exceed Income');
+    }   
+    else
+    {
+        ToastAndroid.showWithGravityAndOffset(
+          'Spending cannot exceed Income',
+          ToastAndroid.LONG,
+          ToastAndroid.BOTTOM,
+          25,
+          50,
+        );    
+      }
+  };
 
   compound(investment, interest, age, income, spending, savings, fireNumber) {
 
@@ -348,45 +361,6 @@ constructor(props)
  
 
   componentDidMount() {
-
-    // var db = SQLite.openDatabase({name: 'test27323212.db', createFromLocation: '~dataState.db'})
-    
-    // db.transaction((tx) => {
-    //   tx.executeSql('SELECT * FROM data WHERE id = 1', [], (tx, results) => {
-    //       var len = results.rows.length;
-    //         if(len > 0)
-    //         {
-    //           //
-    //           var row = results.rows.item(0);
-    //           this.setState({
-    //             age: row.age,
-    //             investment: row.investment,
-    //             income: row.income,
-    //             spending: row.spending,
-    //             incGrowth: row.incGrowth,
-    //             retSpending: row.retSpending,
-    //             wrRate: row.wrRate,
-    //             invReturns: row.invReturns            
-    //           });
-    //         }  
-            
-    //         ToastAndroid.showWithGravityAndOffset(
-    //           "ID: " + row.id + " Investment: " + row.investment + " income: " + row.income + "row.incGrowth " + row.incGrowth + "\nAAA23232HH",
-    //           ToastAndroid.LONG,
-    //           ToastAndroid.BOTTOM,
-    //           25,
-    //           50,
-    //         );  
-    //     });       
-    // });   
-
-    // db.close(function () {
-    //   console.log("DB closed!");
-
-    // }, function (error) {
-    //     console.log("Error closing DB:" + error.message);
-    // });
-
 
     this.onFireReady();
   } 
@@ -541,7 +515,7 @@ constructor(props)
 
         
 
-        {/*//////////////////////////////////////////  SLIDERS   //////////////////////////////////////////////////////*/}
+ {/*//////////////////////////////////////////  Investments   //////////////////////////////////////////////////////*/}
 
        
                 <CardView style={styles.cardContainer}>
@@ -583,6 +557,7 @@ constructor(props)
                   />
                 </CardView>
 
+ {/*//////////////////////////////////////////  Spending   //////////////////////////////////////////////////////*/}
                 
                 <CardView style={styles.cardContainer}>
                   <Text style={styles.text}>Spending</Text>
@@ -598,13 +573,21 @@ constructor(props)
                       onValueChange={spending => {
                        this.setState({ spending });
                       }}
-                      onSlidingComplete={() => this.onFireReady()}
+                      onSlidingComplete={() => 
+                      {
+                        if(this.state.spending > this.state.income)
+                        {
+                           this.state.spending = this.state.income;
+                           this.callAlert();
+                        }
+                        this.onFireReady()}
+                      }                     
+                     
                   />                 
                 </CardView>
               
                   
-
-     {/*//////////////////////////////////////////  ret spending   //////////////////////////////////////////////////////*/}               
+ {/*//////////////////////////////////////////  ret spending   //////////////////////////////////////////////////////*/}               
               
                 <CardView style={styles.cardContainer}>
                      <Text style={styles.text}>Ret. Spending</Text>
