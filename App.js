@@ -13,13 +13,8 @@ import styles from "./style";
 import SQLite from "react-native-sqlite-2";
 import Slider from "react-native-slider";
 
-const database_name = 'ItemsDB.db'
-const database_version = '1.0'
-const database_displayname = 'New SQLite Database'
-const database_size = 200000
-let db
 
-//https://aboutreact.com/example-of-pre-populated-sqlite-database-in-react-native/
+
 import {
   Platform,
   Image,
@@ -59,165 +54,85 @@ let deviceWidth = Dimensions.get('window').width
 
 let maxValue = 500000;
 
-export default class App extends Component {
+
+//import FireData from '../models/FireData';
+//import { createFireData, updateFireData } from '../controllers/FireDataController';
+
+
+export default class App extends React.Component {
   
-constructor(props)
-{
-  super(props)
+  constructor(props){
+    super(props)
 
-  this.state = {
-    isFocused: false,
-    age: "27",
-    investment: 22000,
-    income: 70000,
-    spending: 35000,
-    savingsNumber: "",
-    savings: "",
-    savingsPercentage: "",
-    incGrowth: "3",
-    retSpending: 40000,
-    wrRate: "4",
-    invReturns: "7",
-    fireNumber: "",
-    fireDisplayNumber: "",
-    currencySymbol: "£",
-    percentageSymbol: "%",
-    fireData: []
-  };
-  
+    this.state = {
+      //fireData: new FireData(),
+      
+      age: "27",
+      investment: 22000,
+      income: 70000,
+      spending: 35000,
+      savingsNumber: "",
+      savings: "",
+      savingsPercentage: "",
+      incGrowth: "3",
+      retSpending: 40000,
+      wrRate: "4",
+      invReturns: "7",
+      fireNumber: "",
+      fireDisplayNumber: "",
 
-  // need to update db 'name' to update the data from the db
-  //var db = SQLite.openDatabase({name: 'data', createFromLocation: '~dataState.db'})
+      isFocused: false,
+      currencySymbol: "£",
+      percentageSymbol: "%",
 
-  this.loadAndQueryDB();
+      fireDataArray: []
 
-  // db.transaction(txn => {
-  //   txn.executeSql('SELECT * FROM data', [], prepareDB, error => {
-  //     console.log('received version error:', error)
-  //     this.addLog('Database not yet ready ... populating data')
-  //     prepareDB()
-  //   })
-  // })  
-  
-}
+    };
+    
 
-
-  loadAndQueryDB() {
-    this.addLog('Opening database ...')
-    db = SQLite.openDatabase(
-      database_name,
-      database_version,
-      database_displayname,
-      database_size,
-      this.openCB,
-      this.errorCB
-    )
-    this.populateDatabase(db)
   }
+
 
  
 
-  // populateDatabase(db)
-  // {
-  // db.transaction((tx) => {
-  //   tx.executeSql('SELECT * FROM data', [], (tx, results) => {
-  //       var len = results.rows.length;
-  //         if(len > 0)
-  //         {
-  //           var row = results.rows.item(0);
-  //           this.setState({
-  //             age: row.age,
-  //             investment: row.investment,
-  //             income: row.income,
-  //             spending: row.spending,
-  //             incGrowth: row.incGrowth,
-  //             retSpending: row.retSpending,
-  //             wrRate: row.wrRate,
-  //             invReturns: row.invReturns            
-  //           });
-  //         }  
-          
-  //         ToastAndroid.showWithGravityAndOffset(
-  //           row.age + " Hey " + row.investment + " income " + row.income + "row.incGrowth " + row.incGrowth + "\nLOADED",
-  //           ToastAndroid.LONG,
-  //           ToastAndroid.BOTTOM,
-  //           25,
-  //           50,
-  //         );
+  componentWillMount() {
+    //  if (!this.state.fireData)
+    //         return;
 
-  //     });
-
-    
-
-  // });
-
-  populateDatabase(db) {
-    this.addLog('Database integrity check')
-    const prepareDB = () => {
-      db.transaction(this.populateDB, this.errorCB, () => {
-        this.addLog('Database populated ... executing query ...')
-
-        db.transaction(this.cleanupTables, this.errorCB, () => {
-          this.closeDatabase()
-      })   
-     })
+    //this.createFireData();
       
   }
 
-  populateDB = tx => {
-  
-    tx.executeSql(
-      'CREATE TABLE IF NOT EXISTS Items( ' +
-      'age	INTEGER',
-      'investment	INTEGER' +
-      'income	INTEGER' +
-      'spending	INTEGER' +
-      'incGrowth	INTEGER' +
-      'retSpending	INTEGER' +
-      'wrRate	INTEGER' +
-      'invReturns	INTEGER' +
-      'id	INTEGER) ',
-        
-      [],
-      this.successCB,
-      this.errorCB
-    ) 
-
-    tx.executeSql(
-      'INSERT INTO Items (age, investment, income, spending, incGrowth, retSpending, wrRate, invReturns, id ) VALUES (20, 20000, 6, 34000, 4000, 2, 30000, 4);',
-      []
-    )  
-  }
 
 
-}
+// createFireData = () => {
+//         if (!this.state.fireData)
+//             return;
 
-  closeDatabase = () => {
-    if (db) {
-      this.addLog('Closing database ...')
-    } else {
-      this.addLog('Database was not OPENED')
-    }
-  };
+//         createFireData(this.state.fireData).then(({ result, message }) => {
+//            if(Platform.OS == 'ios')
+//             {
+//               alert(message);
+//             }  
+//             else
+//             {
+//               ToastAndroid.show(message, ToastAndroid.SHORT);
+//             }
+            
+//             if (result) {
+//                 this.setState({ fireData: new FireData() });
+//                 Keyboard.dismiss();
+//                 if (this.state.event)
+//                     this.state.event.emit('onCreateFireData');
+//             }
+//         });
+//     }
 
-  componentWillUnmount() {
-    this.closeDatabase()
-  }
 
-  successCB = () => {
-    console.log('SQL executed ...')
-  }
-  
-  errorCB = err => {
-    console.error('error:', err)
-    this.addLog('Error: ' + (err.message || err))
-    return false
-  }
 
-  addLog(msg){
-    console.log(msg)
-  };
 
+
+////////////////////////////////////////////////////////////////////////////////
   handleFocus = event => {
     this.setState({ isFocused: true });
     if (this.props.onFocus) {
@@ -238,8 +153,9 @@ constructor(props)
     this.setState({ text });
   }
  
+
   onFireReady = () => {
-    this.state.fireData = [];
+    //this.state.fireData = [];
 
     const incomeFieldAux = this.state.income;
 
@@ -274,6 +190,43 @@ constructor(props)
     );
 
   };
+
+  // onFireReady = () => {
+  //   this.state.fireData = [];
+
+  //   const incomeFieldAux = this.state.income;
+
+  //   const spendingFieldAux = this.state.spending;
+
+  //   const investmentFieldAux = this.state.investment;
+
+  //   const retSpendingFieldAux = this.state.retSpending;
+  //   this.state.savingsNumber = incomeFieldAux - spendingFieldAux;
+
+  //   this.state.savingsPercentage = (
+  //     100 -
+  //     (spendingFieldAux * 100) / incomeFieldAux
+  //   ).toFixed(1);
+
+  //   if (this.state.wrRate <= 0) return;
+
+  //   // Calculate FireNumber
+  //   this.state.fireNumber = (
+  //     (retSpendingFieldAux / this.state.wrRate) *
+  //     100
+  //   ).toFixed(0);
+
+  //   this.compound(
+  //     investmentFieldAux,
+  //     this.state.invReturns / 100 + 1,
+  //     this.state.age,
+  //     incomeFieldAux,
+  //     spendingFieldAux,
+  //     this.state.savingsNumber,
+  //     this.state.fireNumber
+  //   );
+
+  // };
 
   increaseIncome(income) {
     return (income *= this.state.incGrowth / 100 + 1);
@@ -335,26 +288,26 @@ constructor(props)
 
         this.state.savingsPercentage = 0;
 
-        var newStateArray = this.state.fireData.slice();
+        var newStateArray = this.state.slice();
 
         newStateArray.push();
 
-        this.setState({ fireData: newStateArray });
+        this.setState({ fireDataArray: newStateArray });
 
-        this.state.fireData = newStateArray;
+        this.state.fireDataArray = newStateArray;
 
         return;
       }
 
       this.state.savings = savings;
 
-      var newStateArray = this.state.fireData.slice();
+      var newStateArray = this.state.fireDataArray.slice();
 
       newStateArray.push(objToPush);
 
-      this.state.fireData = newStateArray;
+      this.state.fireDataArray = newStateArray;
 
-      this.setState({ fireData: newStateArray });
+      this.setState({ fireDataArray: newStateArray });
     }
   }
 
@@ -362,53 +315,14 @@ constructor(props)
 
   componentDidMount() {
 
+    //this.createFireData();
+
     this.onFireReady();
   } 
-
-
-  saveDataState() {
-
-    var db = SQLite.openDatabase({  name: 'data', createFromLocation: '~dataState.db'})  
-
-    db.transaction((tx) => {
-        tx.executeSql('UPDATE data SET age = 10 WHERE id = 1', [], (tx, results) => {
-          var len = results.rows.length;
-          if(len > 0)
-          {
-            var row = results.rows.item(0);
-              ToastAndroid.showWithGravityAndOffset(
-              'Age: ' + row.age,
-              ToastAndroid.LONG,
-              ToastAndroid.BOTTOM,
-              25,
-              50,
-            );    
-          }
-        });   
-    });
-      ToastAndroid.showWithGravityAndOffset(
-        'Config Saved!',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-        25,
-        50,
-      );     
-      
-
-      closeDatabase = () => {
-        if (db) {
-          this.addLog('Closing database ...')
-        } else {
-          this.addLog('Database was not OPENED')
-        }
-      }
-  }
-
 
   render() {
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
-
 
     return (
       <View style={styles.container}>
@@ -642,7 +556,7 @@ constructor(props)
             {
               <FlatList
                 style={styles.flatList}
-                data={this.state.fireData}
+                data={this.state.fireDataArray}
                 keyExtractor={(item, index) => "key" + index}
                 renderItem={({ item, index }) => (                
                   <View style={{ 
