@@ -22,8 +22,6 @@ export default StyleSheet.create({
     marginRight: 10
   },
 
-
-
   textInput: {
     textAlign: "center",
     fontSize: 20

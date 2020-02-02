@@ -10,10 +10,11 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
 
-import SQLite from "react-native-sqlite-2";
+//import { Realm } from 'realm';
+
+//let realm = new Realm({ path: 'UserDatabase.realm' })
+
 import Slider from "react-native-slider";
-
-
 
 import {
   Platform,
@@ -55,17 +56,15 @@ let deviceWidth = Dimensions.get('window').width
 let maxValue = 500000;
 
 
-//import FireData from '../models/FireData';
-//import { createFireData, updateFireData } from '../controllers/FireDataController';
-
 
 export default class App extends React.Component {
-  
+
   constructor(props){
     super(props)
 
     this.state = {
-      //fireData: new FireData(),
+      
+       dataSet: [],
       
       age: "27",
       investment: 22000,
@@ -88,48 +87,58 @@ export default class App extends React.Component {
       fireDataArray: []
 
     };
-    
-
   }
 
 
  
 
   componentWillMount() {
-    //  if (!this.state.fireData)
-    //         return;
 
-    //this.createFireData();
+    // Realm.open({schema: [DataSchema]})
+    //   .then(realm => {
+
+    //         let dataSet = realm.objects('Data');
+    //         console.log('dataaaa')
+    //         for (let p of dataSet) {
+
+    //           this.state.age = p.age;
+    //           this.state.wrRate = p.wrRate;
+    //           this.state.incGrowth = p.incGrowth;
+    //           this.state.invReturns = p.invReturns;
+    //           this.state.investment = p.investment;
+    //           this.state.income = p.income;
+    //           this.state.spending = p.spending;
+    //           this.state.retSpending = p.retSpending;
+
+    //             console.log(' ${p.age}');
+    //         }
+
+    //       // Remember to close the realm when finished.
+    //     realm.close();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+    
       
   }
 
 
+runDemo = () => {
 
-// createFireData = () => {
-//         if (!this.state.fireData)
-//             return;
-
-//         createFireData(this.state.fireData).then(({ result, message }) => {
-//            if(Platform.OS == 'ios')
-//             {
-//               alert(message);
-//             }  
-//             else
-//             {
-//               ToastAndroid.show(message, ToastAndroid.SHORT);
-//             }
-            
-//             if (result) {
-//                 this.setState({ fireData: new FireData() });
-//                 Keyboard.dismiss();
-//                 if (this.state.event)
-//                     this.state.event.emit('onCreateFireData');
-//             }
-//         });
-//     }
-
-
-
+  // realm.write(() => {
+  //     savedData = realm.create('Data', {
+  //         age: this.state.age,
+  //         wrRate:  this.state.wrRate,
+  //         incGrowth: this.state.incGrowth,
+  //         invReturns: this.state.invReturns,
+  //         investment: this.state.investment,
+  //         income: this.state.income,
+  //         spending: this.state.spending,
+  //         retSpending: this.state.retSpending
+  //     });
+  // });
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -145,17 +154,10 @@ export default class App extends React.Component {
     if (this.props.onBlur) {
       this.props.onBlur(event);
     }
-  };
-
-  onActionSelected(position) { }
-
-  handleTextChanged(text) {
-    this.setState({ text });
   }
  
-
   onFireReady = () => {
-    //this.state.fireData = [];
+    this.state.fireDataArray = [];
 
     const incomeFieldAux = this.state.income;
 
@@ -188,45 +190,9 @@ export default class App extends React.Component {
       this.state.savingsNumber,
       this.state.fireNumber
     );
+  }
 
-  };
 
-  // onFireReady = () => {
-  //   this.state.fireData = [];
-
-  //   const incomeFieldAux = this.state.income;
-
-  //   const spendingFieldAux = this.state.spending;
-
-  //   const investmentFieldAux = this.state.investment;
-
-  //   const retSpendingFieldAux = this.state.retSpending;
-  //   this.state.savingsNumber = incomeFieldAux - spendingFieldAux;
-
-  //   this.state.savingsPercentage = (
-  //     100 -
-  //     (spendingFieldAux * 100) / incomeFieldAux
-  //   ).toFixed(1);
-
-  //   if (this.state.wrRate <= 0) return;
-
-  //   // Calculate FireNumber
-  //   this.state.fireNumber = (
-  //     (retSpendingFieldAux / this.state.wrRate) *
-  //     100
-  //   ).toFixed(0);
-
-  //   this.compound(
-  //     investmentFieldAux,
-  //     this.state.invReturns / 100 + 1,
-  //     this.state.age,
-  //     incomeFieldAux,
-  //     spendingFieldAux,
-  //     this.state.savingsNumber,
-  //     this.state.fireNumber
-  //   );
-
-  // };
 
   increaseIncome(income) {
     return (income *= this.state.incGrowth / 100 + 1);
@@ -315,16 +281,18 @@ export default class App extends React.Component {
 
   componentDidMount() {
 
-    //this.createFireData();
 
     this.onFireReady();
   } 
+
+
 
   render() {
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
 
     return (
+
       <View style={styles.container}>
         <Header
           iosBarStyle="light-content"
@@ -350,7 +318,8 @@ export default class App extends React.Component {
               reverseColor='false'
               underlayColor= '#1fb28a'
               iconStyle={styles.headerIcon}
-              onPress={() => this.saveDataState()} />
+              onPress={() => this.runDemo()} />
+              
           </Right>
           
         </Header>
@@ -371,10 +340,11 @@ export default class App extends React.Component {
                 />                
               </CardView>
 
-             
-
 
               <CardView style={styles.cardContainer}>
+            
+             
+
                    <Text style={styles.text}>WR Rate</Text>
                   <View style={styles.textPercentageReturns}>
                  

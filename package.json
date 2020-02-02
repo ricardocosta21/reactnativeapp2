@@ -34,6 +34,7 @@
     "react-navigation": "^4.1.0",
     "react-navigation-stack": "^1.9.0",
     "react-number-format": "^4.2.0",
+    "realm": "^3.6.3",
     "watchman": "^1.0.0"
   },
   "devDependencies": {
