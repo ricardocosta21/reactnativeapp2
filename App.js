@@ -58,16 +58,17 @@ let maxValue = 500000;
 
 
 const DataSchema = {
-  name: 'Data',
+  name: 'Data5',
   properties: {
-    age:  'int',
-    wrRate:  'int',
-    incGrowth:  'int',
-    invReturns:  'int',
-    investment:  'int',
-    income:  'int',
-    spending:  'int',
-    retSpending:  'int'
+    
+    age:  {type: 'string',    default: 12},
+    wrRate: {type:  'string',  default: 2},
+    incGrowth: {type:  'string',  default: 2},
+    invReturns: {type:  'string',  default: 2},
+    investment: {type:  'int',  default: 12222},
+    income: {type:  'int',  default: 13333},
+    spending: {type:  'int',  default: 3333},
+    retSpending: {type:  'int',  default: 16666}
   }
 };
 
@@ -80,17 +81,17 @@ export default class App extends React.Component {
       
        dataSet: [],
       
-      age: 27,
+      age: "27",
       investment: 22000,
       income: 70000,
       spending: 35000,
-      savingsNumber: "",
-      savings: "",
-      savingsPercentage: "",
-      incGrowth: 3,
+      savingsNumber: '',
+      savings: 123,
+      savingsPercentage: 3,
+      incGrowth: "3",
       retSpending: 40000,
-      wrRate: 4,
-      invReturns: 7,
+      wrRate: "4",
+      invReturns: "8",
       fireNumber: "",
       fireDisplayNumber: "",
 
@@ -110,7 +111,7 @@ export default class App extends React.Component {
     Realm.open({schema: [DataSchema]})
       .then(realm => {
 
-            let dataSet = realm.objects('Data');
+            let dataSet = realm.objects('Data5');
             console.log('aqui vem dataaaa')
             for (let p of dataSet) {
 
@@ -132,6 +133,9 @@ export default class App extends React.Component {
 
           // Remember to close the realm when finished.
         realm.close();
+
+        this.onFireReady();
+
       })
       .catch(error => {
         console.log(error);
@@ -143,7 +147,7 @@ export default class App extends React.Component {
 
     // Close the realm if there is one open.
     const {realm} = this.state;
-    if (realm !== null && !realm.isClosed) {
+    if (realm !== null) {
       realm.close();
     }
 
@@ -155,15 +159,15 @@ runDemo = () => {
     .then(realm => {
 
       realm.write(() => {
-        savedData = realm.create('Data', {
-            age:  parseInt(this.state.age, 10),
-            wrRate:   parseInt(this.state.wrRate, 10),
-            incGrowth: parseInt(this.state.incGrowth, 10),
-            invReturns: parseInt(this.state.invReturns, 10),
-            investment: parseInt(this.state.investment, 10),
-            income: parseInt(this.state.income, 10),
-            spending: parseInt(this.state.spending, 10),
-            retSpending: parseInt(this.state.retSpending, 10)
+        savedData = realm.create('Data5', {
+            age:  this.state.age,
+            wrRate: this.state.wrRate,
+            incGrowth: this.state.incGrowth,
+            invReturns: this.state.invReturns,
+            investment: this.state.investment,
+            income: this.state.income,
+            spending: this.state.spending,
+            retSpending: this.state.retSpending
         });
 
         console.log("RunDemo Hereee");
@@ -315,7 +319,7 @@ runDemo = () => {
   componentDidMount() {
 
 
-    this.onFireReady();
+    //this.onFireReady();
   } 
 
 
