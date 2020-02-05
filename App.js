@@ -12,9 +12,6 @@ import styles from "./style";
 
 const Realm = require('realm');
 
-//let realm = new Realm({ path: 'UserDatabase.realm' })
-
-
 import Slider from "react-native-slider";
 
 import {
@@ -54,11 +51,12 @@ const WHITE = "#FFFFFF";
 
 let deviceWidth = Dimensions.get('window').width
 
-let maxValue = 500000;
+let maxInvestmentsValue = 500000;
 
+let maxIncomeValue = 250000;
 
 const DataSchema = {
-  name: 'Data5',
+  name: 'Data',
   properties: {
     
     age:  {type: 'string',    default: 12},
@@ -78,8 +76,6 @@ export default class App extends React.Component {
     super(props)
 
     this.state = {
-      
-       dataSet: [],
       
       age: "27",
       investment: 22000,
@@ -110,28 +106,19 @@ export default class App extends React.Component {
 
     Realm.open({schema: [DataSchema]})
       .then(realm => {
+          let dataSet = realm.objects('Data');
+          for (let p of dataSet) {
 
-            let dataSet = realm.objects('Data5');
-            console.log('aqui vem dataaaa')
-            for (let p of dataSet) {
+            this.state.age = p.age;
+            this.state.wrRate = p.wrRate;
+            this.state.incGrowth = p.incGrowth;
+            this.state.invReturns = p.invReturns;
+            this.state.investment = p.investment;
+            this.state.income = p.income;
+            this.state.spending = p.spending;
+            this.state.retSpending = p.retSpending;
+          }
 
-              this.state.age = p.age;
-              this.state.wrRate = p.wrRate;
-              this.state.incGrowth = p.incGrowth;
-              this.state.invReturns = p.invReturns;
-              this.state.investment = p.investment;
-              this.state.income = p.income;
-              this.state.spending = p.spending;
-              this.state.retSpending = p.retSpending;
-
-                console.log("age " + p.age);
-                console.log(p.wrRate);
-                console.log(p.incGrowth);
-                console.log(p.invReturns);
-                console.log(p.investment);
-            }
-
-          // Remember to close the realm when finished.
         realm.close();
 
         this.onFireReady();
@@ -139,8 +126,7 @@ export default class App extends React.Component {
       })
       .catch(error => {
         console.log(error);
-      });   
-      
+      });         
   }
 
   componentWillUnmount() {
@@ -159,7 +145,7 @@ runDemo = () => {
     .then(realm => {
 
       realm.write(() => {
-        savedData = realm.create('Data5', {
+        savedData = realm.create('Data', {
             age:  this.state.age,
             wrRate: this.state.wrRate,
             incGrowth: this.state.incGrowth,
@@ -169,18 +155,11 @@ runDemo = () => {
             spending: this.state.spending,
             retSpending: this.state.retSpending
         });
-
-        console.log("RunDemo Hereee");
-        console.log(parseInt(this.state.incGrowth, 10));
-        console.log(parseInt(this.state.invReturns, 10));
-
-        console.log(parseInt(this.state.income, 10));
     });
   });
 }
 
 
-////////////////////////////////////////////////////////////////////////////////
   handleFocus = event => {
     this.setState({ isFocused: true });
     if (this.props.onFocus) {
@@ -196,6 +175,7 @@ runDemo = () => {
   }
  
   onFireReady = () => {
+
     this.state.fireDataArray = [];
 
     const incomeFieldAux = this.state.income;
@@ -205,11 +185,11 @@ runDemo = () => {
     const investmentFieldAux = this.state.investment;
 
     const retSpendingFieldAux = this.state.retSpending;
+
     this.state.savingsNumber = incomeFieldAux - spendingFieldAux;
 
     this.state.savingsPercentage = (
-      100 -
-      (spendingFieldAux * 100) / incomeFieldAux
+      100 - (spendingFieldAux * 100) / incomeFieldAux
     ).toFixed(1);
 
     if (this.state.wrRate <= 0) return;
@@ -250,7 +230,25 @@ runDemo = () => {
   }
 
 
-  callAlert(){
+callAlertIncome(){
+      
+    if(Platform.OS == 'ios')
+    {
+      alert('Income cannot be lower than Spending');
+    }   
+    else
+    {
+        ToastAndroid.showWithGravityAndOffset(
+          'Income cannot be lower than Spending',
+          ToastAndroid.LONG,
+          ToastAndroid.BOTTOM,
+          25,
+          50,
+        );    
+      }
+  };
+
+  callAlertSpending(){
       
     if(Platform.OS == 'ios')
     {
@@ -312,17 +310,11 @@ runDemo = () => {
 
       this.setState({ fireDataArray: newStateArray });
     }
-  }
-
- 
-
-  componentDidMount() {
-
-
-    //this.onFireReady();
   } 
 
-
+  componentDidMount() {
+    //this.onFireReady();
+  } 
 
   render() {
     const { isFocused } = this.state;
@@ -340,7 +332,6 @@ runDemo = () => {
               <Icon name="menu"
               color='#ffffff' />              
             </Button>
-
           </Left>    
 
           <Body>
@@ -378,9 +369,7 @@ runDemo = () => {
               </CardView>
 
 
-              <CardView style={styles.cardContainer}>
-            
-             
+              <CardView style={styles.cardContainer}>        
 
                    <Text style={styles.text}>WR Rate</Text>
                   <View style={styles.textPercentageReturns}>
@@ -445,10 +434,11 @@ runDemo = () => {
                    <Slider
                       style={{width: deviceWidth - 70, height: 40}}
                       minimumValue={0}
-                      maximumValue={maxValue}
+                      maximumValue={maxInvestmentsValue}
                       minimumTrackTintColor="#1fb28a"
                       maximumTrackTintColor="#d3d3d3"
                       thumbTintColor='#1a9274'
+                      step={100}
                       value={this.state.investment}
                       onValueChange={investment => {
                        this.setState({ investment });
@@ -466,15 +456,24 @@ runDemo = () => {
                   <Slider
                       style={{width: deviceWidth - 70, height: 40}}
                       minimumValue={0}
-                      maximumValue={maxValue}
+                      maximumValue={maxIncomeValue}
                       minimumTrackTintColor="#1fb28a"
                       maximumTrackTintColor="#d3d3d3"
                       thumbTintColor='#1a9274'
+                      step={100}
                       value={this.state.income}
                       onValueChange={income => {
                        this.setState({ income });
                       }}
-                      onSlidingComplete={() => this.onFireReady()}
+                       onSlidingComplete={() => 
+                      {
+                        if(this.state.income < this.state.spending)
+                        {
+                           this.state.income = this.state.spending;
+                           this.callAlertIncome();
+                        }
+                        this.onFireReady()}
+                      }    
                   />
                 </CardView>
 
@@ -486,10 +485,11 @@ runDemo = () => {
                   <Slider
                       style={{width: deviceWidth - 70, height: 40}}
                       minimumValue={0}
-                      maximumValue={maxValue}
+                      maximumValue={maxIncomeValue}
                       minimumTrackTintColor="#1fb28a"
                       maximumTrackTintColor="#d3d3d3"
                       thumbTintColor='#1a9274'
+                      step={100}
                       value={this.state.spending}
                       onValueChange={spending => {
                        this.setState({ spending });
@@ -499,7 +499,7 @@ runDemo = () => {
                         if(this.state.spending > this.state.income)
                         {
                            this.state.spending = this.state.income;
-                           this.callAlert();
+                           this.callAlertSpending();
                         }
                         this.onFireReady()}
                       }                     
@@ -516,10 +516,11 @@ runDemo = () => {
                   <Slider
                       style={{width: deviceWidth - 70, height: 40}}
                       minimumValue={0}
-                      maximumValue={maxValue}
+                      maximumValue={maxIncomeValue}
                       minimumTrackTintColor="#1fb28a"
                       maximumTrackTintColor="#d3d3d3"
                       thumbTintColor='#1a9274'
+                      step={100}
                       value={this.state.retSpending}
                       onValueChange={retSpending => {
                        this.setState({ retSpending });
