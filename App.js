@@ -10,9 +10,10 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
 
-import { Realm } from 'realm';
+const Realm = require('realm');
 
 //let realm = new Realm({ path: 'UserDatabase.realm' })
+
 
 import Slider from "react-native-slider";
 
@@ -56,6 +57,19 @@ let deviceWidth = Dimensions.get('window').width
 let maxValue = 500000;
 
 
+const DataSchema = {
+  name: 'Data',
+  properties: {
+    age:  'int',
+    wrRate:  'int',
+    incGrowth:  'int',
+    invReturns:  'int',
+    investment:  'int',
+    income:  'int',
+    spending:  'int',
+    retSpending:  'int'
+  }
+};
 
 export default class App extends React.Component {
 
@@ -66,17 +80,17 @@ export default class App extends React.Component {
       
        dataSet: [],
       
-      age: "27",
+      age: 27,
       investment: 22000,
       income: 70000,
       spending: 35000,
       savingsNumber: "",
       savings: "",
       savingsPercentage: "",
-      incGrowth: "3",
+      incGrowth: 3,
       retSpending: 40000,
-      wrRate: "4",
-      invReturns: "7",
+      wrRate: 4,
+      invReturns: 7,
       fireNumber: "",
       fireDisplayNumber: "",
 
@@ -90,54 +104,75 @@ export default class App extends React.Component {
   }
 
 
- 
 
   componentWillMount() {
 
-    // Realm.open({schema: [DataSchema]})
-    //   .then(realm => {
+    Realm.open({schema: [DataSchema]})
+      .then(realm => {
 
-    //         let dataSet = realm.objects('Data');
-    //         console.log('dataaaa')
-    //         for (let p of dataSet) {
+            let dataSet = realm.objects('Data');
+            console.log('aqui vem dataaaa')
+            for (let p of dataSet) {
 
-    //           this.state.age = p.age;
-    //           this.state.wrRate = p.wrRate;
-    //           this.state.incGrowth = p.incGrowth;
-    //           this.state.invReturns = p.invReturns;
-    //           this.state.investment = p.investment;
-    //           this.state.income = p.income;
-    //           this.state.spending = p.spending;
-    //           this.state.retSpending = p.retSpending;
+              this.state.age = p.age;
+              this.state.wrRate = p.wrRate;
+              this.state.incGrowth = p.incGrowth;
+              this.state.invReturns = p.invReturns;
+              this.state.investment = p.investment;
+              this.state.income = p.income;
+              this.state.spending = p.spending;
+              this.state.retSpending = p.retSpending;
 
-    //             console.log(' ${p.age}');
-    //         }
+                console.log("age " + p.age);
+                console.log(p.wrRate);
+                console.log(p.incGrowth);
+                console.log(p.invReturns);
+                console.log(p.investment);
+            }
 
-    //       // Remember to close the realm when finished.
-    //     realm.close();
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    
+          // Remember to close the realm when finished.
+        realm.close();
+      })
+      .catch(error => {
+        console.log(error);
+      });   
       
   }
 
+  componentWillUnmount() {
+
+    // Close the realm if there is one open.
+    const {realm} = this.state;
+    if (realm !== null && !realm.isClosed) {
+      realm.close();
+    }
+
+  }
 
 runDemo = () => {
 
-  // realm.write(() => {
-  //     savedData = realm.create('Data', {
-  //         age: this.state.age,
-  //         wrRate:  this.state.wrRate,
-  //         incGrowth: this.state.incGrowth,
-  //         invReturns: this.state.invReturns,
-  //         investment: this.state.investment,
-  //         income: this.state.income,
-  //         spending: this.state.spending,
-  //         retSpending: this.state.retSpending
-  //     });
-  // });
+    Realm.open({schema: [DataSchema]})
+    .then(realm => {
+
+      realm.write(() => {
+        savedData = realm.create('Data', {
+            age:  parseInt(this.state.age, 10),
+            wrRate:   parseInt(this.state.wrRate, 10),
+            incGrowth: parseInt(this.state.incGrowth, 10),
+            invReturns: parseInt(this.state.invReturns, 10),
+            investment: parseInt(this.state.investment, 10),
+            income: parseInt(this.state.income, 10),
+            spending: parseInt(this.state.spending, 10),
+            retSpending: parseInt(this.state.retSpending, 10)
+        });
+
+        console.log("RunDemo Hereee");
+        console.log(parseInt(this.state.incGrowth, 10));
+        console.log(parseInt(this.state.invReturns, 10));
+
+        console.log(parseInt(this.state.income, 10));
+    });
+  });
 }
 
 
@@ -191,8 +226,6 @@ runDemo = () => {
       this.state.fireNumber
     );
   }
-
-
 
   increaseIncome(income) {
     return (income *= this.state.incGrowth / 100 + 1);
