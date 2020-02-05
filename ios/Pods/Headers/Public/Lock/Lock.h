@@ -1,1 +1,1 @@
-../../../Lock/CocoaPods/Lock.h
+Lock/CocoaPods/Lock.h

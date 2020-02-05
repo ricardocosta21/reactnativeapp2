@@ -1,1 +1,1 @@
-../../../Lock/Lock/SMS/Private/A0PhoneFieldView.h
+Lock/Lock/SMS/Private/A0PhoneFieldView.h

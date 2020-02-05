@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/Private/A0Logger.h
+Lock/Lock/Core/Private/A0Logger.h

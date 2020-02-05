@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/A0UserAPIClient.h
+Lock/Lock/Core/A0UserAPIClient.h

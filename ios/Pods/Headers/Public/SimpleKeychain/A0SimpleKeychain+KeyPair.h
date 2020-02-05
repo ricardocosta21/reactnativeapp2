@@ -1,1 +1,1 @@
-../../../SimpleKeychain/SimpleKeychain/A0SimpleKeychain+KeyPair.h
+SimpleKeychain/SimpleKeychain/A0SimpleKeychain+KeyPair.h

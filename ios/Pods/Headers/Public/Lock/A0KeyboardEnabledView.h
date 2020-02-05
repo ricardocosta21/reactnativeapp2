@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/A0KeyboardEnabledView.h
+Lock/Lock/UI/A0KeyboardEnabledView.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/A0ChangePasswordView.h
+Lock/Lock/UI/A0ChangePasswordView.h

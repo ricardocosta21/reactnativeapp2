@@ -1,1 +1,1 @@
-../../../Lock/Lock/Provider/Private/A0FailureAuthenticator.h
+Lock/Lock/Provider/Private/A0FailureAuthenticator.h

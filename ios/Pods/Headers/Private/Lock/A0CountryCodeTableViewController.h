@@ -1,1 +1,1 @@
-../../../Lock/Lock/SMS/Private/A0CountryCodeTableViewController.h
+Lock/Lock/SMS/Private/A0CountryCodeTableViewController.h

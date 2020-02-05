@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/iOS/NSObject+A0AuthenticatorProvider.h
+Lock/Lock/Core/iOS/NSObject+A0AuthenticatorProvider.h

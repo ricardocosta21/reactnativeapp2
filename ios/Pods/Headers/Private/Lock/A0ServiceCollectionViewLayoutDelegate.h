@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0ServiceCollectionViewLayoutDelegate.h
+Lock/Lock/UI/Private/A0ServiceCollectionViewLayoutDelegate.h

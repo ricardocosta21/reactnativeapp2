@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0EnterpriseLoginViewController.h
+Lock/Lock/UI/Private/A0EnterpriseLoginViewController.h

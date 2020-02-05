@@ -1,1 +1,1 @@
-../../../AFNetworking/AFNetworking/AFNetworkReachabilityManager.h
+AFNetworking/AFNetworking/AFNetworkReachabilityManager.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/A0APIRouter.h
+Lock/Lock/Core/A0APIRouter.h

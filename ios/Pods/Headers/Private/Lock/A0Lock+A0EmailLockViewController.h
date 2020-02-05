@@ -1,1 +1,1 @@
-../../../Lock/Lock/Email/A0Lock+A0EmailLockViewController.h
+Lock/Lock/Email/A0Lock+A0EmailLockViewController.h

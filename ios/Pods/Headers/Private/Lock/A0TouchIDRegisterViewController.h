@@ -1,1 +1,1 @@
-../../../Lock/Lock/TouchID/Private/A0TouchIDRegisterViewController.h
+Lock/Lock/TouchID/Private/A0TouchIDRegisterViewController.h

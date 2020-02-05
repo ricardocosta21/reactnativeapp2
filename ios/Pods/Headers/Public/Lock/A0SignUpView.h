@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/A0SignUpView.h
+Lock/Lock/UI/A0SignUpView.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/NSError+A0LockErrors.h
+Lock/Lock/Core/NSError+A0LockErrors.h

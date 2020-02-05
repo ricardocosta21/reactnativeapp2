@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/A0AuthParameters.h
+Lock/Lock/Core/A0AuthParameters.h

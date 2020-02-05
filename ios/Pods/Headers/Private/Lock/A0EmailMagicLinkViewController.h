@@ -1,1 +1,1 @@
-../../../Lock/Lock/Email/Private/A0EmailMagicLinkViewController.h
+Lock/Lock/Email/Private/A0EmailMagicLinkViewController.h

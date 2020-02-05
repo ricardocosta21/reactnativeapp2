@@ -2,6 +2,7 @@ package com.awesomeproject;
 
 import android.app.Application;
 
+import io.realm.react.RealmReactPackage;
 import com.facebook.react.ReactApplication;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativeIntlPackage(),
             new SQLitePluginPackage(),   // register SQLite Plugin here 
             new VectorIconsPackage(),
+ 	    new RealmReactPackage(),
             new RNCardViewPackage()
       );
     }

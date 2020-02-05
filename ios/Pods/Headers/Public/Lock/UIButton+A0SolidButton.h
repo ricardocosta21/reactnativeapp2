@@ -1,1 +1,1 @@
-../../../Lock/Lock/CoreUI/UIButton+A0SolidButton.h
+Lock/Lock/CoreUI/UIButton+A0SolidButton.h

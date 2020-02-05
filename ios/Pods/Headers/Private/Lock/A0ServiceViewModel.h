@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0ServiceViewModel.h
+Lock/Lock/UI/Private/A0ServiceViewModel.h

@@ -10,7 +10,7 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
 
-//import { Realm } from 'realm';
+import { Realm } from 'realm';
 
 //let realm = new Realm({ path: 'UserDatabase.realm' })
 

@@ -1,1 +1,1 @@
-../../../TouchIDAuth/TouchIDAuth/A0JWTBuilder.h
+TouchIDAuth/TouchIDAuth/A0JWTBuilder.h

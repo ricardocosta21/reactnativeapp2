@@ -1,1 +1,1 @@
-../../../TouchIDAuth/TouchIDAuth/A0TouchID.h
+TouchIDAuth/TouchIDAuth/A0TouchID.h

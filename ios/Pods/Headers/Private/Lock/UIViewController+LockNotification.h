@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/UIViewController+LockNotification.h
+Lock/Lock/UI/Private/UIViewController+LockNotification.h

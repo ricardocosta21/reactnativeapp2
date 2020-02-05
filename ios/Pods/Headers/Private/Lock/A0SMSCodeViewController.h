@@ -1,1 +1,1 @@
-../../../Lock/Lock/SMS/Private/A0SMSCodeViewController.h
+Lock/Lock/SMS/Private/A0SMSCodeViewController.h

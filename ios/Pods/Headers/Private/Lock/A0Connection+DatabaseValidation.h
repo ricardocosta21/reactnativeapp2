@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0Connection+DatabaseValidation.h
+Lock/Lock/UI/Private/A0Connection+DatabaseValidation.h

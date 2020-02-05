@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0NavigationController.h
+Lock/Lock/UI/Private/A0NavigationController.h

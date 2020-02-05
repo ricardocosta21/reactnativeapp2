@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0RoundedBoxView.h
+Lock/Lock/UI/Private/A0RoundedBoxView.h

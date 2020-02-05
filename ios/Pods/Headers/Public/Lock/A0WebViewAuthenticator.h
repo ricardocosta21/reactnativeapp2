@@ -1,1 +1,1 @@
-../../../Lock/Lock/WebView/A0WebViewAuthenticator.h
+Lock/Lock/WebView/A0WebViewAuthenticator.h

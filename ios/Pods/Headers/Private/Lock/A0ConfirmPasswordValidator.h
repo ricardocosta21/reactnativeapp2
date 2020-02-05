@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/A0ConfirmPasswordValidator.h
+Lock/Lock/UI/A0ConfirmPasswordValidator.h

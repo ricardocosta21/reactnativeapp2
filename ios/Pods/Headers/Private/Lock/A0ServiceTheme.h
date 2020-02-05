@@ -1,1 +1,1 @@
-../../../Lock/Lock/CoreUI/A0ServiceTheme.h
+Lock/Lock/CoreUI/A0ServiceTheme.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/NSError+A0AuthAPIError.h
+Lock/Lock/Core/NSError+A0AuthAPIError.h

@@ -1,1 +1,1 @@
-../../../Masonry/Masonry/ViewController+MASAdditions.h
+Masonry/Masonry/ViewController+MASAdditions.h

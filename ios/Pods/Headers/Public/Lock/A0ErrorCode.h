@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/A0ErrorCode.h
+Lock/Lock/Core/A0ErrorCode.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/SMS/A0SMSLockViewController.h
+Lock/Lock/SMS/A0SMSLockViewController.h

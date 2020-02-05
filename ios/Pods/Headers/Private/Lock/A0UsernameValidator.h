@@ -1,1 +1,1 @@
-../../../Lock/Lock/CoreUI/A0UsernameValidator.h
+Lock/Lock/CoreUI/A0UsernameValidator.h

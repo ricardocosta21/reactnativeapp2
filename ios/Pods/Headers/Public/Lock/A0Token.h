@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/A0Token.h
+Lock/Lock/Core/A0Token.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0SmallSocialServiceCollectionView.h
+Lock/Lock/UI/Private/A0SmallSocialServiceCollectionView.h

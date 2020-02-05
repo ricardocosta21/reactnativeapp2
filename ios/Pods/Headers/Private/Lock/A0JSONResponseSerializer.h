@@ -1,1 +1,1 @@
-../../../Lock/Lock/Core/Private/A0JSONResponseSerializer.h
+Lock/Lock/Core/Private/A0JSONResponseSerializer.h

@@ -1,1 +1,1 @@
-../../../Lock/Lock/UI/Private/A0FullActiveDirectoryViewController.h
+Lock/Lock/UI/Private/A0FullActiveDirectoryViewController.h
