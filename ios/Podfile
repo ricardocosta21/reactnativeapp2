@@ -7,6 +7,8 @@ target 'AwesomeProject' do
 
   # Pods for tonypoc
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
 end
 
 # Auth0 Lock

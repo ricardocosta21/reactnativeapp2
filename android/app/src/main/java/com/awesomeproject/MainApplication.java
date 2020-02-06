@@ -4,6 +4,7 @@ import android.app.Application;
 
 import io.realm.react.RealmReactPackage;
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import dog.craftz.sqlite_2.RNSqlite2Package;
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
             new RNGestureHandlerPackage(),
             new ReactSliderPackage(),
             new RNSqlite2Package(),

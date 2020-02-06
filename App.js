@@ -12,6 +12,8 @@ import styles from "./style";
 
 const Realm = require('realm');
 
+import SplashScreen from 'react-native-splash-screen'
+
 import Slider from "react-native-slider";
 
 import {
@@ -314,6 +316,8 @@ callAlertIncome(){
 
   componentDidMount() {
     //this.onFireReady();
+     
+     SplashScreen.hide();
   } 
 
   render() {
