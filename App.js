@@ -15,6 +15,8 @@ import SplashScreenComponent from "./components/SplashScreen";
 const Realm = require('realm');
 
 import Slider from "react-native-slider";
+//import { Slider } from 'react-native-elements';
+
 
 import {
   Platform,
@@ -80,7 +82,7 @@ export default class App extends React.Component {
     this.state = {
       
       age: "27",
-      investment: 22000,
+      investment: 22,
       income: 70000,
       spending: 35000,
       savingsNumber: '',
@@ -104,30 +106,7 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-
-    Realm.open({schema: [DataSchema]})
-      .then(realm => {
-          let dataSet = realm.objects('Data');
-          for (let p of dataSet) {
-
-            this.state.age = p.age;
-            this.state.wrRate = p.wrRate;
-            this.state.incGrowth = p.incGrowth;
-            this.state.invReturns = p.invReturns;
-            this.state.investment = p.investment;
-            this.state.income = p.income;
-            this.state.spending = p.spending;
-            this.state.retSpending = p.retSpending;
-          }
-
-        realm.close();
-
-        this.onFireReady();
-
-      })
-      .catch(error => {
-        console.log(error);
-      });         
+      
   }
 
   componentWillUnmount() {
@@ -139,7 +118,7 @@ export default class App extends React.Component {
     }
   }
 
-runDemo = () => {
+saveData = () => {
 
     Realm.open({schema: [DataSchema]})
     .then(realm => {
@@ -159,20 +138,6 @@ runDemo = () => {
   });
 }
 
-
-  // handleFocus = event => {
-  //   this.setState({ isFocused: true });
-  //   if (this.props.onFocus) {
-  //     this.props.onFocus(event);
-  //   }
-  // };
-
-  // handleBlur = event => {
-  //   this.setState({ isFocused: false });
-  //   if (this.props.onBlur) {
-  //     this.props.onBlur(event);
-  //   }
-  // }
  
   onFireReady = () => {
 
@@ -229,8 +194,7 @@ runDemo = () => {
     }).format(number);
   }
 
-
-callAlertIncome(){
+  callAlertIncome(){
       
     if(Platform.OS == 'ios')
     {
@@ -314,10 +278,38 @@ callAlertIncome(){
 
   performTimeConsumingTask = async() => {
     return new Promise((resolve) =>
-      setTimeout(
-        () => { resolve('result') },
-        2000
-      )
+
+    setTimeout(
+      () => { 
+        resolve('result') },
+      1000
+    ),
+
+    Realm.open({schema: [DataSchema]})
+    .then(realm => {
+        let dataSet = realm.objects('Data');
+        for (let p of dataSet) {
+
+          this.state.age = p.age;
+          this.state.wrRate = p.wrRate;
+          this.state.incGrowth = p.incGrowth;
+          this.state.invReturns = p.invReturns;
+          this.state.investment = p.investment;
+          this.state.income = p.income;
+          this.state.spending = p.spending;
+          this.state.retSpending = p.retSpending; 
+        }
+
+      realm.close();
+
+      this.onFireReady();
+
+    })
+    .catch(error => {
+      console.log(error);
+    })   
+
+      
     );
   }
 
@@ -326,6 +318,7 @@ callAlertIncome(){
   // Preload data using AsyncStorage
   const data = await this.performTimeConsumingTask();
 
+  console.log("how is data: " + data);
   if (data !== null) {
     this.setState({ isLoading: false });
   }
@@ -366,7 +359,7 @@ callAlertIncome(){
               reverseColor='false'
               underlayColor= '#1fb28a'
               iconStyle={styles.headerIcon}
-              onPress={() => this.runDemo()} />
+              onPress={() => this.saveData()} />
               
           </Right>
           
@@ -459,11 +452,13 @@ callAlertIncome(){
                       maximumTrackTintColor="#d3d3d3"
                       thumbTintColor='#1a9274'
                       step={100}
-                      value={this.state.investment}
-                      onValueChange={investment => {
-                       this.setState({ investment });
+                      value={this.state.investment}                      
+                      onValueChange={(investment) => { this.setState({ investment });}}        
+                      onSlidingComplete={() => 
+                      {
+                        this.onFireReady();
                       }}
-                      onSlidingComplete={() => this.onFireReady()}
+
                     />                 
                  </CardView>
          
