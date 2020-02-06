@@ -10,9 +10,9 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "./style";
 
-const Realm = require('realm');
+import SplashScreenComponent from "./components/SplashScreen";
 
-import SplashScreen from 'react-native-splash-screen'
+const Realm = require('realm');
 
 import Slider from "react-native-slider";
 
@@ -97,12 +97,11 @@ export default class App extends React.Component {
       currencySymbol: "£",
       percentageSymbol: "%",
 
-      fireDataArray: []
+      fireDataArray: [],
 
+      isLoading: true 
     };
   }
-
-
 
   componentWillMount() {
 
@@ -138,7 +137,6 @@ export default class App extends React.Component {
     if (realm !== null) {
       realm.close();
     }
-
   }
 
 runDemo = () => {
@@ -162,19 +160,19 @@ runDemo = () => {
 }
 
 
-  handleFocus = event => {
-    this.setState({ isFocused: true });
-    if (this.props.onFocus) {
-      this.props.onFocus(event);
-    }
-  };
+  // handleFocus = event => {
+  //   this.setState({ isFocused: true });
+  //   if (this.props.onFocus) {
+  //     this.props.onFocus(event);
+  //   }
+  // };
 
-  handleBlur = event => {
-    this.setState({ isFocused: false });
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
-    }
-  }
+  // handleBlur = event => {
+  //   this.setState({ isFocused: false });
+  //   if (this.props.onBlur) {
+  //     this.props.onBlur(event);
+  //   }
+  // }
  
   onFireReady = () => {
 
@@ -314,17 +312,35 @@ callAlertIncome(){
     }
   } 
 
-  componentDidMount() {
-    //this.onFireReady();
-     
-     SplashScreen.hide();
-  } 
+  performTimeConsumingTask = async() => {
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        2000
+      )
+    );
+  }
+
+ async componentDidMount() {
+  // Preload data from an external API
+  // Preload data using AsyncStorage
+  const data = await this.performTimeConsumingTask();
+
+  if (data !== null) {
+    this.setState({ isLoading: false });
+  }
+}
 
   render() {
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
 
-    return (
+     // Loads splash screen
+     if (this.state.isLoading) {
+      return <SplashScreenComponent />;
+     }
+
+    return (     
 
       <View style={styles.container}>
         <Header

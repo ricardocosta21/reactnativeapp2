@@ -14,6 +14,13 @@ export default StyleSheet.create({
     backgroundColor: "transparent"
   },
 
+  splashContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
   text: {
     alignSelf: "center"
   },
