@@ -8,14 +8,16 @@
 
 import React, { Component } from "react";
 import CardView from 'react-native-cardview'
-import styles from "./style";
+import styles from "../style";
 
-import SplashScreenComponent from "./components/SplashScreen";
+import SplashScreenComponent from "./SplashScreen";
 
 const Realm = require('realm');
 
 import Slider from "react-native-slider";
-//import { Slider } from 'react-native-elements';
+
+import { createDrawerNavigator, Drawer } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 import {
@@ -74,7 +76,7 @@ const DataSchema = {
   }
 };
 
-export default class App extends React.Component {
+export default class MainScreen extends React.Component {
 
   constructor(props){
     super(props)
@@ -101,7 +103,8 @@ export default class App extends React.Component {
 
       fireDataArray: [],
 
-      isLoading: true 
+      isLoading: true,
+      drawerOpen: false
     };
   }
 
@@ -324,6 +327,28 @@ saveData = () => {
   }
 }
 
+
+ HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        // onPress={() => navigation.navigate('Notifications')}
+        onPress={() => navigation.openDrawer()}
+        title="Go to notifications"
+      />
+    </View>
+  );
+}
+
+ NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
+
   render() {
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
@@ -335,23 +360,25 @@ saveData = () => {
 
     return (     
 
+     
+
       <View style={styles.container}>
-        <Header
-          iosBarStyle="light-content"
+   
+        {/* <Header iosBarStyle="light-content"
           androidStatusBarColor={HARD_GREEN}
-          style={{ backgroundColor: HARD_GREEN }}>
-           <Left>
+          style={{ backgroundColor: HARD_GREEN }}> */}
+           {/* <Left>
             <Button transparent>
               <Icon name="menu"
-              color='#ffffff' />              
+              color='#ffffff' />  
             </Button>
-          </Left>    
+          </Left>     */}
 
-          <Body>
+          {/* <Body>
             <Title style={styles.h2}>FireCalc</Title>
-          </Body>
+          </Body> */}
 
-          <Right>
+          {/* <Right>
             <Icon            
               name='save'
               type='font-awesome'
@@ -361,9 +388,53 @@ saveData = () => {
               iconStyle={styles.headerIcon}
               onPress={() => this.saveData()} />
               
-          </Right>
+          </Right> */}
           
-        </Header>
+        {/* </Header> */}
+
+
+        <Drawer
+            ref={(ref) => this.drawer = ref}
+            type="static"
+            tapToClose={true}
+            openDrawerOffset={120}
+            styles={styles.drawer}
+            tweenHandler={(ratio) => ({
+                main: {
+                    transform: [
+                        {skewX: `${2 * ratio}deg`},
+                        {scaleX: (1 - (0.25 * ratio))},
+                        {scaleY: (1 - (0.25 * ratio))}
+                    ],
+                    borderRadius: 13,
+                    borderLeftWidth: 5 * ratio,
+                    borderLeftColor: 'rgba(0,0,0,0.2)',
+                    borderBottomWidth: 5 * ratio,
+                    borderBottomColor: 'rgba(0,0,0,0.2)'
+                }
+            })}
+            onOpenStart={() => this.setState({drawerOpen: true})}
+            onCloseStart={() => this.setState({drawerOpen: false})}
+            content={(
+                <DrawerContent
+                    open={this.state.drawerOpen}
+                />
+            )}
+        >
+            <SafeAreaView style={styles.containerDrawer}>
+                <View style={{
+                    backgroundColor: 'white'
+                }}>
+                    <Header
+                        bgColor={Colors.bgHeader}
+                        tintColor={Colors.tintHeader}
+                        onLeftPress={() => this.drawer.open()}
+                    />
+                   
+                </View>
+            </SafeAreaView>
+        </Drawer>
+
 
         <ScrollView>
             <View style={styles.MoneyRowText}>
