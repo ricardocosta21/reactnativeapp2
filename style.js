@@ -25,6 +25,11 @@ export default StyleSheet.create({
     alignSelf: "center"
   },
 
+  drawer: {
+    drawer: {},
+    main: {}
+  },
+
   headerIcon: {
     marginRight: 10
   },
