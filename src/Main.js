@@ -328,35 +328,39 @@ saveData = () => {
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
 
-    let detailResult = this.props.route.params;
+    // console.log(this.props);
 
-    //  // Loads splash screen
-    //  if (this.state.isLoading) {
-    //   return <SplashScreenComponent />;
-    //  }
+    // console.log(this.props.route.params);
+
+    //const detailResult = this.props.route.params;
+
+     // Loads splash screen
+     if (this.state.isLoading) {
+      return <SplashScreenComponent />;
+     }
 
     return (     
 
-      //  <View style={styles.center}>
-      //   <Text style={styles.title}>
-      //     {detailResult ? detailResult.data : 'Navigation Drawer'}
-      //   </Text>
-      //   {
-      //     Platform.select({
-      //      ios:
-      //         <Button
-      //           title='Go to Feed Item'
-      //           onPress={() => this.props.navigation.navigate('Detail', { screenName: "My Detail Screen" })}
-      //         />,
-      //       android:
-      //         <TouchableOpacity
-      //           onPress={() => this.props.navigation.navigate('Detail', { screenName: "My Detail Screen" })}>
-      //           <Text style={styles.androidButtonText}>Go to FeedItem</Text>
-      //         </TouchableOpacity>
-      //     })
-      //   }
+       <View style={styles.text}>
+        {/* <Text style={styles.title}> */}
+          {/* {detailResult ? detailResult.data : 'Navigation Drawer'} */}
+        {/* </Text>
+        {
+          Platform.select({
+           ios:
+              <Button
+                title='Go to Feed Item'
+                onPress={() => this.props.navigation.navigate('Detail', { screenName: "My Detail Screen" })}
+              />,
+            android:
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Detail', { screenName: "My Detail Screen" })}>
+                <Text style={styles.androidButtonText}>Go to FeedItem</Text>
+              </TouchableOpacity>
+          }) */}
+        {/* } */}
 
-      // </View>
+       </View>
 
 //       <View style={styles.container}>
 //         <Header

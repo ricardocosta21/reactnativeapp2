@@ -25,13 +25,24 @@ export default StyleSheet.create({
     alignSelf: "center"
   },
 
-  drawer: {
-    drawer: {},
-    main: {}
-  },
-
   headerIcon: {
     marginRight: 10
+  },
+
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  title: {
+    fontSize: 36,
+    marginBottom: 16
+  },
+  
+  androidButtonText: {
+    color: 'blue',
+    fontSize: 20
   },
 
   textInput: {
