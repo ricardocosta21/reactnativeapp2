@@ -10,6 +10,8 @@ import React, { Component } from "react";
 import CardView from 'react-native-cardview'
 import styles from "../style";
 
+import Detail from "./detail"
+
 import SplashScreenComponent from "./SplashScreen";
 
 const Realm = require('realm');
@@ -17,6 +19,14 @@ const Realm = require('realm');
 import Slider from "react-native-slider";
 //import { Slider } from 'react-native-elements';
 
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
+
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 
 import {
   Platform,
@@ -74,10 +84,23 @@ const DataSchema = {
   }
 };
 
-export class Main extends Component {
+const Drawer = createDrawerNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator  drawerContent={props => Main(props)}>
+        <Drawer.Screen name="Home" component={Main} />
+        <Drawer.Screen name="Detail" component={Detail} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export class Main extends React.Component{
 
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       
@@ -324,311 +347,316 @@ saveData = () => {
   }
 }
 
+//  GoToButton({ screenName }) {
+//   const navigation = useNavigation();
+
+//   return (
+//     <Button
+//       title={`Go to ${screenName}`}
+//       onPress={() => navigation.navigate(screenName)}
+//     />
+//   );
+// }
+
   render() {
     const { isFocused } = this.state;
     let colors = [WHITE, LIGHT_GRAY];
 
-    // console.log(this.props);
-
-    // console.log(this.props.route.params);
-
-    //const detailResult = this.props.route.params;
 
      // Loads splash screen
      if (this.state.isLoading) {
       return <SplashScreenComponent />;
      }
 
+
     return (     
 
-       <View style={styles.text}>
-        {/* <Text style={styles.title}> */}
-          {/* {detailResult ? detailResult.data : 'Navigation Drawer'} */}
-        {/* </Text>
-        {
-          Platform.select({
-           ios:
-              <Button
-                title='Go to Feed Item'
-                onPress={() => this.props.navigation.navigate('Detail', { screenName: "My Detail Screen" })}
-              />,
-            android:
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Detail', { screenName: "My Detail Screen" })}>
-                <Text style={styles.androidButtonText}>Go to FeedItem</Text>
-              </TouchableOpacity>
-          }) */}
-        {/* } */}
+      
 
-       </View>
+      <View style={styles.container}>
+     
+        <Header
+          iosBarStyle="light-content"
+          androidStatusBarColor={HARD_GREEN}
+          style={{ backgroundColor: HARD_GREEN }}>
+           <Left>
+            <Button transparent onPress={() => this.props.navigation.navigate('Detail')}>
+            
+              <Icon name="menu" color='#ffffff' />              
+            </Button>
+          </Left>    
 
-//       <View style={styles.container}>
-//         <Header
-//           iosBarStyle="light-content"
-//           androidStatusBarColor={HARD_GREEN}
-//           style={{ backgroundColor: HARD_GREEN }}>
-//            <Left>
-//             <Button transparent>
-//               <Icon name="menu"
-//               color='#ffffff' />              
-//             </Button>
-//           </Left>    
+          <Body>
+            <Title style={styles.h2}>FireCalc</Title>
+          </Body>
 
-//           <Body>
-//             <Title style={styles.h2}>FireCalc</Title>
-//           </Body>
-
-//           <Right>
-//             <Icon            
-//               name='save'
-//               type='font-awesome'
-//               color='#ffffff'
-//               reverseColor='false'
-//               underlayColor= '#1fb28a'
-//               iconStyle={styles.headerIcon}
-//               onPress={() => this.saveData()} />
+          <Right>
+            <Icon            
+              name='save'
+              type='font-awesome'
+              color='#ffffff'
+              reverseColor='false'
+              underlayColor= '#1fb28a'
+              iconStyle={styles.headerIcon}
+              onPress={() => this.saveData()} />
               
-//           </Right>
+          </Right>
           
-//         </Header>
+        </Header>
 
-//         <ScrollView>
-//             <View style={styles.MoneyRowText}>
-//               <CardView style={styles.cardContainer}>
-//                 <Text style={styles.text}>Age</Text>
-//                 <TextInput
-//                   maxLength={2}
-//                   keyboardType="numeric"
-//                   style={styles.textInput}
-//                   selectionColor={LIGHT_GREEN}
-//                   underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
-//                   onChangeText={age => this.setState({ age })}
-//                   onSelectionChange={() => this.onFireReady()}
-//                   value={this.state.age}
-//                 />                
-//               </CardView>
+        <ScrollView>
+            <View style={styles.MoneyRowText}>
+              <CardView style={styles.cardContainer}>
+                <Text style={styles.text}>Age</Text>
+                <TextInput
+                  maxLength={2}
+                  keyboardType="numeric"
+                  style={styles.textInput}
+                  selectionColor={LIGHT_GREEN}
+                  underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}   
+                  onChangeText={age => this.setState({ age })}
+                  onSelectionChange={() => this.onFireReady()}
+                  value={this.state.age}
+                />                
+              </CardView>
 
 
-//               <CardView style={styles.cardContainer}>        
+              <CardView style={styles.cardContainer}>        
 
-//                    <Text style={styles.text}>WR Rate</Text>
-//                   <View style={styles.textPercentageReturns}>
+                   <Text style={styles.text}>WR Rate</Text>
+                  <View style={styles.textPercentageReturns}>
                  
-//                     <TextInput
-//                       keyboardType="numeric"
-//                       maxLength={2}
-//                       style={styles.textInput}
-//                       selectionColor={LIGHT_GREEN}
-//                       underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
-//                       onChangeText={wrRate => this.setState({ wrRate })}
-//                       onSelectionChange={() => this.onFireReady()}
-//                       value={this.state.wrRate}
-//                     />
-//                     <Text style={styles.text}>{this.state.percentageSymbol}</Text>
-//                   </View>                 
-//                 </CardView>
+                    <TextInput
+                      keyboardType="numeric"
+                      maxLength={2}
+                      style={styles.textInput}
+                      selectionColor={LIGHT_GREEN}
+                      underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
+                      onChangeText={wrRate => this.setState({ wrRate })}
+                      onSelectionChange={() => this.onFireReady()}
+                      value={this.state.wrRate}
+                    />
+                    <Text style={styles.text}>{this.state.percentageSymbol}</Text>
+                  </View>                 
+                </CardView>
 
 
-//                 <CardView style={styles.cardContainer}>
-//                   <Text style={styles.text}>Inc. Growth</Text>
-//                   <View style={styles.textPercentageReturns}>
-//                     <TextInput
-//                       keyboardType="numeric"
-//                       style={styles.textInput}
-//                       selectionColor={LIGHT_GREEN}
-//                       underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
-//                       onChangeText={incGrowth => this.setState({ incGrowth })}
-//                       onSelectionChange={() => this.onFireReady()}
-//                       value={this.state.incGrowth}
-//                     />
-//                     <Text style={styles.text}>{this.state.percentageSymbol}</Text>
-//                   </View>                 
-//                 </CardView>
+                <CardView style={styles.cardContainer}>
+                  <Text style={styles.text}>Inc. Growth</Text>
+                  <View style={styles.textPercentageReturns}>
+                    <TextInput
+                      keyboardType="numeric"
+                      style={styles.textInput}
+                      selectionColor={LIGHT_GREEN}
+                      underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
+                      onChangeText={incGrowth => this.setState({ incGrowth })}
+                      onSelectionChange={() => this.onFireReady()}
+                      value={this.state.incGrowth}
+                    />
+                    <Text style={styles.text}>{this.state.percentageSymbol}</Text>
+                  </View>                 
+                </CardView>
 
 
-//               <CardView style={styles.cardContainer}>
-//                 <Text style={styles.text}>Returns</Text>
-//                 <View style={styles.textPercentageReturns}>
-//                   <TextInput
-//                     keyboardType="numeric"
-//                     style={styles.textInput}
-//                     selectionColor={LIGHT_GREEN}
-//                     underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
-//                     onChangeText={invReturns => this.setState({ invReturns })}
-//                     onSelectionChange={() => this.onFireReady()}
-//                     value={this.state.invReturns}
-//                   />
-//                   <Text style={styles.text}>{this.state.percentageSymbol}</Text>
-//                 </View>              
-//               </CardView>
-//             </View>
+              <CardView style={styles.cardContainer}>
+                <Text style={styles.text}>Returns</Text>
+                <View style={styles.textPercentageReturns}>
+                  <TextInput
+                    keyboardType="numeric"
+                    style={styles.textInput}
+                    selectionColor={LIGHT_GREEN}
+                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
+                    onChangeText={invReturns => this.setState({ invReturns })}
+                    onSelectionChange={() => this.onFireReady()}
+                    value={this.state.invReturns}
+                  />
+                  <Text style={styles.text}>{this.state.percentageSymbol}</Text>
+                </View>              
+              </CardView>
+            </View>
 
         
 
-//  {/*//////////////////////////////////////////  Investments   //////////////////////////////////////////////////////*/}
+ {/*//////////////////////////////////////////  Investments   //////////////////////////////////////////////////////*/}
 
        
-//                 <CardView style={styles.cardContainer}>
-//                    <Text style={styles.text}>Investments</Text>
-//                    <Text>{this.formatNumber(this.state.investment)}</Text>
-//                    <Slider
-//                       style={{width: deviceWidth - 70, height: 40}}
-//                       minimumValue={0}
-//                       maximumValue={maxInvestmentsValue}
-//                       minimumTrackTintColor="#1fb28a"
-//                       maximumTrackTintColor="#d3d3d3"
-//                       thumbTintColor='#1a9274'
-//                       step={100}
-//                       value={this.state.investment}                      
-//                       onValueChange={(investment) => { this.setState({ investment });}}        
-//                       onSlidingComplete={() => 
-//                       {
-//                         this.onFireReady();
-//                       }}
+                <CardView style={styles.cardContainer}>
+                   <Text style={styles.text}>Investments</Text>
+                   <Text>{this.formatNumber(this.state.investment)}</Text>
+                   <Slider
+                      style={{width: deviceWidth - 70, height: 40}}
+                      minimumValue={0}
+                      maximumValue={maxInvestmentsValue}
+                      minimumTrackTintColor="#1fb28a"
+                      maximumTrackTintColor="#d3d3d3"
+                      thumbTintColor='#1a9274'
+                      step={100}
+                      value={this.state.investment}                      
+                      onValueChange={(investment) => { this.setState({ investment });}}        
+                      onSlidingComplete={() => 
+                      {
+                        this.onFireReady();
+                      }}
 
-//                     />                 
-//                  </CardView>
+                    />                 
+                 </CardView>
          
 
-//  {/*//////////////////////////////////////////  Income   //////////////////////////////////////////////////////*/}
+ {/*//////////////////////////////////////////  Income   //////////////////////////////////////////////////////*/}
 
-//                   <CardView style={styles.cardContainer}>
-//                   <Text style={styles.text}>Income(-Tax)</Text>
-//                   <Text>{this.formatNumber(this.state.income)}</Text>
-//                   <Slider
-//                       style={{width: deviceWidth - 70, height: 40}}
-//                       minimumValue={0}
-//                       maximumValue={maxIncomeValue}
-//                       minimumTrackTintColor="#1fb28a"
-//                       maximumTrackTintColor="#d3d3d3"
-//                       thumbTintColor='#1a9274'
-//                       step={100}
-//                       value={this.state.income}
-//                       onValueChange={income => {
-//                        this.setState({ income });
-//                       }}
-//                        onSlidingComplete={() => 
-//                       {
-//                         if(this.state.income < this.state.spending)
-//                         {
-//                            this.state.income = this.state.spending;
-//                            this.callAlertIncome();
-//                         }
-//                         this.onFireReady()}
-//                       }    
-//                   />
-//                 </CardView>
+                  <CardView style={styles.cardContainer}>
+                  <Text style={styles.text}>Income(-Tax)</Text>
+                  <Text>{this.formatNumber(this.state.income)}</Text>
+                  <Slider
+                      style={{width: deviceWidth - 70, height: 40}}
+                      minimumValue={0}
+                      maximumValue={maxIncomeValue}
+                      minimumTrackTintColor="#1fb28a"
+                      maximumTrackTintColor="#d3d3d3"
+                      thumbTintColor='#1a9274'
+                      step={100}
+                      value={this.state.income}
+                      onValueChange={income => {
+                       this.setState({ income });
+                      }}
+                       onSlidingComplete={() => 
+                      {
+                        if(this.state.income < this.state.spending)
+                        {
+                           this.state.income = this.state.spending;
+                           this.callAlertIncome();
+                        }
+                        this.onFireReady()}
+                      }    
+                  />
+                </CardView>
 
-//  {/*//////////////////////////////////////////  Spending   //////////////////////////////////////////////////////*/}
+ {/*//////////////////////////////////////////  Spending   //////////////////////////////////////////////////////*/}
                 
-//                 <CardView style={styles.cardContainer}>
-//                   <Text style={styles.text}>Spending</Text>
-//                   <Text>{this.formatNumber(this.state.spending)}</Text>                  
-//                   <Slider
-//                       style={{width: deviceWidth - 70, height: 40}}
-//                       minimumValue={0}
-//                       maximumValue={maxIncomeValue}
-//                       minimumTrackTintColor="#1fb28a"
-//                       maximumTrackTintColor="#d3d3d3"
-//                       thumbTintColor='#1a9274'
-//                       step={100}
-//                       value={this.state.spending}
-//                       onValueChange={spending => {
-//                        this.setState({ spending });
-//                       }}
-//                       onSlidingComplete={() => 
-//                       {
-//                         if(this.state.spending > this.state.income)
-//                         {
-//                            this.state.spending = this.state.income;
-//                            this.callAlertSpending();
-//                         }
-//                         this.onFireReady()}
-//                       }                     
+                <CardView style={styles.cardContainer}>
+                  <Text style={styles.text}>Spending</Text>
+                  <Text>{this.formatNumber(this.state.spending)}</Text>                  
+                  <Slider
+                      style={{width: deviceWidth - 70, height: 40}}
+                      minimumValue={0}
+                      maximumValue={maxIncomeValue}
+                      minimumTrackTintColor="#1fb28a"
+                      maximumTrackTintColor="#d3d3d3"
+                      thumbTintColor='#1a9274'
+                      step={100}
+                      value={this.state.spending}
+                      onValueChange={spending => {
+                       this.setState({ spending });
+                      }}
+                      onSlidingComplete={() => 
+                      {
+                        if(this.state.spending > this.state.income)
+                        {
+                           this.state.spending = this.state.income;
+                           this.callAlertSpending();
+                        }
+                        this.onFireReady()}
+                      }                     
                      
-//                   />                 
-//                 </CardView>
+                  />                 
+                </CardView>
               
                   
-//  {/*//////////////////////////////////////////  ret spending   //////////////////////////////////////////////////////*/}               
+ {/*//////////////////////////////////////////  ret spending   //////////////////////////////////////////////////////*/}               
               
-//                 <CardView style={styles.cardContainer}>
-//                      <Text style={styles.text}>Ret. Spending</Text>
-//                      <Text>{this.formatNumber(this.state.retSpending)}</Text>
-//                   <Slider
-//                       style={{width: deviceWidth - 70, height: 40}}
-//                       minimumValue={0}
-//                       maximumValue={maxIncomeValue}
-//                       minimumTrackTintColor="#1fb28a"
-//                       maximumTrackTintColor="#d3d3d3"
-//                       thumbTintColor='#1a9274'
-//                       step={100}
-//                       value={this.state.retSpending}
-//                       onValueChange={retSpending => {
-//                        this.setState({ retSpending });
-//                       }}
-//                       onSlidingComplete={() => this.onFireReady()}                    
-//                   />
-//                 </CardView>
+                <CardView style={styles.cardContainer}>
+                     <Text style={styles.text}>Ret. Spending</Text>
+                     <Text>{this.formatNumber(this.state.retSpending)}</Text>
+                  <Slider
+                      style={{width: deviceWidth - 70, height: 40}}
+                      minimumValue={0}
+                      maximumValue={maxIncomeValue}
+                      minimumTrackTintColor="#1fb28a"
+                      maximumTrackTintColor="#d3d3d3"
+                      thumbTintColor='#1a9274'
+                      step={100}
+                      value={this.state.retSpending}
+                      onValueChange={retSpending => {
+                       this.setState({ retSpending });
+                      }}
+                      onSlidingComplete={() => this.onFireReady()}                    
+                  />
+                </CardView>
             
-//                 <View style={styles.MoneyRowText}>
+                <View style={styles.MoneyRowText}>
 
               
-//                 <CardView style={styles.cardContainer}>
-//                   <Text style={styles.text}>Savings</Text>
-//                   <Text style={styles.textInput}>
-//                     {this.formatNumber(this.state.savingsNumber)}{' '}
-//                     <Text style={styles.textPercentage}>
-//                       ({this.state.savingsPercentage}
-//                       {this.state.percentageSymbol})
-//                     </Text>
-//                   </Text>
-//                 </CardView>
+                <CardView style={styles.cardContainer}>
+                  <Text style={styles.text}>Savings</Text>
+                  <Text style={styles.textInput}>
+                    {this.formatNumber(this.state.savingsNumber)}{' '}
+                    <Text style={styles.textPercentage}>
+                      ({this.state.savingsPercentage}
+                      {this.state.percentageSymbol})
+                    </Text>
+                  </Text>
+                </CardView>
 
 
-//                 <CardView style={styles.cardContainer}>
-//                   <Text style={styles.text}> FIRE # </Text>
-//                   <Text style={styles.textInput}>
-//                     {this.formatNumber(this.state.fireNumber)}
-//                   </Text>                  
-//                 </CardView>
+                <CardView style={styles.cardContainer}>
+                  <Text style={styles.text}> FIRE # </Text>
+                  <Text style={styles.textInput}>
+                    {this.formatNumber(this.state.fireNumber)}
+                  </Text>                  
+                </CardView>
               
 
-//               </View>
+              </View>
 
-//             <View style={styles.itemContainerHeader}>
-//               <Text style={styles.flatListHeaderLeft}>#</Text>
-//               <Text style={styles.flatListHeaderCenter}>Age</Text>
-//               <Text style={styles.flatListHeaderRight}>Balance</Text>
-//             </View>
+            <View style={styles.itemContainerHeader}>
+              <Text style={styles.flatListHeaderLeft}>#</Text>
+              <Text style={styles.flatListHeaderCenter}>Age</Text>
+              <Text style={styles.flatListHeaderRight}>Balance</Text>
+            </View>
 
-//             <View style={styles.itemContainer}>
-//             {
-//               <FlatList
-//                 style={styles.flatList}
-//                 data={this.state.fireDataArray}
-//                 keyExtractor={(item, index) => "key" + index}
-//                 renderItem={({ item, index }) => (                
-//                   <View style={{ 
-//                     flex: 1,
-//                     flexDirection: "row",
-//                     paddingTop: 15,
-//                     paddingBottom: 15,
-//                     backgroundColor: colors[index % colors.length] }}>
-//                     <Text style={styles.flatListItemLeft}>{item.index}</Text>
-//                     <Text style={styles.flatListItemCenter}>{item.age}</Text>
-//                     <Text style={styles.flatListItemRight}>{this.formatNumber(item.value)}</Text>
-//                   </View>
-//                 )}
+            <View style={styles.itemContainer}>
+            {
+              <FlatList
+                style={styles.flatList}
+                data={this.state.fireDataArray}
+                keyExtractor={(item, index) => "key" + index}
+                renderItem={({ item, index }) => (                
+                  <View style={{ 
+                    flex: 1,
+                    flexDirection: "row",
+                    paddingTop: 15,
+                    paddingBottom: 15,
+                    backgroundColor: colors[index % colors.length] }}>
+                    <Text style={styles.flatListItemLeft}>{item.index}</Text>
+                    <Text style={styles.flatListItemCenter}>{item.age}</Text>
+                    <Text style={styles.flatListItemRight}>{this.formatNumber(item.value)}</Text>
+                  </View>
+                )}
                
-//               />
-//             }
-//         </View>
+              />
+            }
+        </View>
 
-//         </ScrollView>
-//       </View>
+        </ScrollView>
+      </View>
      );
   }
 }
 
-export default Main;
+
+// function CustomDrawerContent(props) {
+//   return (
+//     <DrawerContentScrollView {...props}>
+//       <DrawerItemList {...props} />
+//       <DrawerItem
+//         label="Close drawer"
+//         onPress={() => props.navigation.closeDrawer()}
+//       />
+//       <DrawerItem
+//         label="Toggle drawer"
+//         onPress={() => props.navigation.toggleDrawer()}
+//       />
+//     </DrawerContentScrollView>
+//   );
+// }
+
