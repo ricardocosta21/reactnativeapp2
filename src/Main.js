@@ -45,9 +45,9 @@ import {
 import {
   Container,
   Header,
+  Button,
   Title,
   Content,
-  Button,
   Left,
   Right,
   Body,
@@ -89,8 +89,8 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator  drawerContent={props => Main(props)}>
-        <Drawer.Screen name="Home" component={Main} />
+      <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)}>
+        <Drawer.Screen name="Main" component={Main} />
         <Drawer.Screen name="Detail" component={Detail} />
       </Drawer.Navigator>
     </NavigationContainer>
@@ -380,7 +380,7 @@ saveData = () => {
           androidStatusBarColor={HARD_GREEN}
           style={{ backgroundColor: HARD_GREEN }}>
            <Left>
-            <Button transparent onPress={() => this.props.navigation.navigate('Detail')}>
+            <Button transparent onPress={() => this.props.navigation.openDrawer()} >
             
               <Icon name="menu" color='#ffffff' />              
             </Button>
@@ -644,19 +644,29 @@ saveData = () => {
 }
 
 
-// function CustomDrawerContent(props) {
+// function Feed({ navigation }) {
 //   return (
-//     <DrawerContentScrollView {...props}>
-//       <DrawerItemList {...props} />
-//       <DrawerItem
-//         label="Close drawer"
-//         onPress={() => props.navigation.closeDrawer()}
-//       />
-//       <DrawerItem
-//         label="Toggle drawer"
-//         onPress={() => props.navigation.toggleDrawer()}
-//       />
-//     </DrawerContentScrollView>
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Feed Screen</Text>
+//       <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
+//       <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
+//     </View>
 //   );
 // }
+
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem
+        label="Close drawer"
+        onPress={() => props.navigation.closeDrawer()}
+      />
+      <DrawerItem
+        label="Toggle drawer"
+        onPress={() => props.navigation.toggleDrawer()}
+      />
+    </DrawerContentScrollView>
+  );
+}
 
