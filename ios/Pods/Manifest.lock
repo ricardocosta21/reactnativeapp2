@@ -1,66 +1,136 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
-  - Lock (1.29.2):
-    - Lock/Core (= 1.29.2)
-    - Lock/UI (= 1.29.2)
-    - Lock/WebView (= 1.29.2)
-  - Lock/Core (1.29.2):
-    - AFNetworking (~> 3.0)
-  - Lock/CoreUI (1.29.2):
-    - Lock/Core
-    - Masonry (~> 0.6)
-  - Lock/Email (1.29.2):
-    - Lock/UI
-  - Lock/SMS (1.29.2):
-    - Lock/UI
-  - Lock/TouchID (1.29.2):
-    - Lock/UI
-    - SimpleKeychain (~> 0.2)
-    - TouchIDAuth (~> 0.1)
-  - Lock/UI (1.29.2):
-    - Lock/CoreUI
-  - Lock/WebView (1.29.2):
-    - Lock/CoreUI
-  - Masonry (0.6.4)
-  - SimpleKeychain (0.9.0)
-  - TouchIDAuth (0.2.0):
-    - SimpleKeychain (~> 0.3)
+  - BVLinearGradient (2.5.6):
+    - React
+  - GCDWebServer (3.5.3):
+    - GCDWebServer/Core (= 3.5.3)
+  - GCDWebServer/Core (3.5.3)
+  - React (0.59.5):
+    - React/Core (= 0.59.5)
+  - react-native-safe-area-context (0.7.3):
+    - React
+  - react-native-simple-toast (1.0.0):
+    - React
+    - Toast (~> 4.0.0)
+  - react-native-slider (2.0.8):
+    - React
+  - react-native-splash-screen (3.2.0):
+    - React
+  - react-native-sqlite-storage (4.1.0):
+    - React
+  - React/Core (0.59.5):
+    - yoga (= 0.59.5.React)
+  - React/DevSupport (0.59.5):
+    - React/Core
+    - React/RCTWebSocket
+  - React/fishhook (0.59.5)
+  - React/RCTBlob (0.59.5):
+    - React/Core
+  - React/RCTNetwork (0.59.5):
+    - React/Core
+  - React/RCTWebSocket (0.59.5):
+    - React/Core
+    - React/fishhook
+    - React/RCTBlob
+  - ReactNativeART (1.1.2):
+    - React
+  - RealmJS (3.6.3):
+    - GCDWebServer
+    - React
+  - RNCMaskedView (0.1.6):
+    - React
+  - RNGestureHandler (1.6.0):
+    - React
+  - RNReanimated (1.7.0):
+    - React
+  - RNScreens (2.0.0-beta.9):
+    - React
+  - RNSqlite2 (1.0.0):
+    - React
+  - RNVectorIcons (6.6.0):
+    - React
+  - Toast (4.0.0)
+  - yoga (0.59.5.React)
 
 DEPENDENCIES:
-  - Lock (~> 1.26)
-  - Lock/Email
-  - Lock/SMS
-  - Lock/TouchID
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-simple-toast (from `../node_modules/react-native-simple-toast`)
+  - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
+  - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
+  - React/Core (from `../node_modules/react-native`)
+  - React/DevSupport (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "ReactNativeART (from `../node_modules/@react-native-community/art`)"
+  - RealmJS (from `../node_modules/realm`)
+  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSqlite2 (from `../node_modules/react-native-sqlite-2`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
-    - AFNetworking
-    - Lock
-    - Masonry
-    - SimpleKeychain
-    - TouchIDAuth
+    - GCDWebServer
+    - Toast
+
+EXTERNAL SOURCES:
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
+  React:
+    :path: "../node_modules/react-native"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
+  react-native-simple-toast:
+    :path: "../node_modules/react-native-simple-toast"
+  react-native-slider:
+    :path: "../node_modules/@react-native-community/slider"
+  react-native-splash-screen:
+    :path: "../node_modules/react-native-splash-screen"
+  react-native-sqlite-storage:
+    :path: "../node_modules/react-native-sqlite-storage"
+  ReactNativeART:
+    :path: "../node_modules/@react-native-community/art"
+  RealmJS:
+    :path: "../node_modules/realm"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-community/masked-view"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
+  RNSqlite2:
+    :path: "../node_modules/react-native-sqlite-2"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  Lock: 3414fed031b4044509697dd9b9da9208bc68ad26
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
-  SimpleKeychain: 3be49072fd2d82de8fa83d847ef1e548622f8fc5
-  TouchIDAuth: 0cf861f58a2cacfc1c12cb02de4850729d943c81
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
+  GCDWebServer: c0ab22c73e1b84f358d1e2f74bf6afd1c60829f2
+  React: 90adac468c7b72bf1fa6c64bf230650f851a8388
+  react-native-safe-area-context: 8260e5157617df4b72865f44006797f895b2ada7
+  react-native-simple-toast: 9c2f5979dfe555d0aa7b084348a06fd6ef7a6f55
+  react-native-slider: b2f361499888302147205f17f6fffa921a7bda70
+  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
+  react-native-sqlite-storage: bb10beb2407e5fc21f3f1bcd86bacbfd6edcc818
+  ReactNativeART: c496c53089b3149663215d74d6f1adb3a62e07eb
+  RealmJS: c19d60dbe21606dade0f6217f4dd0d1fb8bb4e3a
+  RNCMaskedView: e5b99bc191945f157adeede68da9d424462de177
+  RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
+  RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
+  RNScreens: 797de72842e33431e68b87d95c0c9a0b3ef09819
+  RNSqlite2: 038cbebb953f80432db480c5ac5fd8ae427f8446
+  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
 
-PODFILE CHECKSUM: 3005a278dd39e135f64f5fed9c1c11d3d53f82bb
+PODFILE CHECKSUM: 75f0873cdf55429077090e7a861fdc3363c51fb5
 
 COCOAPODS: 1.8.4

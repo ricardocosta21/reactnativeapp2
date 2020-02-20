@@ -2,22 +2,59 @@
 # platform :ios, '9.0'
 
 target 'AwesomeProject' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+  # Comment the next line if you don't want to use dynamic frameworks
+  #use_frameworks!
 
-  # Pods for tonypoc
+  # Pods for AwesomeProject
 
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+pod "yoga", :path => "../node_modules/react-native/ReactCommon/yoga"
+pod 'React', :path => '../node_modules/react-native', :subspecs => [
+  'Core',
+  'DevSupport',
+  'RCTNetwork',
+  'RCTWebSocket'
+]
+
+  pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
+
+  pod 'RNCMaskedView', :path => '../node_modules/@react-native-community/masked-view'
+
+  pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
+  pod 'react-native-simple-toast', :path => '../node_modules/react-native-simple-toast'
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  pod 'RNSqlite2', :path => '../node_modules/react-native-sqlite-2'
+
+  pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RealmJS', :path => '../node_modules/realm'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
+ # this is needed to avoid including multiple references to react.
+ post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      if target.name == "React"
+        target.remove_from_project
+      end
+    end
+  end
+
+  target 'AwesomeProjectTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end
-
-# Auth0 Lock
-
-pod 'Lock', '~> 1.26'
-pod 'Lock/TouchID'
-pod 'Lock/SMS'
-pod 'Lock/Email'

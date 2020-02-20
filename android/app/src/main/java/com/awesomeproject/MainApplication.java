@@ -2,17 +2,20 @@ package com.awesomeproject;
 
 import android.app.Application;
 
-import io.realm.react.RealmReactPackage;
 import com.facebook.react.ReactApplication;
+import io.realm.react.RealmReactPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import dog.craftz.sqlite_2.RNSqlite2Package;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.swmansion.rnscreens.RNScreensPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.reactnativecommunity.slider.ReactSliderPackage;
-import dog.craftz.sqlite_2.RNSqlite2Package;
 import kim.taegon.rnintl.ReactNativeIntlPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.kishanjvaghela.cardview.RNCardViewPackage;
+import com.reactnativecommunity.slider.ReactSliderPackage;
+import org.reactnative.maskedview.RNCMaskedViewPackage;
+import com.reactnativecommunity.art.ARTPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -20,8 +23,6 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
-
-import org.pgsqlite.SQLitePluginPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -35,17 +36,19 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RealmReactPackage(),
+            new VectorIconsPackage(),
+            new RNSqlite2Package(),
+            new SplashScreenReactPackage(),
+            new RNScreensPackage(),
             new SafeAreaContextPackage(),
             new ReanimatedPackage(),
-            new SplashScreenReactPackage(),
-            new RNGestureHandlerPackage(),
-            new ReactSliderPackage(),
-            new RNSqlite2Package(),
             new ReactNativeIntlPackage(),
-            new SQLitePluginPackage(),   // register SQLite Plugin here 
-            new VectorIconsPackage(),
- 	    new RealmReactPackage(),
-            new RNCardViewPackage()
+            new RNGestureHandlerPackage(),
+            new RNCardViewPackage(),
+            new ReactSliderPackage(),
+            new RNCMaskedViewPackage(),
+            new ARTPackage()
       );
     }
 
