@@ -20,7 +20,6 @@ pod 'RealmJS', :path => '../node_modules/realm'
 
 pod 'RNScreens', :path => '../node_modules/react-native-screens'
 
-pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
@@ -58,6 +57,8 @@ pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   target 'CompoundInterestTests' do
     inherit! :search_paths

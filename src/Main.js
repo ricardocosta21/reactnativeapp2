@@ -17,7 +17,7 @@ import SplashScreenComponent from './SplashScreen';
 
 const Realm = require('realm');
 
-import Slider from 'react-native-slider';
+import Slider from '@react-native-community/slider';
 //import { Slider } from 'react-native-elements';
 
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
@@ -128,10 +128,10 @@ export class Main extends React.Component {
 
   componentWillUnmount() {
     // Close the realm if there is one open.
-    const {realm} = this.state;
-    if (realm !== null) {
-      realm.close();
-    }
+    //const {realm} = this.state;
+    // if (realm !== null) {
+    //   realm.close();
+    // }
   }
 
   saveData = () => {
@@ -169,7 +169,9 @@ export class Main extends React.Component {
       (spendingFieldAux * 100) / incomeFieldAux
     ).toFixed(1);
 
-    if (this.state.wrRate <= 0) return;
+    if (this.state.wrRate <= 0) {
+      return;
+    }
 
     // Calculate FireNumber
     this.state.fireNumber = (
