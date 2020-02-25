@@ -43,7 +43,6 @@ import {
   FlatList,
   Dimensions,
   ToastAndroid,
-  Alert,
   YellowBox,
   TouchableOpacity,
 } from 'react-native';
@@ -358,13 +357,12 @@ export class Main extends React.Component {
 
     return (
       <ImageBackground
-        source={require('../asset/Peach.jpg')}
+        source={require('../asset/gradient.png')}
         style={styles.imageContainer}>
         <View style={styles.container}>
           <Header
-            //iosBarStyle="light-content" MAKES IT WHITE
-            androidStatusBarColor={TRANSPARENT}
-            style={{backgroundColor: TRANSPARENT}}>
+            style={styles.headerContainer}
+            androidStatusBarColor={TRANSPARENT}>
             <Left>
               <Button
                 transparent
@@ -383,7 +381,6 @@ export class Main extends React.Component {
                 type="font-awesome"
                 color="#000000"
                 reverseColor="false"
-                underlayColor="#1fb28a"
                 iconStyle={styles.headerIcon}
                 onPress={() => this.saveData()}
               />
@@ -593,7 +590,7 @@ export class Main extends React.Component {
                         flexDirection: 'row',
                         paddingTop: 15,
                         paddingBottom: 15,
-                        backgroundColor: colors[index % colors.length],
+                        //backgroundColor: colors[index % colors.length],
                       }}>
                       <Text style={styles.flatListItemLeft}>{item.index}</Text>
                       <Text style={styles.flatListItemCenter}>{item.age}</Text>

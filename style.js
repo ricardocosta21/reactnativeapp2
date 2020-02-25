@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {StyleSheet, Dimensions} from 'react-native';
 
 const width = Dimensions.get('window').width / 1;
@@ -9,6 +10,8 @@ const HARD_GREEN = '#53d1af';
 const GRAY = '#C8C8C8';
 const LIGHT_GRAY = '#F4F4F4';
 const WHITE = '#FFFFFF';
+const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
+
 export default StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
@@ -17,6 +20,11 @@ export default StyleSheet.create({
   imageContainer: {
     flex: 1,
     width: '100%',
+  },
+
+  headerContainer: {
+    borderBottomWidth: 0,
+    backgroundColor: 'transparent',
   },
 
   splashContainer: {
@@ -88,7 +96,6 @@ export default StyleSheet.create({
     height: 80,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent',
   },
 
   itemContainerHeader: {
@@ -97,7 +104,7 @@ export default StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: GRAY,
+    backgroundColor: 'transparent',
   },
 
   flatListHeaderLeft: {
