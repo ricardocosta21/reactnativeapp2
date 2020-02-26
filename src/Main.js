@@ -114,6 +114,10 @@ export class Main extends React.Component {
   constructor(props) {
     super(props);
 
+    //var CurrencySymbolAux = props.navigation.state.params.CurrencySymbol;
+
+    //https://enappd.com/blog/navigations-in-react-native-app/124/
+
     this.state = {
       age: '27',
       investment: 22,
@@ -213,6 +217,11 @@ export class Main extends React.Component {
   }
 
   formatNumber(number) {
+    // let auxCurrency;
+    // if (this.state.CurrencySymbol == '£') {
+    //   auxCurrency = 'GBP';
+    // }
+
     return new Intl.NumberFormat('ja-JP', {
       style: 'currency',
       currency: 'GBP',

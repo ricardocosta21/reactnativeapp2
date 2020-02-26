@@ -146,6 +146,17 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
 
+  flatListSettingsContainer: {
+    textAlign: 'left',
+    paddingTop: 25,
+    paddingLeft: 35,
+  },
+
+  flatListSettingsLeft: {
+    fontSize: 25,
+    paddingBottom: 20,
+  },
+
   itemContainer: {
     flex: 1,
     backgroundColor: 'transparent',
