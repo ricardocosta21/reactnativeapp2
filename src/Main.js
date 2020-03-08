@@ -12,7 +12,7 @@ import React, {Component} from 'react';
 import CardView from 'react-native-cardview';
 import styles from '../style';
 
-import Details from './Details';
+import Settings from './Settings';
 import About from './About';
 
 import SplashScreenComponent from './SplashScreen';
@@ -103,7 +103,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)}>
         <Drawer.Screen name="Main" component={Main} />
-        <Drawer.Screen name="Details" component={Details} />
+        <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="About" component={About} />
       </Drawer.Navigator>
     </NavigationContainer>
@@ -114,7 +114,12 @@ export class Main extends React.Component {
   constructor(props) {
     super(props);
 
-    //var CurrencySymbolAux = props.navigation.state.params.CurrencySymbol;
+    // const CurrencySymbolAux = this.props.navigation.getParam(
+    //   'CurrencySymbol',
+    //   'GBP',
+    // );
+
+    global.MyCurrency = 'GBP';
 
     //https://enappd.com/blog/navigations-in-react-native-app/124/
 
@@ -134,7 +139,7 @@ export class Main extends React.Component {
       fireDisplayNumber: '',
 
       isFocused: false,
-      currencySymbol: '£',
+      currencySymbol: 'GBP',
       percentageSymbol: '%',
 
       fireDataArray: [],
@@ -217,14 +222,16 @@ export class Main extends React.Component {
   }
 
   formatNumber(number) {
-    // let auxCurrency;
-    // if (this.state.CurrencySymbol == '£') {
-    //   auxCurrency = 'GBP';
-    // }
+    // global.MyVar = 'USD';
+    if (global.MyVar === 'undefined') {
+      global.MyVar = this.state.currencySymbol;
+    }
+
+    console.log('--------I--------' + this.state.currencySymbol);
 
     return new Intl.NumberFormat('ja-JP', {
       style: 'currency',
-      currency: 'GBP',
+      currency: this.state.currencySymbol,
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(number);
@@ -333,6 +340,8 @@ export class Main extends React.Component {
     );
   };
 
+  
+
   async componentDidMount() {
     // Preload data from an external API
     // Preload data using AsyncStorage
@@ -343,6 +352,8 @@ export class Main extends React.Component {
       this.setState({isLoading: false});
     }
   }
+
+  
 
   //  GoToButton({ screenName }) {
   //   const navigation = useNavigation();

@@ -31,6 +31,15 @@ import {
 
 import styles from '../style';
 
+import {useNavigation, NavigationContainer} from '@react-navigation/native';
+
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
+
 // 3rd party libraries
 import {Icon} from 'react-native-elements';
 
@@ -43,7 +52,7 @@ const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
 
 const SettingsArray = ['Setting1', 'Setting2', 'Setting3'];
 
-export default class Details extends Component {
+export default class Settings extends Component {
   constructor(props) {
     super(props);
 
@@ -51,6 +60,12 @@ export default class Details extends Component {
       CurrencySymbol: '$',
     };
   }
+
+  onCurrencySelected(itemValue) {
+    console.log('-------HHH--------' + itemValue);
+    global.MyVar = itemValue;
+  }
+
   render() {
     const viewStyles = [styles.splashContainer, {backgroundColor: 'white'}];
     const textStyles = {
@@ -92,8 +107,34 @@ export default class Details extends Component {
           </Header>
         </View>
 
-        <View style={styles.flatListSettingsContainer}>
-          <ScrollView>
+        {/* <View
+          style={{
+            backgroundColor: HARD_GREEN,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Button
+            onPress={() => this.props.navigation.navigate('Main')}
+            title="Go to Main"
+          />
+        </View> */}
+
+        <View style={styles.settingsTextCenter}>
+          <Title>Choose a currency</Title>
+          <Picker
+            selectedValue={this.state.currencySymbol}
+            style={styles.flatListSettingsContainer}
+            onValueChange={(itemValue, itemIndex) => {
+              this.setState({currencySymbol: itemValue});
+              this.onCurrencySelected(itemValue);
+            }}>
+            <Picker.Item label="$" value="USD" />
+            <Picker.Item label="£" value="GBP" />
+            <Picker.Item label="€" value="EUR" />
+          </Picker>
+        </View>
+
+        {/* <ScrollView>
             <FlatList
               style={styles.flatList}
               data={SettingsArray}
@@ -102,19 +143,7 @@ export default class Details extends Component {
                 <Text style={styles.flatListSettingsLeft}>{item}</Text>
               )}
             />
-          </ScrollView>
-
-          <Picker
-            selectedValue={this.state.currencySymbol}
-            style={{height: 50, width: 100}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({currencySymbol: itemValue})
-            }>
-            <Picker.Item label="$" value="DOL" />
-            <Picker.Item label="£" value="GBP" />
-            <Picker.Item label="€" value="EUR" />
-          </Picker>
-        </View>
+          </ScrollView> */}
       </ImageBackground>
     );
   }

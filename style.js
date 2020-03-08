@@ -38,6 +38,16 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
 
+  settingsTextCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  settingsPickerCenter: {
+    alignItems: 'center',
+  },
+
   headerIcon: {
     marginRight: 10,
   },
@@ -147,9 +157,7 @@ export default StyleSheet.create({
   },
 
   flatListSettingsContainer: {
-    textAlign: 'left',
-    paddingTop: 25,
-    paddingLeft: 35,
+    width: 200,
   },
 
   flatListSettingsLeft: {
