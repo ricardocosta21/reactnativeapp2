@@ -93,6 +93,7 @@ const DataSchema = {
     income: {type: 'int', default: 13333},
     spending: {type: 'int', default: 3333},
     retSpending: {type: 'int', default: 16666},
+    currencySymbol: {type: 'string', default: 'USD'},
   },
 };
 
@@ -118,9 +119,6 @@ export class Main extends React.Component {
     //   'CurrencySymbol',
     //   'GBP',
     // );
-
-    global.MyCurrency = 'GBP';
-
     //https://enappd.com/blog/navigations-in-react-native-app/124/
 
     this.state = {
@@ -154,6 +152,7 @@ export class Main extends React.Component {
     if (realm !== null) {
       realm.close();
     }
+    console.log('componentWillUnmount!');
   }
 
   saveData = () => {
@@ -168,9 +167,21 @@ export class Main extends React.Component {
           income: this.state.income,
           spending: this.state.spending,
           retSpending: this.state.retSpending,
+          currencySymbol: global.MyVar,
         });
       });
     });
+    if (Platform.OS == 'ios') {
+      alert('Config Saved!');
+    } else {
+      ToastAndroid.showWithGravityAndOffset(
+        'Config Saved!',
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM,
+        25,
+        50,
+      );
+    }
   };
 
   onFireReady = () => {
@@ -223,11 +234,11 @@ export class Main extends React.Component {
 
   formatNumber(number) {
     // global.MyVar = 'USD';
-    if (global.MyVar === 'undefined') {
-      global.MyVar = this.state.currencySymbol;
-    }
+    // if (global.MyVar === 'undefined') {
+    //   global.MyVar = this.state.currencySymbol;
+    // }
 
-    console.log('--------I--------' + this.state.currencySymbol);
+    // console.log('--------I--------' + this.state.currencySymbol);
 
     return new Intl.NumberFormat('ja-JP', {
       style: 'currency',
@@ -328,9 +339,12 @@ export class Main extends React.Component {
             this.state.income = p.income;
             this.state.spending = p.spending;
             this.state.retSpending = p.retSpending;
+            this.state.currencySymbol = p.currencySymbol;
           }
 
           realm.close();
+
+          global.MyVar = this.state.currencySymbol;
 
           this.onFireReady();
         })
@@ -340,20 +354,18 @@ export class Main extends React.Component {
     );
   };
 
-  
-
   async componentDidMount() {
     // Preload data from an external API
     // Preload data using AsyncStorage
     const data = await this.performTimeConsumingTask();
 
-    console.log('how is data: ' + data);
     if (data !== null) {
       this.setState({isLoading: false});
     }
-  }
 
-  
+    global.MyVar = this.state.currencySymbol;
+    console.log('--------P2--------' + global.MyVar);
+  }
 
   //  GoToButton({ screenName }) {
   //   const navigation = useNavigation();
@@ -369,6 +381,8 @@ export class Main extends React.Component {
   render() {
     const {isFocused} = this.state;
     let colors = [WHITE, LIGHT_GRAY];
+
+    this.state.currencySymbol = global.MyVar;
 
     // Loads splash screen
     if (this.state.isLoading) {
@@ -642,15 +656,23 @@ export class Main extends React.Component {
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      {/* <DrawerItem
-        label="Close drawer"
-        onPress={() => props.navigation.closeDrawer()}
+      {/* <DrawerItemList {...props} /> */}
+      <DrawerItem
+        label="Main"
+        onPress={() => {
+          props.navigation.navigate('Main');
+        }}
       />
       <DrawerItem
-        label="Toggle drawer"
-        onPress={() => props.navigation.toggleDrawer()}
-      /> */}
+        label="Settings"
+        onPress={() => props.navigation.navigate('Settings')}
+      />
+      <DrawerItem
+        label="About"
+        onPress={() => {
+          props.navigation.navigate('About');
+        }}
+      />
     </DrawerContentScrollView>
   );
 }

@@ -1,5 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
+import Main from './Main';
+
 import React, {Component} from 'react';
 import {
   Platform,
@@ -62,8 +64,9 @@ export default class Settings extends Component {
   }
 
   onCurrencySelected(itemValue) {
-    console.log('-------HHH--------' + itemValue);
     global.MyVar = itemValue;
+    
+    console.log('-------SSS2--------' + global.MyVar);
   }
 
   render() {
@@ -73,6 +76,8 @@ export default class Settings extends Component {
       fontSize: 40,
       fontWeight: 'bold',
     };
+
+    this.state.currencySymbol = global.MyVar;
 
     return (
       <ImageBackground
@@ -122,7 +127,7 @@ export default class Settings extends Component {
         <View style={styles.settingsTextCenter}>
           <Title>Choose a currency</Title>
           <Picker
-            selectedValue={this.state.currencySymbol}
+            selectedValue={global.MyVar}
             style={styles.flatListSettingsContainer}
             onValueChange={(itemValue, itemIndex) => {
               this.setState({currencySymbol: itemValue});
