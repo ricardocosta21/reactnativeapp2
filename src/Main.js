@@ -129,7 +129,7 @@ export class Main extends React.Component {
 
     this.state = {
       age: '27',
-      investment: 22,
+      investment: 12000,
       income: 70000,
       spending: 35000,
       savingsNumber: '',
@@ -154,6 +154,11 @@ export class Main extends React.Component {
 
   componentDidUpdate() {
     console.log('componentDidUpdate!');
+  }
+
+  componentWillMount() {
+    global.MyVar = this.state.currencySymbol;
+    console.log('THIS will mount!!!' + global.MyVar);
   }
 
   componentWillUnmount() {
@@ -253,11 +258,11 @@ export class Main extends React.Component {
     //   global.MyVar = this.state.currencySymbol;
     // }
 
-    // console.log('--------I--------' + this.state.currencySymbol);
+    console.log('--------I1--------' + global.MyVar);
 
     return new Intl.NumberFormat('ja-JP', {
       style: 'currency',
-      currency: this.state.currencySymbol,
+      currency: global.MyVar,
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(number);
@@ -420,9 +425,9 @@ export class Main extends React.Component {
               </Button>
             </Left>
 
-            <Body>
-              <Title style={styles.h2}>FireCalc</Title>
-            </Body>
+            {/* <Body>
+              <Title style={styles.h2}>FIRE CALCULATOR</Title>
+            </Body> */}
 
             <Right>
               <Icon

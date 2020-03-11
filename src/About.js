@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
 
 import styles from '../style';
 
@@ -33,6 +33,9 @@ export default class About extends Component {
     };
 
     return (
+      <ImageBackground
+        source={require('../asset/gradient.png')}
+        style={styles.imageContainer}>
       <View style={styles.container}>
         <Header
           iosBarStyle="light-content"
@@ -42,27 +45,27 @@ export default class About extends Component {
             <Button
               transparent
               onPress={() => this.props.navigation.openDrawer()}>
-              <Icon name="menu" color="#ffffff" />
+              <Icon name="menu" color="#000000" />
             </Button>
           </Left>
 
           <Body>
-            <Title style={styles.h2}>FireCalc</Title>
+            <Title style={styles.h2}>About</Title>
           </Body>
 
           <Right>
             <Icon
               name="save"
               type="font-awesome"
-              color="#ffffff"
+              color="#000000"
               reverseColor="false"
-              underlayColor="#1fb28a"
               iconStyle={styles.headerIcon}
               onPress={() => this.saveData()}
             />
           </Right>
         </Header>
       </View>
+      </ImageBackground>
     );
   }
 }

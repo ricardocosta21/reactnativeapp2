@@ -95,7 +95,7 @@ export default class Settings extends Component {
             </Left>
 
             <Body>
-              <Title style={styles.h2}>FireCalc</Title>
+              <Title style={styles.h2}>Settings</Title>
             </Body>
 
             <Right>
@@ -123,7 +123,7 @@ export default class Settings extends Component {
           />
         </View> */}
 
-        <View style={styles.settingsTextCenter}>
+        <View style={styles.settingsList}>
           <Title>Choose a currency</Title>
           <Picker
             selectedValue={global.MyVar}
