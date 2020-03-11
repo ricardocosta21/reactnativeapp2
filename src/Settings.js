@@ -65,7 +65,6 @@ export default class Settings extends Component {
 
   onCurrencySelected(itemValue) {
     global.MyVar = itemValue;
-    
     console.log('-------SSS2--------' + global.MyVar);
   }
 
@@ -129,7 +128,7 @@ export default class Settings extends Component {
           <Picker
             selectedValue={global.MyVar}
             style={styles.flatListSettingsContainer}
-            onValueChange={(itemValue, itemIndex) => {
+            onValueChange={(itemValue, itemIndex, event) => {
               this.setState({currencySymbol: itemValue});
               this.onCurrencySelected(itemValue);
             }}>

@@ -22,7 +22,12 @@ const Realm = require('realm');
 import Slider from '@react-native-community/slider';
 //import { Slider } from 'react-native-elements';
 
-import {useNavigation, NavigationContainer} from '@react-navigation/native';
+import {
+  useNavigation,
+  NavigationContainer,
+  useFocusEffect,
+  NavigationEvents,
+} from '@react-navigation/native';
 
 import {
   createDrawerNavigator,
@@ -38,6 +43,7 @@ import {
   ToolbarAndroid,
   ImageBackground,
   Text,
+  Alert,
   View,
   TextInput,
   FlatList,
@@ -146,13 +152,16 @@ export class Main extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    console.log('componentDidUpdate!');
+  }
+
   componentWillUnmount() {
     //Close the realm if there is one open.
     const {realm} = this.state;
     if (realm !== null) {
       realm.close();
     }
-    console.log('componentWillUnmount!');
   }
 
   saveData = () => {
@@ -230,6 +239,12 @@ export class Main extends React.Component {
   increaseSavings(income, spending) {
     return (newSavingsValue =
       income * (this.state.incGrowth / 100 + 1) - spending);
+  }
+
+  callback() {
+    //this.setState({income: 10000});
+
+    console.log('THIS WILL WORK!!');
   }
 
   formatNumber(number) {
@@ -660,7 +675,7 @@ function CustomDrawerContent(props) {
       <DrawerItem
         label="Main"
         onPress={() => {
-          props.navigation.navigate('Main');
+          props.navigation.navigate('Main', {refresh: this.callback});
         }}
       />
       <DrawerItem
