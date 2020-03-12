@@ -1,1 +1,1 @@
-../../../../../node_modules/@react-native-community/art/ios/ARTTextFrame.h
+node_modules/@react-native-community/art/ios/ARTTextFrame.h

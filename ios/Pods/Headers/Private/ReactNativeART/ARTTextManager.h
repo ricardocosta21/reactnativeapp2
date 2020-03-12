@@ -1,1 +1,1 @@
-../../../../../node_modules/@react-native-community/art/ios/ViewManagers/ARTTextManager.h
+node_modules/@react-native-community/art/ios/ViewManagers/ARTTextManager.h
