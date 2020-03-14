@@ -1,1 +1,1 @@
-node_modules/@react-native-community/art/ios/ViewManagers/ARTGroupManager.h
+../../../../../node_modules/@react-native-community/art/ios/ViewManagers/ARTGroupManager.h

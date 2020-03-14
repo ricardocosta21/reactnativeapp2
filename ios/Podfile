@@ -17,7 +17,9 @@ pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
 
-pod 'RealmJS', :path => '../node_modules/realm'
+
+
+pod 'RealmJS', :path => '../node_modules/realm'  
 
 pod 'RNScreens', :path => '../node_modules/react-native-screens'
 

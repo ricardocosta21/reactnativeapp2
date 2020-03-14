@@ -228,7 +228,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - ReactNativeART (1.1.2):
     - React
-  - RealmJS (4.0.0-beta.1):
+  - RealmJS (4.0.0-beta.2):
     - GCDWebServer
     - React
   - RNCMaskedView (0.1.6):
@@ -391,7 +391,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   ReactNativeART: c580fba2f7d188d8fa4418ce78db8130654ed10f
-  RealmJS: a0d9e4ea107a1beedc2ead1737b6ead6d82705ea
+  RealmJS: 6d20849a7beffa2dc425ee325f24f0366ee774b6
   RNCMaskedView: a88953beefbd347a29072d9eba90e42945fe291e
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
@@ -399,6 +399,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 685fa1619060cd7a564a91229fc791b72e5565de
+PODFILE CHECKSUM: a6608f508c98998ab54432b00d5574863fd4e234
 
 COCOAPODS: 1.8.4

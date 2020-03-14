@@ -254,6 +254,18 @@ export class Main extends React.Component {
 
     console.log('--------I1--------' + global.MyVar);
 
+    if (Platform.OS === 'android') {
+      // only android needs polyfill
+      require('intl'); // import intl object
+      require('intl/locale-data/jsonp/ja-JP'); // load the required locale details
+      return new Intl.NumberFormat('ja-JP', {
+        style: 'currency',
+        currency: 'GBP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(number);
+    }
+
     return new Intl.NumberFormat('ja-JP', {
       style: 'currency',
       currency: global.MyVar,

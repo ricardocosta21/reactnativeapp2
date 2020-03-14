@@ -4,6 +4,7 @@ import android.app.Application;
 
 import io.realm.react.RealmReactPackage;
 import com.facebook.react.ReactApplication;
+import io.realm.react.RealmReactPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RealmReactPackage(),
             new SafeAreaContextPackage(),
             new ReanimatedPackage(),
           new RNGestureHandlerPackage(),

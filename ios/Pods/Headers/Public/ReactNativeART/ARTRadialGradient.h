@@ -1,1 +1,1 @@
-node_modules/@react-native-community/art/ios/Brushes/ARTRadialGradient.h
+../../../../../node_modules/@react-native-community/art/ios/Brushes/ARTRadialGradient.h

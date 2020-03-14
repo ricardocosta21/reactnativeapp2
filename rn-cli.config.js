@@ -6,4 +6,11 @@ module.exports = {
             /node_modules\/.*\/node_modules\/react-native\/.*/,
         ])
     },
+     dependencies: {
+        'realm': {
+            platforms: {
+                ios: null,
+            },
+        },
+    },
 };

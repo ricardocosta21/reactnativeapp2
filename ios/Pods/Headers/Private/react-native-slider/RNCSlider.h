@@ -1,1 +1,1 @@
-node_modules/@react-native-community/slider/ios/RNCSlider.h
+../../../../../node_modules/@react-native-community/slider/ios/RNCSlider.h

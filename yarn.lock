@@ -1970,7 +1970,7 @@ callsites@^3.0.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-camelcase@^4.1.0:
+camelcase@4.1.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
   integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
@@ -3623,7 +3623,7 @@ hermes-engine@^0.2.1:
   resolved "https://registry.yarnpkg.com/hermes-engine/-/hermes-engine-0.2.1.tgz#25c0f1ff852512a92cb5c5cc47cf967e1e722ea2"
   integrity sha512-eNHUQHuadDMJARpaqvlCZoK/Nitpj6oywq3vQ3wCwEsww5morX34mW5PmKWQTO7aU0ck0hgulxR+EVDlXygGxQ==
 
-hoist-non-react-statics@^1.0.5:
+hoist-non-react-statics@1.2.0, hoist-non-react-statics@^1.0.5:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
   integrity sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs=
@@ -6236,6 +6236,11 @@ plugin-error@^0.1.2:
     arr-union "^2.0.1"
     extend-shallow "^1.1.2"
 
+pluralize@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-5.0.0.tgz#e8b9073af9a0cb02e4c2efa95b55bebbdbf01299"
+  integrity sha1-6LkHOvmgywLkwu+pW1W+u9vwEpk=
+
 pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
@@ -6312,6 +6317,14 @@ prompts@^2.0.1:
   dependencies:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
+
+prop-types@15.5.10:
+  version "15.5.10"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+  integrity sha1-J5ffwxJhguOpXj37suiT3ddFYVQ=
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
 
 prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
@@ -6476,6 +6489,16 @@ react-native-ratings@^6.3.0:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
+react-native-realm@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-realm/-/react-native-realm-0.1.2.tgz#7e9b4b9c633373c7c3bcdb728daa4390e6c73aeb"
+  integrity sha512-3vS9+PyCzPgQfwzH1p0v1+Yjc/jvboJaK5DaSQ7CYNTeOM8zpjGCZ7eQQbB1OERSCqeM/kRWZvjQjnYPmxiRww==
+  dependencies:
+    camelcase "4.1.0"
+    hoist-non-react-statics "1.2.0"
+    pluralize "5.0.0"
+    prop-types "15.5.10"
+
 react-native-reanimated@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.7.0.tgz#896db2576552ac59d288a1f6c7f00afc171f240c"
@@ -6622,9 +6645,9 @@ readable-stream@^2.0.1, readable-stream@^2.0.6, readable-stream@^2.2.2, readable
     util-deprecate "~1.0.1"
 
 realm@^4.0.0-beta.0:
-  version "4.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-4.0.0-beta.1.tgz#b8b54f6e6433206d3d3eb9fc06636bcacb2d320c"
-  integrity sha512-vbGtU9JtQJyD6ZhN7Jc59ZsF/Xpz6RdLtjV9d0CtWbD/F/Yw89outG9tvhSyNm7X+kWtp5Kh9DOxU8/oIq2+2w==
+  version "4.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-4.0.0-beta.2.tgz#27a2ee9fbe200640b212992f9caadbeec4c66364"
+  integrity sha512-NnXVmfZQ3+U+u6xag1g4Rui3jbPRScAVt+NkNEAdVlaefrTv9kt5pQHXEpLbTpkB1SeJwiCskDJbyKK4TmXY+w==
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"

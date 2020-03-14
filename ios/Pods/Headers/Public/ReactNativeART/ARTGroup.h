@@ -1,1 +1,1 @@
-node_modules/@react-native-community/art/ios/ARTGroup.h
+../../../../../node_modules/@react-native-community/art/ios/ARTGroup.h
