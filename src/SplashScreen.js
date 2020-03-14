@@ -7,11 +7,9 @@ export default class SplashScreen extends React.Component {
   render() {
     return (
       <ImageBackground
-        source={require('../asset/gradient.png')}
+        source={require('../asset/angryimg.png')}
         style={styles.imageContainer}>
-        <View style={styles.container}>
-          <Text style={styles.text}>Age</Text>
-        </View>
+        <View style={styles.container} />
       </ImageBackground>
     );
   }

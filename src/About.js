@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Text, StatusBar, ImageBackground} from 'react-native';
 
 import styles from '../style';
 
@@ -35,12 +35,17 @@ export default class About extends Component {
 
     return (
       <ImageBackground
-        source={require('../asset/gradient.png')}
+        source={require('../asset/angryimg.png')}
         style={styles.imageContainer}>
         <View style={styles.container}>
-         <Header
-            style={styles.headerContainer}
-            androidStatusBarColor={TRANSPARENT}>
+          <Header style={styles.headerContainer}>
+            <StatusBar
+              translucent={false}
+              animated={false}
+              hidden={false}
+              barStyle="dark-content"
+              backgroundColor={WHITE}
+            />
             <Left>
               <Button
                 transparent

@@ -51,6 +51,7 @@ import {
   ToastAndroid,
   YellowBox,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import {
   Container,
@@ -121,12 +122,6 @@ export class Main extends React.Component {
   constructor(props) {
     super(props);
 
-    // const CurrencySymbolAux = this.props.navigation.getParam(
-    //   'CurrencySymbol',
-    //   'GBP',
-    // );
-    //https://enappd.com/blog/navigations-in-react-native-app/124/
-
     this.state = {
       age: '27',
       investment: 12000,
@@ -151,16 +146,12 @@ export class Main extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate!');
-  }
-
   componentWillUnmount() {
     //Close the realm if there is one open.
-    const {realm} = this.state;
-    if (realm !== null) {
-      realm.close();
-    }
+    // const {realm} = this.state;
+    // if (realm !== null) {
+    //   realm.close();
+    // }
   }
 
   saveData = () => {
@@ -241,26 +232,17 @@ export class Main extends React.Component {
   }
 
   callback() {
-    //this.setState({income: 10000});
-
-    console.log('THIS WILL WORK!!');
+    // this.state.currencySymbol = global.MyVar;
   }
 
   formatNumber(number) {
-    // global.MyVar = 'USD';
-    // if (global.MyVar === 'undefined') {
-    //   global.MyVar = this.state.currencySymbol;
-    // }
-
-    console.log('--------I1--------' + global.MyVar);
-
     if (Platform.OS === 'android') {
       // only android needs polyfill
       require('intl'); // import intl object
       require('intl/locale-data/jsonp/ja-JP'); // load the required locale details
       return new Intl.NumberFormat('ja-JP', {
         style: 'currency',
-        currency: 'GBP',
+        currency: global.MyVar,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
       }).format(number);
@@ -381,6 +363,13 @@ export class Main extends React.Component {
   };
 
   async componentDidMount() {
+    StatusBar.setBarStyle('dark-content');
+
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor('rgba(0,0,0,0)');
+      StatusBar.setTranslucent(false);
+    }
+
     // Preload data from an external API
     // Preload data using AsyncStorage
     const data = await this.performTimeConsumingTask();
@@ -389,8 +378,7 @@ export class Main extends React.Component {
       this.setState({isLoading: false});
     }
 
-    global.MyVar = this.state.currencySymbol;
-    console.log('--------P2--------' + global.MyVar);
+    //global.MyVar = this.state.currencySymbol;
   }
 
   //  GoToButton({ screenName }) {
@@ -408,8 +396,6 @@ export class Main extends React.Component {
     const {isFocused} = this.state;
     let colors = [WHITE, LIGHT_GRAY];
 
-    this.state.currencySymbol = global.MyVar;
-
     // Loads splash screen
     if (this.state.isLoading) {
       return <SplashScreenComponent />;
@@ -417,12 +403,17 @@ export class Main extends React.Component {
 
     return (
       <ImageBackground
-        source={require('../asset/gradient.png')}
+        source={require('../asset/angryimg.png')}
         style={styles.imageContainer}>
         <View style={styles.container}>
-          <Header
-            style={styles.headerContainer}
-            androidStatusBarColor={TRANSPARENT}>
+          <Header style={styles.headerContainer}>
+            <StatusBar
+              translucent={false}
+              animated={false}
+              hidden={false}
+              barStyle="dark-content"
+              backgroundColor={WHITE}
+            />
             <Left>
               <Button
                 transparent
@@ -430,11 +421,9 @@ export class Main extends React.Component {
                 <Icon name="menu" color="#000000" />
               </Button>
             </Left>
-
             {/* <Body>
               <Title style={styles.h2}>FIRE CALCULATOR</Title>
             </Body> */}
-
             <Right>
               <Icon
                 name="save"

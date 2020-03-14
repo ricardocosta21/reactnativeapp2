@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 const width = Dimensions.get('window').width / 1;
 const height = Dimensions.get('window').height / 1;
 const BLUE = '#428AF8';
@@ -10,6 +10,7 @@ const GRAY = '#C8C8C8';
 const LIGHT_GRAY = '#F4F4F4';
 const WHITE = '#FFFFFF';
 const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
+const BLACK = '#000000'
 
 export default StyleSheet.create({
   container: {
@@ -24,12 +25,14 @@ export default StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 30,
     backgroundColor: 'transparent',
+    elevation: 0,
   },
   splashContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    borderBottomWidth: 0,
   },
   text: {
     alignSelf: 'center',
@@ -66,6 +69,7 @@ export default StyleSheet.create({
   },
   h2: {
     fontSize: 15,
+    color: 'black',
   },
   MoneyRowText: {
     flex: 1,
@@ -85,6 +89,8 @@ export default StyleSheet.create({
     height: 80,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'transparent',
+    elevation: 0,
   },
   itemContainerHeader: {
     flex: 1,
@@ -134,6 +140,7 @@ export default StyleSheet.create({
   itemContainer: {
     flex: 1,
     backgroundColor: 'transparent',
+    elevation: 0,
   },
   flatList: {
     flex: 1,
@@ -147,6 +154,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 80,
     justifyContent: 'center',
-    width: 150,
+    width: 80,
   },
 });

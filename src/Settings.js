@@ -18,6 +18,7 @@ import {
   ToastAndroid,
   YellowBox,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 
 import {
@@ -65,7 +66,6 @@ export default class Settings extends Component {
 
   onCurrencySelected(itemValue) {
     global.MyVar = itemValue;
-    console.log('-------SSS2--------' + global.MyVar);
   }
 
   render() {
@@ -80,12 +80,17 @@ export default class Settings extends Component {
 
     return (
       <ImageBackground
-        source={require('../asset/gradient.png')}
+        source={require('../asset/angryimg.png')}
         style={styles.imageContainer}>
         <View style={styles.container}>
-          <Header
-            style={styles.headerContainer}
-            androidStatusBarColor={TRANSPARENT}>
+          <Header style={styles.headerContainer}>
+            <StatusBar
+              translucent={false}
+              animated={false}
+              hidden={false}
+              barStyle="dark-content"
+              backgroundColor={WHITE}
+            />
             <Left>
               <Button
                 transparent
@@ -124,13 +129,14 @@ export default class Settings extends Component {
         </View> */}
 
         <View style={styles.settingsTextCenter}>
-          <Title>Choose a currency</Title>
+          <Title style={{color: 'black'}}>Choose a currency</Title>
           <Picker
             selectedValue={global.MyVar}
             style={styles.settingsList}
             onValueChange={(itemValue, itemIndex, event) => {
               this.setState({currencySymbol: itemValue});
               this.onCurrencySelected(itemValue);
+              global.MyVar = itemValue;
             }}>
             <Picker.Item label="$" value="USD" />
             <Picker.Item label="£" value="GBP" />
