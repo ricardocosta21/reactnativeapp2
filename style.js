@@ -10,6 +10,7 @@ const GRAY = '#C8C8C8';
 const LIGHT_GRAY = '#F4F4F4';
 const WHITE = '#FFFFFF';
 const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
+
 export default StyleSheet.create({
   container: {
     backgroundColor: 'transparent',

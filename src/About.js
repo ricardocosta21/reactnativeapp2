@@ -22,6 +22,7 @@ const MEDIUM_GREEN = '#96ffe3';
 const HARD_GREEN = '#53d1af';
 const LIGHT_GRAY = '#ECECEC';
 const WHITE = '#FFFFFF';
+const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
 
 export default class About extends Component {
   render() {
@@ -36,35 +37,34 @@ export default class About extends Component {
       <ImageBackground
         source={require('../asset/gradient.png')}
         style={styles.imageContainer}>
-      <View style={styles.container}>
-        <Header
-          iosBarStyle="light-content"
-          androidStatusBarColor={HARD_GREEN}
-          style={{backgroundColor: HARD_GREEN}}>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.openDrawer()}>
-              <Icon name="menu" color="#000000" />
-            </Button>
-          </Left>
+        <View style={styles.container}>
+         <Header
+            style={styles.headerContainer}
+            androidStatusBarColor={TRANSPARENT}>
+            <Left>
+              <Button
+                transparent
+                onPress={() => this.props.navigation.openDrawer()}>
+                <Icon name="menu" color="#000000" />
+              </Button>
+            </Left>
 
-          <Body>
-            <Title style={styles.h2}>About</Title>
-          </Body>
+            <Body>
+              <Title style={styles.h2}>About</Title>
+            </Body>
 
-          <Right>
-            <Icon
-              name="save"
-              type="font-awesome"
-              color="#000000"
-              reverseColor="false"
-              iconStyle={styles.headerIcon}
-              onPress={() => this.saveData()}
-            />
-          </Right>
-        </Header>
-      </View>
+            <Right>
+              <Icon
+                name="save"
+                type="font-awesome"
+                color="#000000"
+                reverseColor="false"
+                iconStyle={styles.headerIcon}
+                onPress={() => this.saveData()}
+              />
+            </Right>
+          </Header>
+        </View>
       </ImageBackground>
     );
   }

@@ -141,7 +141,6 @@ export class Main extends React.Component {
       invReturns: '8',
       fireNumber: '',
       fireDisplayNumber: '',
-
       isFocused: false,
       currencySymbol: 'GBP',
       percentageSymbol: '%',
@@ -154,11 +153,6 @@ export class Main extends React.Component {
 
   componentDidUpdate() {
     console.log('componentDidUpdate!');
-  }
-
-  componentWillMount() {
-    global.MyVar = this.state.currencySymbol;
-    console.log('THIS will mount!!!' + global.MyVar);
   }
 
   componentWillUnmount() {

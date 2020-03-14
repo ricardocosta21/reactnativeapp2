@@ -123,11 +123,11 @@ export default class Settings extends Component {
           />
         </View> */}
 
-        <View style={styles.settingsList}>
+        <View style={styles.settingsTextCenter}>
           <Title>Choose a currency</Title>
           <Picker
             selectedValue={global.MyVar}
-            style={styles.flatListSettingsContainer}
+            style={styles.settingsList}
             onValueChange={(itemValue, itemIndex, event) => {
               this.setState({currencySymbol: itemValue});
               this.onCurrencySelected(itemValue);
