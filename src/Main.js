@@ -74,6 +74,8 @@ const HARD_GREEN = '#53d1af';
 const LIGHT_GRAY = '#ECECEC';
 const WHITE = '#FFFFFF';
 const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
+const SEMITRANS = '#20111111';
+const ANDROIDTRANS = '#FF000000';
 
 let deviceWidth = Dimensions.get('window').width;
 
@@ -408,11 +410,11 @@ export class Main extends React.Component {
         <View style={styles.container}>
           <Header style={styles.headerContainer}>
             <StatusBar
-              translucent={false}
+              translucent={true}
               animated={false}
               hidden={false}
               barStyle="dark-content"
-              backgroundColor={WHITE}
+              backgroundColor={ANDROIDTRANS}
             />
             <Left>
               <Button
