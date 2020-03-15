@@ -20,6 +20,10 @@ import SplashScreenComponent from './SplashScreen';
 const Realm = require('realm');
 
 import Slider from '@react-native-community/slider';
+import changeNavigationBarColor, {
+  hideNavigationBar,
+  showNavigationBar,
+} from 'react-native-navigation-bar-color';
 //import { Slider } from 'react-native-elements';
 
 import {
@@ -90,6 +94,10 @@ let newSavingsValue = 0;
 YellowBox.ignoreWarnings([
   'VirtualizedLists should never be nested', // TODO: Remove when fixed
 ]);
+
+const testSetTransparent = () => {
+  changeNavigationBarColor('transparent', true);
+};
 
 const DataSchema = {
   name: 'Data',
@@ -368,6 +376,8 @@ export class Main extends React.Component {
     StatusBar.setBarStyle('dark-content');
 
     if (Platform.OS === 'android') {
+      // testSetTransparent();
+      changeNavigationBarColor('transparent');
       StatusBar.setBackgroundColor('rgba(0,0,0,0)');
       StatusBar.setTranslucent(false);
     }
