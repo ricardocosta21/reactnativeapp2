@@ -119,7 +119,12 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)}>
+      <Drawer.Navigator
+        drawerStyle={{
+          backgroundColor: '#efffef',
+          width: 180,
+        }}
+        drawerContent={props => CustomDrawerContent(props)}>
         <Drawer.Screen name="Main" component={Main} />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="About" component={About} />
@@ -376,7 +381,6 @@ export class Main extends React.Component {
     StatusBar.setBarStyle('dark-content');
 
     if (Platform.OS === 'android') {
-      // testSetTransparent();
       changeNavigationBarColor('transparent');
       StatusBar.setBackgroundColor('rgba(0,0,0,0)');
       StatusBar.setTranslucent(false);
@@ -457,7 +461,6 @@ export class Main extends React.Component {
                   keyboardType="numeric"
                   style={styles.textInput}
                   selectionColor={LIGHT_GREEN}
-                  underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
                   onChangeText={age => this.setState({age})}
                   onSelectionChange={() => this.onFireReady()}
                   value={this.state.age}
@@ -472,7 +475,6 @@ export class Main extends React.Component {
                     maxLength={2}
                     style={styles.textInput}
                     selectionColor={LIGHT_GREEN}
-                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
                     onChangeText={wrRate => this.setState({wrRate})}
                     onSelectionChange={() => this.onFireReady()}
                     value={this.state.wrRate}
@@ -488,7 +490,6 @@ export class Main extends React.Component {
                     keyboardType="numeric"
                     style={styles.textInput}
                     selectionColor={LIGHT_GREEN}
-                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
                     onChangeText={incGrowth => this.setState({incGrowth})}
                     onSelectionChange={() => this.onFireReady()}
                     value={this.state.incGrowth}
@@ -504,7 +505,6 @@ export class Main extends React.Component {
                     keyboardType="numeric"
                     style={styles.textInput}
                     selectionColor={LIGHT_GREEN}
-                    underlineColorAndroid={isFocused ? LIGHT_GREEN : LIGHT_GRAY}
                     onChangeText={invReturns => this.setState({invReturns})}
                     onSelectionChange={() => this.onFireReady()}
                     value={this.state.invReturns}
@@ -682,7 +682,7 @@ export class Main extends React.Component {
 
 function CustomDrawerContent(props) {
   return (
-    <DrawerContentScrollView {...props}>
+    <View style={[styles.drawerContainer]}>
       {/* <DrawerItemList {...props} /> */}
       <DrawerItem
         label="Main"
@@ -700,6 +700,6 @@ function CustomDrawerContent(props) {
           props.navigation.navigate('About');
         }}
       />
-    </DrawerContentScrollView>
+    </View>
   );
 }

@@ -24,6 +24,8 @@ const LIGHT_GRAY = '#ECECEC';
 const WHITE = '#FFFFFF';
 const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
 
+const appVersion = '1.0';
+
 export default class About extends Component {
   render() {
     const viewStyles = [styles.splashContainer, {backgroundColor: 'white'}];
@@ -69,6 +71,14 @@ export default class About extends Component {
               />
             </Right>
           </Header>
+          <View style={styles.settingsTextCenter}>
+            <Title style={{color: 'black'}}>Version {appVersion}</Title>
+          </View>
+          <View style={styles.aboutEmail}>
+            <Title style={{color: 'black', fontSize: 16}}>
+              firecalculatorapp@gmail.com
+            </Title>
+          </View>
         </View>
       </ImageBackground>
     );

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from '../style';
 
-import {ImageBackground, Text, View} from 'react-native';
+import {ImageBackground, Image, Text, View} from 'react-native';
 
 export default class SplashScreen extends React.Component {
   render() {
@@ -9,7 +9,12 @@ export default class SplashScreen extends React.Component {
       <ImageBackground
         source={require('../asset/angryimg.png')}
         style={styles.imageContainer}>
-        <View style={styles.container} />
+        <View style={styles.logoContainer}>
+          <Image
+            style={{width: 250, height: 250}}
+            source={require('../asset/flamev5.png')}
+          />
+        </View>
       </ImageBackground>
     );
   }

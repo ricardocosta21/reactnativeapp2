@@ -10,17 +10,29 @@ const GRAY = '#C8C8C8';
 const LIGHT_GRAY = '#F4F4F4';
 const WHITE = '#FFFFFF';
 const TRANSPARENT = 'rgba(52, 52, 52, alpha)';
-const BLACK = '#000000'
+const BLACK = '#000000';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
     paddingTop: Platform.OS === 'ios' ? 0 : 50,
   },
+
+  drawerContainer: {
+    backgroundColor: 'transparent',
+    paddingTop: 50,
+  },
+
   imageContainer: {
     flex: 1,
-    width: '100%',
   },
+  logoContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
+
   headerContainer: {
     borderBottomWidth: 0,
     paddingLeft: 30,
@@ -156,5 +168,8 @@ export default StyleSheet.create({
     paddingTop: 80,
     justifyContent: 'center',
     width: 80,
+  },
+  aboutEmail: {
+    paddingTop: 20,
   },
 });
