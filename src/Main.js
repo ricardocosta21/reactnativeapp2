@@ -87,6 +87,8 @@ let maxInvestmentsValue = 500000;
 
 let maxIncomeValue = 250000;
 
+let maxRetSpendValue = 150000;
+
 let savedData = 0;
 
 let newSavingsValue = 0;
@@ -599,7 +601,7 @@ export class Main extends React.Component {
               <Slider
                 style={{width: deviceWidth - 70, height: 40}}
                 minimumValue={0}
-                maximumValue={maxIncomeValue}
+                maximumValue={maxRetSpendValue}
                 minimumTrackTintColor="#444444"
                 maximumTrackTintColor="#ffffff"
                 thumbTintColor="#000000"

@@ -12,7 +12,7 @@ export default class SplashScreen extends React.Component {
         <View style={styles.logoContainer}>
           <Image
             style={{width: 250, height: 250}}
-            source={require('../asset/flamev5.png')}
+            source={require('../asset/flamev7.png')}
           />
         </View>
       </ImageBackground>
