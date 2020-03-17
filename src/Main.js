@@ -101,6 +101,10 @@ YellowBox.ignoreWarnings([
   'VirtualizedLists should never be nested', // TODO: Remove when fixed
 ]);
 
+YellowBox.ignoreWarnings(['Warning: componentWillReceiveProps']);
+
+YellowBox.ignoreWarnings(['Warning: componentWillMount']);
+
 const testSetTransparent = () => {
   changeNavigationBarColor('transparent', true);
 };
@@ -308,7 +312,7 @@ export class Main extends React.Component {
   compound(investment, interest, age, income, spending, savings, fireNumber) {
     var accumulated = parseInt(investment);
 
-    for (var i = age, j = 0; accumulated < fireNumber; i++, j++) {
+    for (var i = parseInt(age) + 1, j = 1; accumulated < fireNumber; i++, j++) {
       accumulated = parseInt((accumulated + savings) * interest.toFixed(2));
 
       savings = this.increaseSavings(income, spending);
