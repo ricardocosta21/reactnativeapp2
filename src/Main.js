@@ -19,7 +19,11 @@ import SplashScreenComponent from './SplashScreen';
 
 const Realm = require('realm');
 
-import Slider from '@react-native-community/slider';
+//import Slider from '@react-native-community/slider';
+
+import Slider from 'react-native-slider';
+//var Slider = require('react-native-slider');
+
 import changeNavigationBarColor, {
   hideNavigationBar,
   showNavigationBar,
@@ -163,13 +167,13 @@ export class Main extends React.Component {
     };
   }
 
-  componentWillUnmount() {
-    //Close the realm if there is one open.
-    // const {realm} = this.state;
-    // if (realm !== null) {
-    //   realm.close();
-    // }
-  }
+  // componentWillUnmount() {
+  //   //Close the realm if there is one open.
+  //   // const {realm} = this.state;
+  //   // if (realm !== null) {
+  //   //   realm.close();
+  //   // }
+  // }
 
   saveData = () => {
     Realm.open({schema: [DataSchema]}).then(realm => {
@@ -528,7 +532,7 @@ export class Main extends React.Component {
                 minimumTrackTintColor="#444444"
                 maximumTrackTintColor="#ffffff"
                 thumbTintColor="#000000"
-                step={100}
+                step={500}
                 value={this.state.investment}
                 onValueChange={investment => {
                   this.setState({investment});
@@ -551,7 +555,7 @@ export class Main extends React.Component {
                 minimumTrackTintColor="#444444"
                 maximumTrackTintColor="#ffffff"
                 thumbTintColor="#000000"
-                step={100}
+                step={500}
                 value={this.state.income}
                 onValueChange={income => {
                   this.setState({income});
@@ -578,7 +582,7 @@ export class Main extends React.Component {
                 minimumTrackTintColor="#444444"
                 maximumTrackTintColor="#ffffff"
                 thumbTintColor="#000000"
-                step={100}
+                step={500}
                 value={this.state.spending}
                 onValueChange={spending => {
                   this.setState({spending});
@@ -605,7 +609,7 @@ export class Main extends React.Component {
                 minimumTrackTintColor="#444444"
                 maximumTrackTintColor="#ffffff"
                 thumbTintColor="#000000"
-                step={100}
+                step={500}
                 value={this.state.retSpending}
                 onValueChange={retSpending => {
                   this.setState({retSpending});

@@ -15,7 +15,7 @@ const BLACK = '#000000';
 export default StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
-    paddingTop: Platform.OS === 'ios' ? 0 : 50,
+    paddingTop: Platform.OS === 'ios' ? 0 : 40,
   },
 
   drawerContainer: {
