@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'CompoundInterest' do
-  # Pods for CompoundInterest
+target 'FireCalculator' do
+  # Pods for FireCalculator
  
 
 pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
@@ -63,17 +63,17 @@ pod 'RNScreens', :path => '../node_modules/react-native-screens'
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
-  target 'CompoundInterestTests' do
+  target 'FireCalculatorTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
 end
 
-target 'CompoundInterest-tvOS' do
-  # Pods for CompoundInterest-tvOS
+target 'FireCalculator-tvOS' do
+  # Pods for FireCalculator-tvOS
 
-  target 'CompoundInterest-tvOSTests' do
+  target 'FireCalculator-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

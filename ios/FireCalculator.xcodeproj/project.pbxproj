@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* CompoundInterestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CompoundInterestTests.m */; };
-		04FA7EFEAE534F96F687E3ED /* libPods-CompoundInterest-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F44AB3FF8524AD767F8073 /* libPods-CompoundInterest-tvOS.a */; };
+		00E356F31AD99517003FC87E /* FireCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FireCalculatorTests.m */; };
+		04FA7EFEAE534F96F687E3ED /* libPods-FireCalculator-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F44AB3FF8524AD767F8073 /* libPods-FireCalculator-tvOS.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1A8D7FF485F46FC5DF5D9AD9 /* libPods-CompoundInterest-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD77F0D0B528109E02F631 /* libPods-CompoundInterest-tvOSTests.a */; };
+		1A8D7FF485F46FC5DF5D9AD9 /* libPods-FireCalculator-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD77F0D0B528109E02F631 /* libPods-FireCalculator-tvOSTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* CompoundInterestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CompoundInterestTests.m */; };
-		664FC7BAC33F2FD10B9BB2C1 /* libPods-CompoundInterest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 073F6562FFC4A7B4EC9BF88B /* libPods-CompoundInterest.a */; };
-		B4723CEE93AC3135DCA63F76 /* libPods-CompoundInterestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 429FBF40FD5F22F7A9697D68 /* libPods-CompoundInterestTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* FireCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FireCalculatorTests.m */; };
+		664FC7BAC33F2FD10B9BB2C1 /* libPods-FireCalculator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 073F6562FFC4A7B4EC9BF88B /* libPods-FireCalculator.a */; };
+		B4723CEE93AC3135DCA63F76 /* libPods-FireCalculatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 429FBF40FD5F22F7A9697D68 /* libPods-FireCalculatorTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = CompoundInterest;
+			remoteInfo = FireCalculator;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "CompoundInterest-tvOS";
+			remoteInfo = "FireCalculator-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* CompoundInterestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompoundInterestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* FireCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* CompoundInterestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompoundInterestTests.m; sourceTree = "<group>"; };
-		04DD77F0D0B528109E02F631 /* libPods-CompoundInterest-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CompoundInterest-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		073F6562FFC4A7B4EC9BF88B /* libPods-CompoundInterest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CompoundInterest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* CompoundInterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompoundInterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CompoundInterest/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CompoundInterest/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* FireCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FireCalculatorTests.m; sourceTree = "<group>"; };
+		04DD77F0D0B528109E02F631 /* libPods-FireCalculator-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireCalculator-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		073F6562FFC4A7B4EC9BF88B /* libPods-FireCalculator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireCalculator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* FireCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FireCalculator/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FireCalculator/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CompoundInterest/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CompoundInterest/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CompoundInterest/main.m; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* CompoundInterest-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CompoundInterest-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* CompoundInterest-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CompoundInterest-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		356FF83C29A5AC7EC001E93D /* Pods-CompoundInterest-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterest-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-CompoundInterest-tvOSTests/Pods-CompoundInterest-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		40481F3AE12DD0ED4EBC9FC0 /* Pods-CompoundInterest-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterest-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-CompoundInterest-tvOSTests/Pods-CompoundInterest-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		41F44AB3FF8524AD767F8073 /* libPods-CompoundInterest-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CompoundInterest-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		429FBF40FD5F22F7A9697D68 /* libPods-CompoundInterestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CompoundInterestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		43EAFD1DE0AA10BFFD439B60 /* Pods-CompoundInterestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterestTests.release.xcconfig"; path = "Target Support Files/Pods-CompoundInterestTests/Pods-CompoundInterestTests.release.xcconfig"; sourceTree = "<group>"; };
-		4E7FD2B20F78972C7E9997C8 /* Pods-CompoundInterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterest.debug.xcconfig"; path = "Target Support Files/Pods-CompoundInterest/Pods-CompoundInterest.debug.xcconfig"; sourceTree = "<group>"; };
-		578DB7B2D977C2859573C1A8 /* Pods-CompoundInterestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterestTests.debug.xcconfig"; path = "Target Support Files/Pods-CompoundInterestTests/Pods-CompoundInterestTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6E3C31B6C379E2744DF694A1 /* Pods-CompoundInterest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterest.release.xcconfig"; path = "Target Support Files/Pods-CompoundInterest/Pods-CompoundInterest.release.xcconfig"; sourceTree = "<group>"; };
-		73CE9AAE2CDAE09E53295B65 /* Pods-CompoundInterest-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterest-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-CompoundInterest-tvOS/Pods-CompoundInterest-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FireCalculator/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FireCalculator/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FireCalculator/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* FireCalculator-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireCalculator-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* FireCalculator-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FireCalculator-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		356FF83C29A5AC7EC001E93D /* Pods-FireCalculator-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculator-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-FireCalculator-tvOSTests/Pods-FireCalculator-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		40481F3AE12DD0ED4EBC9FC0 /* Pods-FireCalculator-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculator-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FireCalculator-tvOSTests/Pods-FireCalculator-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		41F44AB3FF8524AD767F8073 /* libPods-FireCalculator-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireCalculator-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		429FBF40FD5F22F7A9697D68 /* libPods-FireCalculatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FireCalculatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EAFD1DE0AA10BFFD439B60 /* Pods-FireCalculatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculatorTests.release.xcconfig"; path = "Target Support Files/Pods-FireCalculatorTests/Pods-FireCalculatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		4E7FD2B20F78972C7E9997C8 /* Pods-FireCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculator.debug.xcconfig"; path = "Target Support Files/Pods-FireCalculator/Pods-FireCalculator.debug.xcconfig"; sourceTree = "<group>"; };
+		578DB7B2D977C2859573C1A8 /* Pods-FireCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculatorTests.debug.xcconfig"; path = "Target Support Files/Pods-FireCalculatorTests/Pods-FireCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E3C31B6C379E2744DF694A1 /* Pods-FireCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculator.release.xcconfig"; path = "Target Support Files/Pods-FireCalculator/Pods-FireCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		73CE9AAE2CDAE09E53295B65 /* Pods-FireCalculator-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculator-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-FireCalculator-tvOS/Pods-FireCalculator-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FF4C83BC9BC89E9E8E94E817 /* Pods-CompoundInterest-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompoundInterest-tvOS.release.xcconfig"; path = "Target Support Files/Pods-CompoundInterest-tvOS/Pods-CompoundInterest-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		FF4C83BC9BC89E9E8E94E817 /* Pods-FireCalculator-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCalculator-tvOS.release.xcconfig"; path = "Target Support Files/Pods-FireCalculator-tvOS/Pods-FireCalculator-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4723CEE93AC3135DCA63F76 /* libPods-CompoundInterestTests.a in Frameworks */,
+				B4723CEE93AC3135DCA63F76 /* libPods-FireCalculatorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				664FC7BAC33F2FD10B9BB2C1 /* libPods-CompoundInterest.a in Frameworks */,
+				664FC7BAC33F2FD10B9BB2C1 /* libPods-FireCalculator.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04FA7EFEAE534F96F687E3ED /* libPods-CompoundInterest-tvOS.a in Frameworks */,
+				04FA7EFEAE534F96F687E3ED /* libPods-FireCalculator-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A8D7FF485F46FC5DF5D9AD9 /* libPods-CompoundInterest-tvOSTests.a in Frameworks */,
+				1A8D7FF485F46FC5DF5D9AD9 /* libPods-FireCalculator-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* CompoundInterestTests */ = {
+		00E356EF1AD99517003FC87E /* FireCalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* CompoundInterestTests.m */,
+				00E356F21AD99517003FC87E /* FireCalculatorTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = CompoundInterestTests;
+			path = FireCalculatorTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* CompoundInterest */ = {
+		13B07FAE1A68108700A75B9A /* FireCalculator */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = CompoundInterest;
+			name = FireCalculator;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				073F6562FFC4A7B4EC9BF88B /* libPods-CompoundInterest.a */,
-				41F44AB3FF8524AD767F8073 /* libPods-CompoundInterest-tvOS.a */,
-				04DD77F0D0B528109E02F631 /* libPods-CompoundInterest-tvOSTests.a */,
-				429FBF40FD5F22F7A9697D68 /* libPods-CompoundInterestTests.a */,
+				073F6562FFC4A7B4EC9BF88B /* libPods-FireCalculator.a */,
+				41F44AB3FF8524AD767F8073 /* libPods-FireCalculator-tvOS.a */,
+				04DD77F0D0B528109E02F631 /* libPods-FireCalculator-tvOSTests.a */,
+				429FBF40FD5F22F7A9697D68 /* libPods-FireCalculatorTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,14 +152,14 @@
 		5002291A27590ABAEC428FC9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4E7FD2B20F78972C7E9997C8 /* Pods-CompoundInterest.debug.xcconfig */,
-				6E3C31B6C379E2744DF694A1 /* Pods-CompoundInterest.release.xcconfig */,
-				73CE9AAE2CDAE09E53295B65 /* Pods-CompoundInterest-tvOS.debug.xcconfig */,
-				FF4C83BC9BC89E9E8E94E817 /* Pods-CompoundInterest-tvOS.release.xcconfig */,
-				40481F3AE12DD0ED4EBC9FC0 /* Pods-CompoundInterest-tvOSTests.debug.xcconfig */,
-				356FF83C29A5AC7EC001E93D /* Pods-CompoundInterest-tvOSTests.release.xcconfig */,
-				578DB7B2D977C2859573C1A8 /* Pods-CompoundInterestTests.debug.xcconfig */,
-				43EAFD1DE0AA10BFFD439B60 /* Pods-CompoundInterestTests.release.xcconfig */,
+				4E7FD2B20F78972C7E9997C8 /* Pods-FireCalculator.debug.xcconfig */,
+				6E3C31B6C379E2744DF694A1 /* Pods-FireCalculator.release.xcconfig */,
+				73CE9AAE2CDAE09E53295B65 /* Pods-FireCalculator-tvOS.debug.xcconfig */,
+				FF4C83BC9BC89E9E8E94E817 /* Pods-FireCalculator-tvOS.release.xcconfig */,
+				40481F3AE12DD0ED4EBC9FC0 /* Pods-FireCalculator-tvOSTests.debug.xcconfig */,
+				356FF83C29A5AC7EC001E93D /* Pods-FireCalculator-tvOSTests.release.xcconfig */,
+				578DB7B2D977C2859573C1A8 /* Pods-FireCalculatorTests.debug.xcconfig */,
+				43EAFD1DE0AA10BFFD439B60 /* Pods-FireCalculatorTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -174,9 +174,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* CompoundInterest */,
+				13B07FAE1A68108700A75B9A /* FireCalculator */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* CompoundInterestTests */,
+				00E356EF1AD99517003FC87E /* FireCalculatorTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5002291A27590ABAEC428FC9 /* Pods */,
@@ -190,10 +190,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* CompoundInterest.app */,
-				00E356EE1AD99517003FC87E /* CompoundInterestTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* CompoundInterest-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* CompoundInterest-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* FireCalculator.app */,
+				00E356EE1AD99517003FC87E /* FireCalculatorTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* FireCalculator-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* FireCalculator-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,9 +209,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* CompoundInterestTests */ = {
+		00E356ED1AD99517003FC87E /* FireCalculatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CompoundInterestTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FireCalculatorTests" */;
 			buildPhases = (
 				F9462D59DDA27D18446986B2 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -223,14 +223,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = CompoundInterestTests;
-			productName = CompoundInterestTests;
-			productReference = 00E356EE1AD99517003FC87E /* CompoundInterestTests.xctest */;
+			name = FireCalculatorTests;
+			productName = FireCalculatorTests;
+			productReference = 00E356EE1AD99517003FC87E /* FireCalculatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* CompoundInterest */ = {
+		13B07F861A680F5B00A75B9A /* FireCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CompoundInterest" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FireCalculator" */;
 			buildPhases = (
 				258F03C11B2D5A7536142B0E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -244,14 +244,14 @@
 			);
 			dependencies = (
 			);
-			name = CompoundInterest;
-			productName = CompoundInterest;
-			productReference = 13B07F961A680F5B00A75B9A /* CompoundInterest.app */;
+			name = FireCalculator;
+			productName = FireCalculator;
+			productReference = 13B07F961A680F5B00A75B9A /* FireCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* CompoundInterest-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* FireCalculator-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "CompoundInterest-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FireCalculator-tvOS" */;
 			buildPhases = (
 				5152B766AF2F2B4A4C8DB573 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -264,14 +264,14 @@
 			);
 			dependencies = (
 			);
-			name = "CompoundInterest-tvOS";
-			productName = "CompoundInterest-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* CompoundInterest-tvOS.app */;
+			name = "FireCalculator-tvOS";
+			productName = "FireCalculator-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* FireCalculator-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* CompoundInterest-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* FireCalculator-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "CompoundInterest-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FireCalculator-tvOSTests" */;
 			buildPhases = (
 				CD1E3901F07B220176145579 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -283,9 +283,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "CompoundInterest-tvOSTests";
-			productName = "CompoundInterest-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* CompoundInterest-tvOSTests.xctest */;
+			name = "FireCalculator-tvOSTests";
+			productName = "FireCalculator-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* FireCalculator-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -315,7 +315,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "CompoundInterest" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FireCalculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -329,10 +329,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* CompoundInterest */,
-				00E356ED1AD99517003FC87E /* CompoundInterestTests */,
-				2D02E47A1E0B4A5D006451C7 /* CompoundInterest-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* CompoundInterest-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* FireCalculator */,
+				00E356ED1AD99517003FC87E /* FireCalculatorTests */,
+				2D02E47A1E0B4A5D006451C7 /* FireCalculator-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* FireCalculator-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +392,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CompoundInterest/Pods-CompoundInterest-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FireCalculator/Pods-FireCalculator-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -431,7 +431,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CompoundInterest/Pods-CompoundInterest-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FireCalculator/Pods-FireCalculator-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		258F03C11B2D5A7536142B0E /* [CP] Check Pods Manifest.lock */ = {
@@ -449,7 +449,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CompoundInterest-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FireCalculator-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -485,7 +485,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CompoundInterest-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FireCalculator-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -507,7 +507,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CompoundInterest-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FireCalculator-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -529,7 +529,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CompoundInterestTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FireCalculatorTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -581,7 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* CompoundInterestTests.m in Sources */,
+				00E356F31AD99517003FC87E /* FireCalculatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* CompoundInterestTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* FireCalculatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,12 +616,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* CompoundInterest */;
+			target = 13B07F861A680F5B00A75B9A /* FireCalculator */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* CompoundInterest-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* FireCalculator-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -633,7 +633,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = CompoundInterest;
+			path = FireCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -641,14 +641,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 578DB7B2D977C2859573C1A8 /* Pods-CompoundInterestTests.debug.xcconfig */;
+			baseConfigurationReference = 578DB7B2D977C2859573C1A8 /* Pods-FireCalculatorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CompoundInterestTests/Info.plist;
+				INFOPLIST_FILE = FireCalculatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -658,17 +658,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CompoundInterest.app/CompoundInterest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FireCalculator.app/FireCalculator";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43EAFD1DE0AA10BFFD439B60 /* Pods-CompoundInterestTests.release.xcconfig */;
+			baseConfigurationReference = 43EAFD1DE0AA10BFFD439B60 /* Pods-FireCalculatorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = CompoundInterestTests/Info.plist;
+				INFOPLIST_FILE = FireCalculatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -678,19 +678,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CompoundInterest.app/CompoundInterest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FireCalculator.app/FireCalculator";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E7FD2B20F78972C7E9997C8 /* Pods-CompoundInterest.debug.xcconfig */;
+			baseConfigurationReference = 4E7FD2B20F78972C7E9997C8 /* Pods-FireCalculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = RG978JQ5W9;
-				INFOPLIST_FILE = CompoundInterest/Info.plist;
+				INFOPLIST_FILE = FireCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -699,19 +699,19 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = CompoundInterest;
+				PRODUCT_NAME = FireCalculator;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E3C31B6C379E2744DF694A1 /* Pods-CompoundInterest.release.xcconfig */;
+			baseConfigurationReference = 6E3C31B6C379E2744DF694A1 /* Pods-FireCalculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RG978JQ5W9;
-				INFOPLIST_FILE = CompoundInterest/Info.plist;
+				INFOPLIST_FILE = FireCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -720,14 +720,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = CompoundInterest;
+				PRODUCT_NAME = FireCalculator;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73CE9AAE2CDAE09E53295B65 /* Pods-CompoundInterest-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 73CE9AAE2CDAE09E53295B65 /* Pods-FireCalculator-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -738,14 +738,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "CompoundInterest-tvOS/Info.plist";
+				INFOPLIST_FILE = "FireCalculator-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.CompoundInterest-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.FireCalculator-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -755,7 +755,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF4C83BC9BC89E9E8E94E817 /* Pods-CompoundInterest-tvOS.release.xcconfig */;
+			baseConfigurationReference = FF4C83BC9BC89E9E8E94E817 /* Pods-FireCalculator-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -766,14 +766,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "CompoundInterest-tvOS/Info.plist";
+				INFOPLIST_FILE = "FireCalculator-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.CompoundInterest-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.FireCalculator-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -783,7 +783,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40481F3AE12DD0ED4EBC9FC0 /* Pods-CompoundInterest-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 40481F3AE12DD0ED4EBC9FC0 /* Pods-FireCalculator-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -793,24 +793,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "CompoundInterest-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "FireCalculator-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.CompoundInterest-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.FireCalculator-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CompoundInterest-tvOS.app/CompoundInterest-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FireCalculator-tvOS.app/FireCalculator-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 356FF83C29A5AC7EC001E93D /* Pods-CompoundInterest-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 356FF83C29A5AC7EC001E93D /* Pods-FireCalculator-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -820,17 +820,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "CompoundInterest-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "FireCalculator-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.CompoundInterest-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.FireCalculator-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CompoundInterest-tvOS.app/CompoundInterest-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FireCalculator-tvOS.app/FireCalculator-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -937,7 +937,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CompoundInterestTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FireCalculatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -946,7 +946,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CompoundInterest" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FireCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -955,7 +955,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "CompoundInterest-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FireCalculator-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -964,7 +964,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "CompoundInterest-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "FireCalculator-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -973,7 +973,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "CompoundInterest" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FireCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

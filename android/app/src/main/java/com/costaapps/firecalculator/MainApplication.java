@@ -1,4 +1,4 @@
-package com.compoundinterest;
+package com.costaapps.firecalculator;
 
 import android.app.Application;
 
