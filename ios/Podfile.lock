@@ -401,8 +401,8 @@ SPEC CHECKSUMS:
   React-jsi: b6dc94a6a12ff98e8877287a0b7620d365201161
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
-  react-native-safe-area-context: 8260e5157617df4b72865f44006797f895b2ada7
-  react-native-slider: b2f361499888302147205f17f6fffa921a7bda70
+  react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
+  react-native-slider: 3a1cfd00c9c31068251b536822f7192e8d1d6b6f
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
@@ -414,9 +414,9 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  ReactNativeART: c496c53089b3149663215d74d6f1adb3a62e07eb
+  ReactNativeART: c580fba2f7d188d8fa4418ce78db8130654ed10f
   RealmJS: 6d20849a7beffa2dc425ee325f24f0366ee774b6
-  RNCMaskedView: e5b99bc191945f157adeede68da9d424462de177
+  RNCMaskedView: a88953beefbd347a29072d9eba90e42945fe291e
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
   RNScreens: c596b54c3ab63b0390aa3cb081edd438147d40ae
@@ -425,4 +425,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: db618cad4d09fb225c2600d9538d3a8612ef59f3
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
