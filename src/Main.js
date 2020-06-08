@@ -1,34 +1,20 @@
-/* eslint-disable react-native/no-inline-styles */
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-// import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import CardView from 'react-native-cardview';
 import styles from '../style';
+//import Contacts from '../components/Contacts';
 
 import Settings from './Settings';
 import About from './About';
-
 import SplashScreenComponent from './SplashScreen';
 
 const Realm = require('realm');
 
-//import Slider from '@react-native-community/slider';
-
 import Slider from 'react-native-slider';
-//var Slider = require('react-native-slider');
 
 import changeNavigationBarColor, {
   hideNavigationBar,
   showNavigationBar,
 } from 'react-native-navigation-bar-color';
-//import { Slider } from 'react-native-elements';
 
 import {
   useNavigation,
@@ -70,10 +56,8 @@ import {
   Left,
   Right,
   Body,
-  // Icon
 } from 'native-base';
 
-// 3rd party libraries
 import {Icon} from 'react-native-elements';
 
 const LIGHT_GREEN = '#ddfff6';
@@ -87,41 +71,8 @@ const ANDROIDTRANS = '#FF000000';
 
 let deviceWidth = Dimensions.get('window').width;
 
-let maxInvestmentsValue = 500000;
-
-let maxIncomeValue = 250000;
-
-let maxRetSpendValue = 150000;
-
-let savedData = 0;
-
-let newSavingsValue = 0;
-
-YellowBox.ignoreWarnings([
-  'VirtualizedLists should never be nested', // TODO: Remove when fixed
-]);
-
-YellowBox.ignoreWarnings(['Warning: componentWillReceiveProps']);
-
-YellowBox.ignoreWarnings(['Warning: componentWillMount']);
-
 const testSetTransparent = () => {
   changeNavigationBarColor('transparent', true);
-};
-
-const DataSchema = {
-  name: 'Data',
-  properties: {
-    age: {type: 'string', default: 12},
-    wrRate: {type: 'string', default: 2},
-    incGrowth: {type: 'string', default: 2},
-    invReturns: {type: 'string', default: 2},
-    investment: {type: 'int', default: 12222},
-    income: {type: 'int', default: 13333},
-    spending: {type: 'int', default: 3333},
-    retSpending: {type: 'int', default: 16666},
-    currencySymbol: {type: 'string', default: 'USD'},
-  },
 };
 
 const Drawer = createDrawerNavigator();
@@ -148,279 +99,117 @@ export class Main extends React.Component {
     super(props);
 
     this.state = {
-      age: '27',
-      investment: 12000,
-      income: 70000,
-      spending: 35000,
-      savingsNumber: '',
-      savings: 123,
-      savingsPercentage: 3,
-      incGrowth: '3',
-      retSpending: 40000,
-      wrRate: '4',
-      invReturns: '8',
-      fireNumber: '',
-      fireDisplayNumber: '',
-      isFocused: false,
-      currencySymbol: 'GBP',
-      percentageSymbol: '%',
-
-      fireDataArray: [],
-
-      isLoading: true,
+      id: '12',
+      name: 'kad',
+      newName: '',
+      contacts: [],
     };
   }
 
-  // componentWillUnmount() {
-  //   //Close the realm if there is one open.
-  //   // const {realm} = this.state;
-  //   // if (realm !== null) {
-  //   //   realm.close();
-  //   // }
-  // }
-
-  saveData = () => {
-    Realm.open({schema: [DataSchema]}).then(realm => {
-      realm.write(() => {
-        savedData = realm.create('Data', {
-          age: this.state.age,
-          wrRate: this.state.wrRate,
-          incGrowth: this.state.incGrowth,
-          invReturns: this.state.invReturns,
-          investment: this.state.investment,
-          income: this.state.income,
-          spending: this.state.spending,
-          retSpending: this.state.retSpending,
-          currencySymbol: global.MyVar,
-        });
-      });
-    });
-    if (Platform.OS == 'ios') {
-      alert('Config Saved!');
-    } else {
-      ToastAndroid.showWithGravityAndOffset(
-        'Config Saved!',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-        25,
-        50,
-      );
-    }
+  handleIdChange = textValue => {
+    this.setState({id: textValue});
   };
 
-  onFireReady = () => {
-    this.state.fireDataArray = [];
-
-    const incomeFieldAux = this.state.income;
-
-    const spendingFieldAux = this.state.spending;
-
-    const investmentFieldAux = this.state.investment;
-
-    const retSpendingFieldAux = this.state.retSpending;
-
-    this.state.savingsNumber = incomeFieldAux - spendingFieldAux;
-
-    this.state.savingsPercentage = (
-      100 -
-      (spendingFieldAux * 100) / incomeFieldAux
-    ).toFixed(1);
-
-    if (this.state.wrRate <= 0) {
-      return;
-    }
-
-    // Calculate FireNumber
-    this.state.fireNumber = (
-      (retSpendingFieldAux / this.state.wrRate) *
-      100
-    ).toFixed(0);
-
-    this.compound(
-      investmentFieldAux,
-      this.state.invReturns / 100 + 1,
-      this.state.age,
-      incomeFieldAux,
-      spendingFieldAux,
-      this.state.savingsNumber,
-      this.state.fireNumber,
-    );
+  handleNameChange = textValue => {
+    this.setState({name: textValue});
   };
 
-  increaseIncome(income) {
-    return (income *= this.state.incGrowth / 100 + 1);
+  handleNewNameChange = textValue => {
+    this.setState({newName: textValue});
+  };
+
+  Item(id, name) {
+    this.id = id;
+    this.name = name;
   }
 
-  increaseSavings(income, spending) {
-    return (newSavingsValue =
-      income * (this.state.incGrowth / 100 + 1) - spending);
-  }
+  // GET Message
+  handleGetAll = e => {
+    fetch(
+      'http://ec2-18-222-140-190.us-east-2.compute.amazonaws.com:8888/api/categories',
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({contacts: data});
+      })
+      .catch(console.log);
+    // added debug message
+    e.preventDefault();
+  };
 
-  callback() {
-    // this.state.currencySymbol = global.MyVar;
-  }
-
-  formatNumber(number) {
-    if (Platform.OS === 'android') {
-      // only android needs polyfill
-      require('intl'); // import intl object
-      require('intl/locale-data/jsonp/ja-JP'); // load the required locale details
-      return new Intl.NumberFormat('ja-JP', {
-        style: 'currency',
-        currency: global.MyVar,
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }).format(number);
-    }
-
-    return new Intl.NumberFormat('ja-JP', {
-      style: 'currency',
-      currency: global.MyVar,
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(number);
-  }
-
-  callAlertIncome() {
-    if (Platform.OS == 'ios') {
-      alert('Income cannot be lower than Spending');
-    } else {
-      ToastAndroid.showWithGravityAndOffset(
-        'Income cannot be lower than Spending',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-        25,
-        50,
-      );
-    }
-  }
-
-  callAlertSpending() {
-    if (Platform.OS == 'ios') {
-      alert('Spending cannot exceed Income');
-    } else {
-      ToastAndroid.showWithGravityAndOffset(
-        'Spending cannot exceed Income',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-        25,
-        50,
-      );
-    }
-  }
-
-  compound(investment, interest, age, income, spending, savings, fireNumber) {
-    var accumulated = parseInt(investment);
-
-    for (var i = parseInt(age) + 1, j = 1; accumulated < fireNumber; i++, j++) {
-      accumulated = parseInt((accumulated + savings) * interest.toFixed(2));
-
-      savings = this.increaseSavings(income, spending);
-
-      income = this.increaseIncome(income);
-
-      var objToPush = {
-        index: j,
-        age: i,
-        value: accumulated.toFixed(0),
-      };
-
-      if (accumulated < 0) {
-        this.state.savings = 0;
-
-        this.state.savingsPercentage = 0;
-
-        var newStateArray = this.state.slice();
-
-        newStateArray.push();
-
-        this.setState({fireDataArray: newStateArray});
-
-        this.state.fireDataArray = newStateArray;
-
-        return;
-      }
-
-      this.state.savings = savings;
-
-      var newStateArray = this.state.fireDataArray.slice();
-
-      newStateArray.push(objToPush);
-
-      this.state.fireDataArray = newStateArray;
-
-      this.setState({fireDataArray: newStateArray});
-    }
-  }
-
-  performTimeConsumingTask = async () => {
-    return new Promise(
-      resolve =>
-        setTimeout(() => {
-          resolve('result');
-        }, 1000),
-
-      Realm.open({schema: [DataSchema]})
-        .then(realm => {
-          let dataSet = realm.objects('Data');
-          for (let p of dataSet) {
-            this.state.age = p.age;
-            this.state.wrRate = p.wrRate;
-            this.state.incGrowth = p.incGrowth;
-            this.state.invReturns = p.invReturns;
-            this.state.investment = p.investment;
-            this.state.income = p.income;
-            this.state.spending = p.spending;
-            this.state.retSpending = p.retSpending;
-            this.state.currencySymbol = p.currencySymbol;
-          }
-
-          realm.close();
-
-          global.MyVar = this.state.currencySymbol;
-
-          this.onFireReady();
-        })
-        .catch(error => {
-          console.log(error);
+  // POST Message
+  handlePost(e) {
+    alert('Value changed Post!' + this.state.name);
+    fetch(
+      'http://ec2-18-222-140-190.us-east-2.compute.amazonaws.com:8888/api/categories',
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: this.state.id,
+          name: this.state.name,
         }),
+      },
     );
+
+    e.preventDefault();
+  }
+
+  // Put Message
+  handlePut(e) {
+    alert('Value changed Put!' + this.state.newName);
+    fetch(
+      'http://ec2-18-222-140-190.us-east-2.compute.amazonaws.com:8888/api/categories?newName=' +
+        this.state.newName,
+      {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: this.state.id,
+          name: this.state.name,
+        }),
+      },
+    );
+
+    e.preventDefault();
+  }
+
+  // Delete Message
+  handleDelete(e) {
+    fetch(
+      'http://ec2-18-222-140-190.us-east-2.compute.amazonaws.com:8888/api/categories?id=' +
+        this.state.id,
+      {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
+    e.preventDefault();
+  }
+
+  handleClearList = () => {
+    this.setState({contacts: []});
   };
 
   async componentDidMount() {
-    StatusBar.setBarStyle('dark-content');
-
-    if (Platform.OS === 'android') {
-      changeNavigationBarColor('transparent');
-      StatusBar.setBackgroundColor('rgba(0,0,0,0)');
-      StatusBar.setTranslucent(false);
-    }
-
-    // Preload data from an external API
-    // Preload data using AsyncStorage
-    const data = await this.performTimeConsumingTask();
-
-    if (data !== null) {
-      this.setState({isLoading: false});
-    }
-
-    //global.MyVar = this.state.currencySymbol;
+    this.handleGetAll();
   }
-
-  //  GoToButton({ screenName }) {
-  //   const navigation = useNavigation();
-
-  //   return (
-  //     <Button
-  //       title={`Go to ${screenName}`}
-  //       onPress={() => navigation.navigate(screenName)}
-  //     />
-  //   );
-  // }
 
   render() {
     const {isFocused} = this.state;
     let colors = [WHITE, LIGHT_GRAY];
+
+    let {id, name} = this.state;
 
     // Loads splash screen
     if (this.state.isLoading) {
@@ -465,194 +254,91 @@ export class Main extends React.Component {
           <ScrollView>
             <View style={styles.MoneyRowText}>
               <CardView style={styles.cardContainer}>
-                <Text style={styles.text}>Age</Text>
+                <Title style={styles.h2}>Insert item ID</Title>
                 <TextInput
-                  maxLength={2}
-                  keyboardType="numeric"
                   style={styles.textInput}
                   selectionColor={LIGHT_GREEN}
-                  onChangeText={age => this.setState({age})}
-                  onSelectionChange={() => this.onFireReady()}
-                  value={this.state.age}
+                  value={this.state.id}
+                  onChangeText={this.handleIdChange}
                 />
               </CardView>
 
               <CardView style={styles.cardContainer}>
-                <Text style={styles.text}>WR Rate</Text>
-                <View style={styles.textPercentageReturns}>
-                  <TextInput
-                    keyboardType="numeric"
-                    maxLength={2}
-                    style={styles.textInput}
-                    selectionColor={LIGHT_GREEN}
-                    onChangeText={wrRate => this.setState({wrRate})}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.wrRate}
-                  />
-                  <Text style={styles.text}>{this.state.percentageSymbol}</Text>
-                </View>
+                <Title style={styles.h2}>Insert item name</Title>
+                <TextInput
+                  style={styles.textInput}
+                  selectionColor={LIGHT_GREEN}
+                  value={this.state.name}
+                  onChangeText={this.handleNameChange}
+                />
               </CardView>
 
               <CardView style={styles.cardContainer}>
-                <Text style={styles.text}>Inc. Growth</Text>
-                <View style={styles.textPercentageReturns}>
-                  <TextInput
-                    keyboardType="numeric"
-                    style={styles.textInput}
-                    selectionColor={LIGHT_GREEN}
-                    onChangeText={incGrowth => this.setState({incGrowth})}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.incGrowth}
-                  />
-                  <Text style={styles.text}>{this.state.percentageSymbol}</Text>
-                </View>
-              </CardView>
-
-              <CardView style={styles.cardContainer}>
-                <Text style={styles.text}>Returns</Text>
-                <View style={styles.textPercentageReturns}>
-                  <TextInput
-                    keyboardType="numeric"
-                    style={styles.textInput}
-                    selectionColor={LIGHT_GREEN}
-                    onChangeText={invReturns => this.setState({invReturns})}
-                    onSelectionChange={() => this.onFireReady()}
-                    value={this.state.invReturns}
-                  />
-                  <Text style={styles.text}>{this.state.percentageSymbol}</Text>
-                </View>
+                <Title style={styles.h2}>Insert newName</Title>
+                <TextInput
+                  style={styles.textInput}
+                  selectionColor={LIGHT_GREEN}
+                  value={this.state.newName}
+                  onChangeText={this.handleNewNameChange}
+                />
               </CardView>
             </View>
 
-            {/*//////////////////////////////////////////  Investments   //////////////////////////////////////////////////////*/}
-
             <CardView style={styles.cardContainer}>
-              <Text style={styles.text}>Investments</Text>
-              <Text>{this.formatNumber(this.state.investment)}</Text>
-              <Slider
-                style={{width: deviceWidth - 70, height: 40}}
-                minimumValue={0}
-                maximumValue={maxInvestmentsValue}
-                minimumTrackTintColor="#444444"
-                maximumTrackTintColor="#ffffff"
-                thumbTintColor="#000000"
-                step={500}
-                value={this.state.investment}
-                onValueChange={investment => {
-                  this.setState({investment});
-                }}
-                onSlidingComplete={() => {
-                  this.onFireReady();
-                }}
+              <Text style={styles.text}>{this.state.id}</Text>
+
+              <Text style={styles.text}>Get</Text>
+              <Button
+                title="Get"
+                style={styles.buttonStyle}
+                onPress={this.handleGetAll}
               />
             </CardView>
 
-            {/*//////////////////////////////////////////  Income   //////////////////////////////////////////////////////*/}
-
             <CardView style={styles.cardContainer}>
-              <Text style={styles.text}>Income(-Tax)</Text>
-              <Text>{this.formatNumber(this.state.income)}</Text>
-              <Slider
-                style={{width: deviceWidth - 70, height: 40}}
-                minimumValue={0}
-                maximumValue={maxIncomeValue}
-                minimumTrackTintColor="#444444"
-                maximumTrackTintColor="#ffffff"
-                thumbTintColor="#000000"
-                step={500}
-                value={this.state.income}
-                onValueChange={income => {
-                  this.setState({income});
-                }}
-                onSlidingComplete={() => {
-                  if (this.state.income < this.state.spending) {
-                    this.state.income = this.state.spending;
-                    this.callAlertIncome();
-                  }
-                  this.onFireReady();
-                }}
+              <Text style={styles.text}>Post</Text>
+              <Button
+                style={styles.buttonStyle}
+                title="Post"
+                onPress={this.handlePost.bind(this)}
               />
             </CardView>
 
-            {/*//////////////////////////////////////////  Spending   //////////////////////////////////////////////////////*/}
-
             <CardView style={styles.cardContainer}>
-              <Text style={styles.text}>Spending</Text>
-              <Text>{this.formatNumber(this.state.spending)}</Text>
-              <Slider
-                style={{width: deviceWidth - 70, height: 40}}
-                minimumValue={0}
-                maximumValue={maxIncomeValue}
-                minimumTrackTintColor="#444444"
-                maximumTrackTintColor="#ffffff"
-                thumbTintColor="#000000"
-                step={500}
-                value={this.state.spending}
-                onValueChange={spending => {
-                  this.setState({spending});
-                }}
-                onSlidingComplete={() => {
-                  if (this.state.spending > this.state.income) {
-                    this.state.spending = this.state.income;
-                    this.callAlertSpending();
-                  }
-                  this.onFireReady();
-                }}
+              <Text style={styles.text}>Put</Text>
+              <Button
+                title="Put"
+                style={styles.buttonStyle}
+                onPress={this.handlePut.bind(this)}
               />
             </CardView>
 
-            {/*//////////////////////////////////////////  ret spending   //////////////////////////////////////////////////////*/}
-
             <CardView style={styles.cardContainer}>
-              <Text style={styles.text}>Ret. Spending</Text>
-              <Text>{this.formatNumber(this.state.retSpending)}</Text>
-              <Slider
-                style={{width: deviceWidth - 70, height: 40}}
-                minimumValue={0}
-                maximumValue={maxRetSpendValue}
-                minimumTrackTintColor="#444444"
-                maximumTrackTintColor="#ffffff"
-                thumbTintColor="#000000"
-                step={500}
-                value={this.state.retSpending}
-                onValueChange={retSpending => {
-                  this.setState({retSpending});
-                }}
-                onSlidingComplete={() => this.onFireReady()}
+              <Text style={styles.text}>Delete</Text>
+              <Button
+                title="Delete"
+                style={styles.buttonStyle}
+                onPress={this.handleDelete.bind(this)}
               />
             </CardView>
 
-            <View style={styles.MoneyRowText}>
-              <CardView style={styles.cardContainer}>
-                <Text style={styles.text}>Savings</Text>
-                <Text style={styles.textInput}>
-                  {this.formatNumber(this.state.savingsNumber)}{' '}
-                  <Text style={styles.textPercentage}>
-                    ({this.state.savingsPercentage}
-                    {this.state.percentageSymbol})
-                  </Text>
-                </Text>
-              </CardView>
-
-              <CardView style={styles.cardContainer}>
-                <Text style={styles.text}> FIRE # </Text>
-                <Text style={styles.textInput}>
-                  {this.formatNumber(this.state.fireNumber)}
-                </Text>
-              </CardView>
-            </View>
+            <CardView style={styles.cardContainer}>
+              <Text style={styles.text}>ClearList</Text>
+              <Button
+                style={styles.buttonStyle}
+                onPress={this.handleClearList}
+              />
+            </CardView>
 
             <View style={styles.itemContainerHeader}>
-              <Text style={styles.flatListHeaderLeft}>#</Text>
-              <Text style={styles.flatListHeaderCenter}>Age</Text>
-              <Text style={styles.flatListHeaderRight}>Balance</Text>
+              <Text style={styles.flatListHeaderCenter}>Contact List</Text>
             </View>
 
             <View style={styles.itemContainer}>
               {
                 <FlatList
                   style={styles.flatList}
-                  data={this.state.fireDataArray}
+                  data={this.state.contacts}
                   keyExtractor={(item, index) => 'key' + index}
                   renderItem={({item, index}) => (
                     <View
@@ -663,11 +349,8 @@ export class Main extends React.Component {
                         paddingBottom: 15,
                         //backgroundColor: colors[index % colors.length],
                       }}>
-                      <Text style={styles.flatListItemLeft}>{item.index}</Text>
-                      <Text style={styles.flatListItemCenter}>{item.age}</Text>
-                      <Text style={styles.flatListItemRight}>
-                        {this.formatNumber(item.value)}
-                      </Text>
+                      <Text style={styles.flatListItemLeft}>{item.id}</Text>
+                      <Text style={styles.flatListItemCenter}>{item.name}</Text>
                     </View>
                   )}
                 />
@@ -679,16 +362,6 @@ export class Main extends React.Component {
     );
   }
 }
-
-// function Feed({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Feed Screen</Text>
-//       <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
-//       <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
-//     </View>
-//   );
-// }
 
 function CustomDrawerContent(props) {
   return (

@@ -72,6 +72,8 @@ export default StyleSheet.create({
   textInput: {
     textAlign: 'center',
     fontSize: 20,
+    width: 80,
+    backgroundColor: '#ffffff',
   },
   textPercentage: {
     textAlign: 'center',
@@ -171,5 +173,10 @@ export default StyleSheet.create({
   },
   aboutEmail: {
     paddingTop: 20,
+  },
+  buttonStyle: {
+    color: 'red',
+    padding: 20,
+    backgroundColor: '#ffffff',
   },
 });
