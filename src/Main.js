@@ -216,6 +216,7 @@ export class Main extends React.Component {
       return <SplashScreenComponent />;
     }
 
+
     return (
       <ImageBackground
         source={require('../asset/angryimg.png')}
